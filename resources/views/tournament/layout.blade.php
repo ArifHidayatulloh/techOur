@@ -31,7 +31,7 @@
                             <a class="nav-link" href="{{ route('tournament.index') }}">Tournament</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Latest News</a>
+                            <a class="nav-link" href="{{ route('news.index') }}">Latest News</a>
                         </li>
                     </ul>
                 </div>

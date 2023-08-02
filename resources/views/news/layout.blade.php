@@ -27,6 +27,9 @@
                     <a class="nav-link" href="{{ route('tournament.index') }}">Tournament</a>
                 </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="{{ route('team.index') }}">Team</a>
+                </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('news.index') }}">Latest News</a>
                   </li>
                 </ul>

@@ -1,13 +1,13 @@
 @extends('tournament.layout')
 @section('content')
-    <div class="card mt-5" style="width: 70rem">
+    <div class="card mt-5" style="width: 70rem;">
         <div class="card-header">
             <h3>Tournament</h3>
             <a class="btn btn-success mt-1 mb-1" href="{{ route('tournament.create') }}" role="button">Add New
                 Tournament</a>
         </div>
         <div class="card-boy">
-            <table class="table">
+            <table class="table" style="width: 70rem;">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

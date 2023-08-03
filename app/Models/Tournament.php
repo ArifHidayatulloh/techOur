@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tournament extends Model
 {
@@ -13,4 +14,15 @@ class Tournament extends Model
     public function competition(){
         return $this->belongsTo(Competition::class,'competition_id','id');
     }
+
+    /**
+     * Get all of the team for the Tournament
+     *
+     * @return \Illuminate\DatabTeamquent\Relatournament_idny
+     */
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class, 'tournament_id', 'id');
+    }
+
 }

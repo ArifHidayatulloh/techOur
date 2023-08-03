@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\TeamListResource;
-use App\Http\Resources\TournamentDetailResource;
-use App\Models\Team;
-use App\Models\Tournament;
+use App\Http\Resources\NewsResource;
+use App\Models\News;
 use Illuminate\Http\Request;
 
-class TournamentApiController extends Controller
+class NewsApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +16,8 @@ class TournamentApiController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::all();
+        return NewsResource::collection($news);
     }
 
     /**
@@ -40,18 +39,10 @@ class TournamentApiController extends Controller
      */
     public function show($id)
     {
-        $tournament = Tournament::findOrFail($id);
-
-        return new TournamentDetailResource($tournament->loadMissing(['competition:id,competition','teams:id,tournament_id,team']));
+        $news = News::findOrFail($id);
+        return response()->json($news);
     }
 
-    public function teamList($id){
-        $team = Team::where('tournament_id',$id)->get();
-
-        return TeamListResource::collection($team->loadMissing(['tournament:id,tournament']));
-    }
-
-    
     /**
      * Update the specified resource in storage.
      *

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->longText('participants');
             $table->longText('challenges');
             $table->longText('prizes');
+            $table->string('contact');
+            $table->string('registration_fee');
             $table->string('image');
             $table->timestamps();
         });

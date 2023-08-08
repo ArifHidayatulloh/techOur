@@ -48,6 +48,8 @@ class TournamentController extends Controller
             'participants' => 'required',
             'challenges' => 'required',
             'prizes' => 'required',
+            'contact' => 'required',
+            'registration_fee' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
@@ -61,6 +63,8 @@ class TournamentController extends Controller
             'participants' => $request->participants,
             'challenges' => $request->challenges,
             'prizes' => $request->prizes,
+            'contact' => $request->contact,
+            'registration_fee' => $request->registration_fee,
             'image' => $imagePath
         ]);
 
@@ -109,6 +113,8 @@ class TournamentController extends Controller
             'participants' => 'required',
             'challenges' => 'required',
             'prizes' => 'required',
+            'contact' => 'required',
+            'registration_fee' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
@@ -125,6 +131,8 @@ class TournamentController extends Controller
         $tournament->participants = $request->participants;
         $tournament->challenges = $request->challenges;
         $tournament->prizes = $request->prizes;
+        $tournament->contact = $request->contact;
+        $tournament->registration_fee = $request->registration_fee;
 
         $tournament->save();
 

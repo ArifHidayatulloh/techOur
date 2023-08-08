@@ -18,6 +18,8 @@
                         <th scope="col">Participant</th>
                         <th scope="col">Challenge</th>
                         <th scope="col">Prize</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Registration Fee</th>
                         <th scope="col">Image</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -32,6 +34,8 @@
                             <td>{{ $item->location }}</td>
                             <td>{{ $item->participants }}</td>
                             <td>{{ $item->challenges }}</td>
+                            <td>{{ $item->contact }}</td>
+                            <td>{{ $item->registration_fee }}</td>
                             <td>{{ $item->prizes }}</td>
                             <td>
                                 <img src="{{ asset('storage/' . $item->image) }}" alt="" style="width:50px;">

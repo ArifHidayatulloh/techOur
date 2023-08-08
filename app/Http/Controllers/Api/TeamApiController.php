@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TeamListResource;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class TeamApiController extends Controller
@@ -25,7 +27,23 @@ class TeamApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tournament_id' => 'required',
+            'team' => 'required',
+            'member' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg'
+        ]);
+
+        $imagePath = $request->file('image')->store('team_images', 'public');
+
+        $team = Team::create([
+            'tournament_id' => $request->tournament_id, 
+            'team' => $request->team,
+            'member' => $request->member,
+            'image' => $imagePath
+        ]);
+
+        return new TeamListResource($team->loadMissing(['tournament:id,tournament']));
     }
 
     /**

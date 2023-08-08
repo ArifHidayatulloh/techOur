@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CompetitionApiController;
 use App\Http\Controllers\Api\NewsApiController;
+use App\Http\Controllers\Api\TeamApiController;
 use App\Http\Controllers\Api\TournamentApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,8 @@ Route::get('/competition/{id}',[CompetitionApiController::class,'tournamentList'
 
 Route::get('/tournament/{id}',[TournamentApiController::class,'show']);
 Route::get('/team/{id}',[TournamentApiController::class,'teamList']);
+
+Route::post('/team', [TeamApiController::class,'store']);
 
 
 Route::get('/news',[NewsApiController::class,'index']);

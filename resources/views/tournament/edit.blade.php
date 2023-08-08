@@ -40,13 +40,13 @@
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="location"
                                     style="white-space: pre-wrap">{{ $tournament->location }}</textarea>
                             </div>
-                        </div>
-                        <div class="form-right">
                             <div class="mb-3">
                                 <label for="participant" class="form-label">Participant</label>
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="participants"
-                                    style="white-space: pre-wrap">{{ $tournament->participants }}</textarea>
+                                style="white-space: pre-wrap">{{ $tournament->participants }}</textarea>
                             </div>
+                        </div>
+                        <div class="form-right">
                             <div class="mb-3">
                                 <label for="challenges" class="form-label">Challenge</label>
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="challenges"
@@ -56,6 +56,14 @@
                                 <label for="prizes" class="form-label">Prize</label>
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="prizes"
                                     style="white-space: pre-wrap">{{ $tournament->prizes }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact" class="form-label">Contact</label>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="contact" style="white-space: pre-wrap"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fee" class="form-label">Registration Fee</label>
+                                <input class="form-control" type="text" id="fee" name="registration_fee">
                             </div>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Competition Logo</label>

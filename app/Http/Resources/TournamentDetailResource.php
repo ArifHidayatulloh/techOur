@@ -18,12 +18,14 @@ class TournamentDetailResource extends JsonResource
             'id' => $this->id,
             'competition_id' => $this->competition_id,
             'tournament' => $this->tournament,
-            'date' => $this->date,
+            'date' => date('d F Y', strtotime($this->data)),
             'location' => $this->location,
             'participants' => $this->participants,
             'challenges' => $this->challenges,
-            'image' => $this->image,
             'prizes' => $this->prizes,
+            'contact' => $this->contact,
+            'registration_fee' => $this->registration_fee,
+            'image' => $this->image,
             'competition_category' => $this->whenLoaded('competition'),
             'team_total' => $this->whenLoaded('teams', function(){
                 return $this->teams->count();

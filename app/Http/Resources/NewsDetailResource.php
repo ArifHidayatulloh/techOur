@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GameListResource extends JsonResource
+class NewsDetailResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +15,11 @@ class GameListResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'  => $this->id,
-            'competition_id' => $this->competition_id,
-            'image' => $this->image,
-            'tournament' => $this->tournament,
+            'id' => $this->id,
+            'title' => $this->title,
             'date' => date('d F Y', strtotime($this->date)),
-            'competition_category' => $this->whenLoaded('competition')
+            'content' => $this->content,
+            'image' => $this->image
         ];
     }
 }

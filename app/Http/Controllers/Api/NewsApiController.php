@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NewsDetailResource;
 use App\Http\Resources\NewsResource;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -39,8 +40,8 @@ class NewsApiController extends Controller
      */
     public function show($id)
     {
-        $news = News::findOrFail($id);
-        return response()->json($news);
+        $new = News::findOrFail($id);
+        return new NewsDetailResource($new);
     }
 
     /**

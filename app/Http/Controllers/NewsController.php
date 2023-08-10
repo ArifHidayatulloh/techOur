@@ -16,7 +16,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::all();
-        return view('news.index', compact('news'));
+        return view('admin.news.index', compact('news'));
     }
 
     /**
@@ -26,7 +26,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('news.create', [
+        return view('admin.news.create', [
             'news' => News::all()
         ]);
     }
@@ -56,7 +56,7 @@ class NewsController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('news.index')->with('success','Added News Successfully');
+        return redirect()->route('admin.news.index')->with('success','Added News Successfully');
     }
 
     /**
@@ -78,7 +78,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        return view('news.edit',compact('news'));
+        return view('admin.news.edit',compact('news'));
     }
 
     /**
@@ -109,7 +109,7 @@ class NewsController extends Controller
 
         $news->save();
 
-        return redirect()->route('news.index')->with('success','Updated News Successfully');
+        return redirect()->route('admin.news.index')->with('success','Updated News Successfully');
     }
 
     /**
@@ -122,6 +122,6 @@ class NewsController extends Controller
     {
         Storage::disk('public')->delete($news->image);
         $news->delete();
-        return redirect()->route('news.index')->with('success','Deleted News Successfully');
+        return redirect()->route('admin.news.index')->with('success','Deleted News Successfully');
     }
 }

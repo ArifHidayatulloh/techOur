@@ -1,0 +1,133 @@
+:root{
+    --color-primary: #788794;
+    --color-side: #3E4C59;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+
+/* NAVBAR */
+.navbar{
+    display: flex;
+    background-color: var(--color-side);
+    height: 90px;
+}
+.navbar .judul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    font-size: 25px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    letter-spacing: 1px;
+}
+.navbar .judul span{
+    color: rgb(131, 214, 255);
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+    text-align: left;
+}
+.listmenu ul{
+    font-size: 17px;
+    display: flex;
+    margin-left: 300px;
+}
+.listmenu ul li{
+    position: relative;
+    list-style: none;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+.listmenu li a{
+    background-color: transparent;
+    color: white;
+    border-radius: 2px;
+    padding: 5px;
+    position: relative;
+}
+.listmenu li a:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .2s ease-in-out;
+}
+.listmenu ul li a:hover::before{
+    background-color: white;
+    transform-origin: left;
+    transform: scaleX(1);
+}
+/* FORM */
+.form{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-side);
+    position: inherit;
+    margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  .form .update-news{
+    background-color: var(--color-side);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px;
+    border-radius: 10px;
+  }
+  .form .update-news .input-news .details{
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 5px;
+    line-height: 5vh;
+  }
+  .form .update-news input{
+    height: 22px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    padding-left: 15px;
+    color: white;
+    box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    transition: all 0.3s ease;
+  }
+  .form .update-news textarea{
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-top: 5px;
+    color: white;
+    box-shadow: inset 3px 2px 4px 3px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    transition: all 0.3s ease;
+  }
+  .form .btn input{
+    border-radius: 10px;
+    box-shadow: none;
+    margin: 5px;
+    height: 4.5vh;
+  }
+  .form .btn .btn-submit:hover{
+    background-color: #40da76;
+  }
+  .form .btn .btn-reset:hover{
+    background-color: #cd3535;
+  }

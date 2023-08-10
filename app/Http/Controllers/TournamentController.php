@@ -16,8 +16,8 @@ class TournamentController extends Controller
      */
     public function index()
     {
-        $tournament = Tournament::all();
-        return view('tournament.index',compact('tournament'));
+        $competition = Competition::all();
+        return view('admin.tournament.index',compact('competition'));
     }
 
     /**
@@ -27,7 +27,7 @@ class TournamentController extends Controller
      */
     public function create()
     {
-        return view('tournament.create', [
+        return view('admin.tournament.create', [
             'competition' => Competition::all()
         ]);
     }
@@ -68,7 +68,7 @@ class TournamentController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('tournament.index')->with('success','Added Tournament Successfully');
+        return redirect()->route('admin.tournament.index')->with('success','Added Tournament Successfully');
     }
 
     /**
@@ -77,9 +77,10 @@ class TournamentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($competitionId)
     {
-        //
+        $tournament = Tournament::where('competition_id', $competitionId)->get();
+        return view('admin.tournament.tour-lengkap', compact('tournament'));
     }
 
     /**
@@ -90,7 +91,7 @@ class TournamentController extends Controller
      */
     public function edit(Tournament $tournament)
     {
-        return view('tournament.edit',[
+        return view('admin.tournament.edit',[
             'tournament' => $tournament,
             'competition' => Competition::all()
         ]);
@@ -136,7 +137,7 @@ class TournamentController extends Controller
 
         $tournament->save();
 
-        return redirect()->route('tournament.index')->with('success','Updated Tournament Successfully');
+        return redirect()->route('admin.tournament.index')->with('success','Updated Tournament Successfully');
     }
 
     /**
@@ -149,6 +150,6 @@ class TournamentController extends Controller
     {
         Storage::disk('public')->delete($tournament->image);
         $tournament->delete();
-        return redirect()->route('tournament.index')->with('success','Deleted Tournament Successfully');
+        return redirect()->route('admin.tournament.index')->with('success','Deleted Tournament Successfully');
     }
 }

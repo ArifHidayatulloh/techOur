@@ -1,0 +1,155 @@
+:root{
+  --color-primary: #788794;
+  --color-side: #3E4C59;
+}
+
+/* SECTION */
+.bagan{
+  background-color: var(--color-primary);
+  height: 100vh;
+  margin-left: 18%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+h2{
+  padding: 20px;
+  letter-spacing: 1px;
+  color: white;
+  text-shadow: 2px 2px 3px black;
+  font-size: 33px;
+}
+
+/* FORM */
+.form{  
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-side);
+  margin-left: 25px;
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+.form .tmbh-competition{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+.form .tmbh-competition .input-competition .details{
+  font-size: 20px;
+  color: white;
+  line-height: 30px;
+}
+.form .tmbh-competition input{
+  height: 22px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  color: white;
+  box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+.form .tmbh-competition textarea{
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  color: white;
+  box-shadow: inset 3px 2px 4px 3px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+.form .tmbh-competition img{
+  width: 200px;
+  height: 200px;
+}
+
+ /* OUTPUT */
+ .output{
+  margin-left: 50vh;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+.output span{
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+  line-height: 5vh;
+}
+.output img{
+  margin: 15px;
+  width: 45vh;
+  height: 45vh;
+}
+
+/* BUTTON */
+.form .btn{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: -20px;
+  padding-bottom: 20px;
+}
+.form .btn input{
+  border-radius: 10px;
+  box-shadow: none;
+  width: 200px;
+  height: 25px;
+}
+.form .btn .btn-submit:hover{
+  background-color: #40da76;
+}
+form .btn .btn-reset:hover{
+  background-color: #cd3535;
+}
+
+@media screen and (max-width:796px) {
+  body{
+    background-color: var(--color-primary);
+  }
+
+  h2{
+    padding: 20px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .bagan{
+    background-color: transparent;
+    margin: 0;
+    height: 100%;
+    padding-bottom: 20px;
+  }
+
+  .form{
+    width: auto;
+    height: 100%;
+    margin: 10px;
+  }
+
+  .form .tmbh-tour{
+    justify-content: none;
+  }
+
+  .form-right{
+    position: absolute;
+    justify-content: center;
+    margin-top: 100%;
+  }
+
+  .form-right .input-tur textarea{
+    width: 92%;
+  }
+
+  .form-right .output img{
+    width: 30%;
+    height: 30%;
+  }
+
+  .form .btn{
+    margin-top: 10%;
+    padding: 10px;
+  }
+}

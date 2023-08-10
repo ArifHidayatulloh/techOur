@@ -16,7 +16,7 @@ class CompetitionController extends Controller
     public function index()
     {
         $competition = Competition::all();
-        return view('competition.index',compact('competition'));
+        return view('admin.competition.index',compact('competition'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CompetitionController extends Controller
      */
     public function create()
     {
-        return view('competition.create');
+        return view('admin.competition.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class CompetitionController extends Controller
      */
     public function edit(Competition $competition)
     {
-        return view('competition.edit',compact('competition'));
+        return view('admin.competition.edit',compact('competition'));
     }
 
     /**

@@ -1,0 +1,120 @@
+:root{
+  --color-primary: #788794;
+  --color-side: #3E4C59;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-side);
+}
+
+#check, #cancel, #bars{
+  display: none;
+}
+
+.container{
+  position: fixed;
+  width: 220px;
+  height: 100%;
+  background-color: var(--color-side) ;
+}
+
+.container h3{
+  margin: 25px;
+  font-size: 26px;
+  color: aliceblue;
+  line-height: 70px;
+  border-radius: 10px;
+  border-bottom: 7px solid white;
+}
+
+.container span{
+  position: absolute;
+  margin-top: 20px;
+  font-style: italic;
+  color: rgb(131, 214, 255);
+}
+
+.sidebar ul{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.sidebar ul a{
+  display: block;
+  padding-left: 20px;
+  height: 100%;
+  line-height: 70px;
+  font-size: 15px;
+  color: white;
+  box-sizing: border-box;
+  transition: all  0.5s ease;
+}
+
+.sidebar ul a:hover{
+  padding-left: 70px;
+  background-color: rgb(215, 215, 215);
+  color: black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.sidebar .logout a{
+  padding-left: 25px;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar .logout:hover{
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 796px){
+  .container{
+    margin: 0;
+    padding: auto;
+    position: absolute;
+    transform: translateX(-300px);
+  }
+
+  .contaienr h3{
+    margin: 0;
+  }
+
+  #check{
+    display: none;
+  }
+
+  #cancel{
+    display: flex;
+    margin-left: 80%;
+    margin-top: -20px;
+    cursor: pointer;
+  }
+
+  #bars{
+    position: absolute;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  #check:checked ~ .container{
+    transition: all 0.5s ease;
+    transform: translateX(0);
+    z-index: 999;
+  }
+
+  #check:checked ~ label #bars{
+    display: none;
+  }
+}

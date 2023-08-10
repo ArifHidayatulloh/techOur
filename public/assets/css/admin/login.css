@@ -1,0 +1,62 @@
+body{
+    background-color: #3E4C59;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+form{
+    background-color: #dae0e59d;
+    width: 350px;
+    height: 300px;
+    padding-top: 5%;
+    text-align: center;
+    color: black;
+    border-radius: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+img{
+    position: absolute;
+    margin-left: 10px;
+    top: 50px;
+    width: 100px;
+    height: 100px;
+}
+p{
+    margin-left: 50px;
+    text-align: left;
+    font-size: 20px;
+}
+form input{
+    border-radius: 10px;
+    background-color:#3e4c59a0;
+    color: white;
+    height: 20px;
+    width: 70%;
+}
+form .btn input{
+    background-color: #3e4c59b6;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    margin: 30px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 796px){
+    form{
+        margin-top: 80px;
+        width: 80%;
+        height: 100%;  
+    }
+    img{
+        margin-top: 90px;
+        width: 80px;
+        height: 80px;
+    }
+    p{
+    }
+}
+

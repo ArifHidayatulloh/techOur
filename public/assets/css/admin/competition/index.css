@@ -1,0 +1,44 @@
+:root{
+    --color-primary: #788794;
+    --color-side: #3E4C59;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+
+/* TABEL */
+.tabel{
+    position: fixed;
+    align-items: center;
+    background-color: var(--color-side);
+    margin: 80px;
+}
+table{
+    text-align: center;
+    width: 180vh;
+}
+table tr th{
+    border: 1px solid white;
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+}
+table tr td{
+    padding: 20px;
+    color: white;
+    font-size: 15px;
+    border: 1px solid white;
+}
+table img{
+    width: 70px;
+    height: 70px;
+}
+table input{
+    border-radius: 10px;
+    padding: 5px;
+    width: 25%;
+}
+table input:hover{
+    transform: scale(1.1);
+}

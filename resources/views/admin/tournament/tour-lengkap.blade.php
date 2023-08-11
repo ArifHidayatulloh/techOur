@@ -13,7 +13,7 @@
     <body>
         <div class="card-body m-5 p-3 border">
             <table class="table caption-top text-center">
-                <caption><a href="/form-tour" class="fw-bold text-decoration-none text-success fs-4">+Add Tournament</a>
+                <caption><a href="{{ route('tournament.create') }}" class="fw-bold text-decoration-none text-success fs-4">+Add Tournament</a>
                 </caption>
                 <thead class="table-light">
                     <tr>
@@ -40,8 +40,16 @@
                             </td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-center">
-                                    <button class="btn btn-outline-danger w-50" type="button">DELETE</button>
-                                    <button class="btn btn-outline-success w-50" type="button">EDIT</button>
+                                    <div class="delete">
+                                        <form action="{{ route('tournament.destroy', $item->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-outline-danger w-20" type="submit">DELETE</button>
+                                        </form>
+                                    </div>
+                                    <div class="update"> 
+                                        <a class="btn btn-outline-success w-20" type="button" href="{{ route('tournament.edit', $item->id) }}">EDIT</a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

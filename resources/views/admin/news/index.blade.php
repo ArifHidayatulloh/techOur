@@ -7,30 +7,30 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>index</title>
 </head>
-<!--<style>
+<style>
     .title{
         font-size: 20px;
     }
 
-    .text{
-        height: 100%;
-        font-size: 20px;
-    }
-
-    .btn{
-        display:grid;
-    }
-
-    @media screen and (max-width: 796px) {
-        .title{
-            font-size: 15px;
+        .text {
+            height: 100%;
+            font-size: 20px;
         }
 
-        .text{
-            font-size: 10px;
-            width: 100%;
-            height: 50%;
+        .btn {
+            display: grid;
         }
+
+        @media screen and (max-width: 796px) {
+            .title {
+                font-size: 15px;
+            }
+
+            .text {
+                font-size: 10px;
+                width: 100%;
+                height: 50%;
+            }
 
         .btn{
             text-align: center;
@@ -38,7 +38,6 @@
         }
     }
 </style>
--->
 <body>
     <div class="card-body m-5 p-3 border">
     <table class="table caption-top text-center table-bordered">
@@ -85,18 +84,19 @@
     </table>
     </div>
 
-    <script>
-        const textNews = document.getElementById("text-news");
-        
-        const text = textNews.textContent;
+        <script>
+            const textNews = document.getElementById("text-news");
 
-        const kalimatArray = text.split(".");
+            const text = textNews.textContent;
 
-        if(kalimatArray.length > 1){
-            const kalimatTerkondensasi = kalimatArray.slice(0,1).join(".") + "...";
-            textNews.textContent = kalimatTerkondensasi;
-        }
-    </script>
-</body>
-</html>    
+            const kalimatArray = text.split(".");
+
+            if (kalimatArray.length > 1) {
+                const kalimatTerkondensasi = kalimatArray.slice(0, 1).join(".") + "...";
+                textNews.textContent = kalimatTerkondensasi;
+            }
+        </script>
+    </body>
+
+    </html>
 @stop

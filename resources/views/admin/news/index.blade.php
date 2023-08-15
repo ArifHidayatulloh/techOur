@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>index</title>
 </head>
-<style>
+<!--<style>
     .title{
         font-size: 20px;
     }
@@ -38,6 +38,7 @@
         }
     }
 </style>
+-->
 <body>
     <div class="card-body m-5 p-3 border">
     <table class="table caption-top text-center table-bordered">

@@ -64,11 +64,11 @@
                         </div>
                         <div class="input-tur">
                             <span class="details">Poster</span>
-                            <input type="file" style="box-shadow:none" required name="image">
+                            <input type="file" style="box-shadow:none" required name="image" id="inputFile">
                         </div>
                         <div class="output">
                             <span class="details">OUTPUT GAMBAR</span>
-                            <img src="assets/image/team.jpg" alt="">
+                            <img src="" alt="" id="review">
                         </div>
                     </div>
                 </div>
@@ -79,6 +79,25 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function previewImage(event) {
+            let fileInput = event.target;
+            let reviewImage = document.getElementById('review')
+
+            if (fileInput.files && fileInput.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function(e) {
+                    reviewImage.src = e.target.result;
+                }
+
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        document.getElementById('inputFile').addEventListener('change', previewImage);
+    </script>
 </body>
 </html>
 @stop

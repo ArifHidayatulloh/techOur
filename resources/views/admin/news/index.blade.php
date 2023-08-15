@@ -8,13 +8,13 @@
     <title>index</title>
 </head>
 <style>
-    .title{
-        font-size: 20px;
-    }
+        .title{
+            font-size: 15px;
+        }
 
         .text {
             height: 100%;
-            font-size: 20px;
+            font-size: 15px;
         }
 
         .btn {
@@ -41,45 +41,42 @@
 <body>
     <div class="card-body m-5 p-3 border">
     <table class="table caption-top text-center table-bordered">
-        <caption><a href="/form-news" class="fw-bold text-decoration-none text-success fs-4">+ Add News</a></caption>
+        <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4">+ Add News</a></caption>
         <thead class="table-light">
             <tr>
                 <th>Judul</th>
-                <th class="w-25">Detail</th>
+                <th>Detail</th>
                 <th>Tanggal</th>
                 <th>Poster</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
+            @foreach ($news as $item)
             <tr>
-                <td class="title">UI/UX Competition</td>
+                <td class="title">{{ $item->title }}</td>
                 <td class="text-break p-3 text" id="text-news">
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.blablablablablablablablablabla.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout....
+                    {{$item->content}}
                 </td>
-                <td>23 Januari 2022</td>
-                <td><img src="{{ ('assets/image/it/cyber-security.jpg') }}" style="width: 80px"></td>
+                <td>{{ $item->date}}</td>
+                <td><img src="{{ asset('storage/' .$item->image) }}" style="width: 80px"></td>
                 <td>
                     <div class="d-grid gap-2 d-md-flex justify-content-center btn">
-                        <button class="btn btn-outline-danger" type="button">DELETE</button>
-                        <button class="btn btn-outline-success" type="button">EDIT</button>
+                        <div class="delete">
+                            <form action="{{ route('news.destroy', $item->id )}}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-outline-danger" type="button">DELETE</button>
+                            </form>
+                        </div>
+                        <div class="update">
+                            <a class="btn btn-outline-success" href="{{ route('news.edit', $item->id) }}" type="button">EDIT</a>
+
+                        </div>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td class="title">Data Science</td>
-                <td class="text-break p-3 text" id="text-news">
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout...
-                </td>
-                <td>23 Januari 2022</td>
-                <td><img src="{{ ('assets/image/it/cyber-security.jpg') }}" style="width: 80px"></td>
-                <td>
-                    <div class="d-grid gap-2 d-md-flex justify-content-center btn">
-                        <button class="btn btn-outline-danger" type="button">DELETE</button>
-                        <button class="btn btn-outline-success" type="button">EDIT</button>
-                    </div>
-                </td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
     </div>

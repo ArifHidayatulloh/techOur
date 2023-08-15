@@ -14,10 +14,10 @@
                 <img src="{{ ('assets/image/TECH_TOURNAMENT.png') }}" alt="">
                 <h2>ADMIN</h2>
             </div>
-            <div class="log">
+            <div class="log" >
                 <h3><a href="login">logout</a></h3>
                 <a href="login"><img src="{{ ('assets/image/log.png') }}" alt=""></a>
-            </div>
+            </div> 
         </div>
         <div class="container">
             <div class="pilih">

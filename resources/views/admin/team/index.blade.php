@@ -28,16 +28,6 @@
                 <td><img src="{{ asset('storage/' .$item->image) }}" style="width: 50px;"></td>
             </tr>
             @endforeach
-            {{-- <tr>
-                <td>agha TEAM</td>
-                <td>abian, maulana, riri, luna, kiki, zian</td>
-                <td><img src="{{ ('assets/image/it/cyber-security.jpg') }}" style="width: 50px;"></td>
-            </tr>
-            <tr>
-                <td>KAAA TEAM</td>
-                <td>rizky, maulana, riri, luna, kiki, zian</td>
-                <td><img src="{{ ('assets/image/it/cyber-security.jpg') }}" style="width: 50px;"></td>
-            </tr> --}}
         </tbody>
     </table>
     </div>

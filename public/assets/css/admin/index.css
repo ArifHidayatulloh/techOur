@@ -143,3 +143,11 @@ img{
     width: 150px;
   }
 }
+
+@media screen and (max-width:1000px){
+  .pilihan{
+    grid-template-columns: auto auto;
+    margin: 50px;
+    gap: 30px;
+  }
+}

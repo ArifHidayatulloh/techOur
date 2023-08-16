@@ -12,7 +12,7 @@
 
     <body>
         <div class="card-body m-5 p-3 border">
-            <table class="table caption-top text-center">
+            <table class="table caption-top text-center table-bordered">
                 <caption><a href="{{ route('tournament.create') }}" class="fw-bold text-decoration-none text-success fs-4">+Add Tournament</a>
                 </caption>
                 <thead class="table-light">

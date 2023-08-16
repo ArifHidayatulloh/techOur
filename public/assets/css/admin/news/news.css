@@ -36,14 +36,17 @@ h2{
   justify-content: space-between;
   border-radius: 10px;
 }
+
 .form .tmbh-news .input-news .details{
   font-size: 20px;
   color: white;
   line-height: 30px;
 }
+
 .form .tmbh-news input{
   height: 22px;
   width: 100%;
+  padding: 5px;
   outline: none;
   font-size: 16px;
   color: white;
@@ -53,6 +56,7 @@ h2{
 }
 .form .tmbh-news textarea{
   width: 100%;
+  padding: 15px;
   outline: none;
   font-size: 16px;
   color: white;
@@ -89,7 +93,6 @@ h2{
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: -20px;
   padding-bottom: 20px;
 }
 .form .btn input{

@@ -84,10 +84,6 @@
         display: none;
     }
 
-    .listmenu li a:before{
-       display: none;
-    }
-
     #check, #arrow-up{
         display: none;
     }
@@ -100,6 +96,7 @@
 
     #check:checked ~ .listmenu{
         display: flex;
+        justify-content: center;
     }
 
     #check:checked ~ .listmenu ul{
@@ -108,9 +105,7 @@
     }
 
     #check:checked ~ .listmenu ul li{
-        margin-right: 0;
-        margin-top: 0;
-        text-align: center;
+        margin-right: 5px;
     }
 
     #check:checked ~ label #arrow-down{

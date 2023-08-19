@@ -11,8 +11,8 @@
     </head>
 
     <body>
-        <div class="card-body m-5 p-3 border">
-            <table class="table caption-top text-center table-bordered">
+        <div class="d-flex justify-content-center m-5">
+            <table class="table caption-top text-center table-bordered w-75">
                 <!-- tabel -->
                 <caption><a href="{{ route('competition.create') }}" class="fw-bold text-decoration-none text-success fs-4">+
                         Add Competition</a></caption>
@@ -30,16 +30,16 @@
                             <td><img src="{{ asset('storage/' .$item->image) }}" alt="" style="width: 50px;">
                             </td>
                             <td>
-                                <div class="d-grid gap-2 d-md-flex justify-content-center">
+                                <div class="d-grid gap-2 p-3 d-md-flex justify-content-center">
                                     <div class="delete">
                                         <form action="{{ route('competition.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger w-20" type="submit">DELETE</button>
+                                            <button class="btn btn-outline-danger" type="submit">DELETE</button>
                                         </form>
                                     </div>
                                     <div class="update"> 
-                                        <a class="btn btn-outline-success w-20" type="button" href="{{ route('competition.edit', $item->id) }}">EDIT</a>
+                                        <a class="btn btn-outline-success w-100" type="button" href="{{ route('competition.edit', $item->id) }}">EDIT</a>
                                     </div>
                                 </div>
                             </td>

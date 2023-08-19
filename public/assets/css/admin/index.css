@@ -104,7 +104,7 @@ img{
 
   .bagan .admin h2{
     font-size: 25px;
-    margin-left: 15%;
+    margin-left: 4rem;
   }
 
   .bagan .log h3{
@@ -126,7 +126,7 @@ img{
   }
 
   .pilihan .box{
-    width: 100%;
+    width: 150px;
     height: 200px;
     box-shadow: 1px 1px 1px black;
   }
@@ -136,9 +136,7 @@ img{
     font-size: 13px;
   }
 
-  img{
-    justify-content: center;
-    align-items: center;
+  .pilihan .box img{
     height: 150px;
     width: 150px;
   }

@@ -8,9 +8,9 @@
     <title>INFO LENGKAP</title>
 </head>
 <body>
-    <div class="card-body m-5 p-3 border justify-content-center">
-    <caption><a href="{{ route('team.index') }}" class="fw-bold text-decoration-none text-success fs-4">Team</a></caption>
-    <table class="table caption-top text-center table-bordered">
+    <div class="d-flex justify-content-center">
+    <table class="table caption-top text-center table-bordered w-75 m-5 justify-content-center">
+        <caption><a href="{{ route('team.index') }}" class="fw-bold text-decoration-none text-success fs-4">Team</a></caption>
         <thead class="table-light">
             <tr>
                 <th>Tournament</th>

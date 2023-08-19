@@ -118,38 +118,24 @@ form .btn .btn-reset:hover{
 
   .bagan{
     background-color: transparent;
-    margin: 0;
+    margin: 10px;
     height: 100%;
     padding-bottom: 20px;
   }
 
   .form{
-    width: auto;
+    width: 100%;
     height: 100%;
-    margin: 10px;
+    margin-left: 0;
   }
 
   .form .tmbh-tour{
-    justify-content: none;
+    flex-direction: column;
   }
-
-  .form-right{
-    position: absolute;
-    justify-content: center;
-    margin-top: 100%;
-  }
-
-  .form-right .input-tur textarea{
-    width: 92%;
-  }
-
-  .form-right .output img{
-    width: 30%;
-    height: 30%;
-  }
-
-  .form .btn{
-    margin-top: 10%;
-    padding: 10px;
+  
+  .form .btn input{
+    width: 150px;
+    margin-bottom: 20px;
+    margin-top: 0;
   }
 }

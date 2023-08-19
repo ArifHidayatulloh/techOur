@@ -6,8 +6,8 @@
 /* SECTION */
 .bagan{
   background-color: var(--color-primary);
-  height: 125vh;
   margin-left: 18%;
+  height: 130vh;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
@@ -21,45 +21,49 @@ h2{
 }
 
 /* FORM */
-.form{  
+.bagan .form{  
   justify-content: center;
   align-items: center;
   background-color: var(--color-side);
-  margin-left: 25px;
-  width: 95%;
+  margin: 20px;
   border-radius: 10px;
 }
+
 .form .tmbh-tour{
   display: flex;
-  padding: 40px;
-  justify-content: space-between;
+  padding: 20px;
+  gap: 8rem;
   border-radius: 10px;
 }
+
 .form .tmbh-tour .input-tur .details{
   font-size: 20px;
   color: white;
   line-height: 30px;
+  font-family: 'Times New Roman', Times, serif;
 }
+
 .form .tmbh-tour input{
   height: 22px;
-  width: 100%;
   padding: 5px;
+  width: 100%;
   outline: none;
   font-size: 16px;
   color: white;
   box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
   background-color: transparent;
 }
+
 .form .tmbh-tour textarea{
+  padding: 15px;
   width: 100%;
-  padding: 10px;
   outline: none;
   font-size: 16px;
   color: white;
   box-shadow: inset 3px 2px 4px 3px rgba(0, 0, 0, 0.5);
   background-color: transparent;
-  transition: all 0.3s ease;
 }
+
 .form .tmbh-tour img{
   width: 200px;
   height: 200px;
@@ -90,18 +94,21 @@ h2{
 .form .btn{
   display: flex;
   justify-content: center;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   gap: 10px;
 }
+
 .form .btn input{
   border-radius: 10px;
   box-shadow: none;
   width: 200px;
   height: 25px;
 }
+
 .form .btn .btn-submit:hover{
   background-color: #40da76;
 }
+
 form .btn .btn-reset:hover{
   background-color: #cd3535;
 }
@@ -119,38 +126,30 @@ form .btn .btn-reset:hover{
 
   .bagan{
     background-color: transparent;
-    margin: 0;
-    height: 100%;
-    padding-bottom: 20px;
-  }
-
-  .form{
-    width: auto;
-    height: 100%;
+    margin-left: 0;
     margin: 10px;
+    height: 100%;
   }
 
   .form .tmbh-tour{
-    justify-content: none;
+    flex-direction: column;
+    padding-left: 0;
+    margin: 10px;
   }
 
-  .form-right{
-    position: absolute;
-    justify-content: center;
-    margin-top: 100%;
+  .form{
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
   }
 
-  .form-right .input-tur textarea{
-    width: 92%;
-  }
-
-  .form-right .output img{
-    width: 30%;
-    height: 30%;
+  .form .btn input{
+    width: 150px;
+    margin-bottom: 20px;
+    margin-top: 0;
   }
 
   .form .btn{
-    margin-top: 80%;
-    padding: 10px;
+    margin-top: -50px;
   }
 }

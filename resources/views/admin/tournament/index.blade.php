@@ -12,15 +12,14 @@
     </head>
 
     <body>
-        <div class="card-body m-5 p-3 border-none">
-            <div class="game">
-                <div class="list">
-                    @foreach ($competition as $item)
-                        <div class="gambar">
-                            <a href="{{ route('tournament.show', ['tournament' => $item->id]) }}"><img src="{{ asset('storage/' .$item->image) }}"
-                                    alt=""></a>
-                        </div>
-                    @endforeach
+        <div class="game">
+            <div class="list">
+                @foreach ($competition as $item)
+                    <div class="gambar">
+                        <a href="{{ route('tournament.show', ['tournament' => $item->id]) }}"><img src="{{ asset('storage/' .$item->image) }}"
+                        alt=""></a>
+                    </div>
+                @endforeach
                     {{-- <div class="gambar">
                         <a href="/turnament"><img src="{{ 'assets/image/it/data-science.jpg' }}" alt=""></a>
                     </div>
@@ -33,7 +32,6 @@
                     <div class="gambar">
                         <a href="/turnament"><img src="{{ 'assets/image/it/web-dev.jpg' }}" alt=""></a>
                     </div> --}}
-                </div>
             </div>
         </div>
     </body>

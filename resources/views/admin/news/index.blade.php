@@ -12,13 +12,8 @@
             font-size: 15px;
         }
 
-        .text {
-            height: 100%;
-            font-size: 15px;
-        }
-
-        .btn {
-            display: grid;
+        .content{
+            margin: 2rem;
         }
 
         @media screen and (max-width: 796px) {
@@ -26,59 +21,55 @@
                 font-size: 15px;
             }
 
-            .text {
-                font-size: 10px;
-                width: 100%;
-                height: 50%;
+            .content{
+                top: 0;
+                margin: 1rem;
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
             }
-
-        .btn{
-            text-align: center;
-            display:flex;
-        }
     }
 </style>
 <body>
-    <div class="card-body m-5 p-3 border">
-    <table class="table caption-top text-center table-bordered">
-        <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4">+ Add News</a></caption>
-        <thead class="table-light">
-            <tr>
-                <th>Judul</th>
-                <th>Detail</th>
-                <th>Tanggal</th>
-                <th>Poster</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($news as $item)
-            <tr>
-                <td class="title">{{ $item->title }}</td>
-                <td class="text-break p-3 text" id="text-news">
-                    {{$item->content}}
-                </td>
-                <td>{{ $item->date}}</td>
-                <td><img src="{{ asset('storage/' .$item->image) }}" style="width: 80px"></td>
-                <td>
-                    <div class="d-grid gap-2 d-md-flex justify-content-center btn">
-                        <div class="delete">
-                            <form action="{{ route('news.destroy', $item->id )}}">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger" type="button">DELETE</button>
-                            </form>
+    <div class="d-flex justify-content-center content">
+        <table class="table caption-top text-center table-bordered w-75 ">
+            <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4">+ Add News</a></caption>
+            <thead class="table-light">
+                <tr>
+                    <th>Judul</th>
+                    <th class="w-25">Detail</th>
+                    <th class="w-25">Tanggal</th>
+                    <th>Poster</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($news as $item)
+                <tr>
+                    <td class="title">{{ $item->title }}</td>
+                    <td class="text-break p-3" id="text-news">
+                        {{$item->content}}
+                    </td>
+                    <td>{{ $item->date}}</td>
+                    <td><img src="{{ asset('storage/' .$item->image) }}" style="width: 80px"></td>
+                    <td>
+                        <div class="d-grid gap-2 p-3 text-center">
+                            <div class="delete">
+                                <form action="{{ route('news.destroy', $item->id )}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-outline-danger" type="button">DELETE</button>
+                                </form>
+                            </div>
+                            <div class="update">
+                                <a class="btn btn-outline-success w-100" href="{{ route('news.edit', $item->id) }}" type="button">EDIT</a>
+                            </div>
                         </div>
-                        <div class="update">
-                            <a class="btn btn-outline-success" href="{{ route('news.edit', $item->id) }}" type="button">EDIT</a>
-
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
         <script>

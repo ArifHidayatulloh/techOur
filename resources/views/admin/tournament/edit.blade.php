@@ -23,9 +23,14 @@
                             <div class="input-tur">
                                 <span class="details">Competisi</span>
                                 <select name="competition_id" id="">
-                                    <option selected>Pilih Competisi</option>
                                     @forelse ($competition as $item)
+                                        @if ($tournament->competition_id == $item->id)
+                                        <option value="{{ $item->id }}" selected>{{ $item->competition }}</option>
+                                        
+                                        @else
                                         <option value="{{ $item->id }}">{{ $item->competition }}</option>
+                                            
+                                        @endif
                                     @empty
                                         <option selected>Null</option>
                                     @endforelse

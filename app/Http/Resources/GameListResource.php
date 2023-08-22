@@ -20,6 +20,7 @@ class GameListResource extends JsonResource
             'image' => $this->image,
             'tournament' => $this->tournament,
             'date' => date('d F Y', strtotime($this->date)),
+            'fee' => $this->registration_fee,
             'competition_category' => $this->whenLoaded('competition')
         ];
     }

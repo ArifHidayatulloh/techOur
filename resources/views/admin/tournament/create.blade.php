@@ -1,5 +1,5 @@
-@extends('layout.sidebar')
-@section('content')
+@extends('layout.header')
+@section('index-content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,10 @@
     <title>Form Tournament</title>
 </head>
 <body>
+    <button id="show-popup">Show Popup</button>
+    <div id="popup" class="popup">
     <div class="bagan">
+        <span class="close" id="close-popup">&times;</span>
         <h2>+ Tournament</h2>
 
         <!-- FORM -->
@@ -79,6 +82,8 @@
             </form>
         </div>
     </div>
+</div>
+</div>
 
     <script>
         function previewImage(event) {
@@ -97,6 +102,15 @@
         }
 
         document.getElementById('inputFile').addEventListener('change', previewImage);
+
+
+        document.getElementById('show-popup').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'block';
+        });
+
+        document.getElementById('close-popup').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'none';
+        });
     </script>
 </body>
 </html>

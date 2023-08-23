@@ -17,6 +17,7 @@
                 <th>Nama Team</th>
                 <th>Nama Anggota</th>
                 <th>Team Logo</th>
+                <th>Approve</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
                 <td>{{ $item->team }}</td>
                 <td>{{ $item->member }}</td>
                 <td><img src="{{ asset('storage/' .$item->image) }}" style="width: 50px;"></td>
+                <td><a class="btn btn-primary" href="#" role="button">approve</a></td>
             </tr>
             @endforeach
         </tbody>

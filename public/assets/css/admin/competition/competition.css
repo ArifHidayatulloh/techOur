@@ -1,135 +1,57 @@
-:root{
-  --color-primary: #788794;
-  --color-side: #3E4C59;
-}
-
-/* SECTION */
-.bagan{
-  background-color: var(--color-primary);
-  height: 100vh;
-  margin-left: 18%;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-}
-
-h2{
-  padding: 20px;
-  letter-spacing: 1px;
-  color: white;
-  text-shadow: 2px 2px 3px black;
-  font-size: 33px;
-}
-
-/* FORM */
-.form{  
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-side);
-  margin-left: 25px;
-  width: 50%;
-  height: auto;
-  border-radius: 10px;
-}
-.form .tmbh-competition{
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.form .tmbh-competition .input-competition .details{
-  font-size: 20px;
-  color: white;
-  line-height: 30px;
-}
-
-.form .tmbh-competition input{
-  height: 22px;
-  width: 100%;
-  outline: none;
-  font-size: 16px;
-  padding: 5px;
-  color: white;
-  box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
-  background-color: transparent;
-}
-
-.form .tmbh-competition img{
-  width: 200px;
-  height: 200px;
-}
-
- /* OUTPUT */
- .output{
-  margin-left: 50vh;
-  display: flex;
-  flex-direction: column;
-  margin: 15px;
-}
-.output span{
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-  line-height: 5vh;
-}
-.output img{
-  margin: 15px;
-  width: 45vh;
-  height: 45vh;
-}
-
-/* BUTTON */
-.form .btn{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: -20px;
-  padding-bottom: 20px;
-}
-.form .btn input{
-  border-radius: 10px;
-  box-shadow: none;
-  width: 200px;
-  height: 25px;
-}
-.form .btn .btn-submit:hover{
-  background-color: #40da76;
-}
-form .btn .btn-reset:hover{
-  background-color: #cd3535;
-}
-
-@media screen and (max-width:796px) {
-  body{
-    background-color: var(--color-primary);
+  .bagan{       
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 10px;
+      width: 50%;
+      margin: 20px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
-  h2{
-    padding: 20px;
-    font-size: 28px;
-    text-align: center;
+  .bagan .form{  
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
   }
 
-  .bagan{
-    background-color: transparent;
-    margin: 10px;
-    height: 100%;
-    padding-bottom: 20px;
+  .form .tmbh-competition{
+      display: flex;
+      padding: 20px;
+      gap: 8rem;
+      border-radius: 10px;
   }
 
-  .form{
+  .form .tmbh-competition .input-competition select{
+      background-color: transparent;
+      color: black;
+      border: 1px solid black;
+      padding: 2px;
+      font-size: 17px;
+  }
+
+  .form .tmbh-competition .input-competition .details, .output .details{
+      font-size: 20px;
+      color: black;
+      line-height: 30px;
+  }
+
+  .form .tmbh-competition .input-competition input, textarea{
     width: 100%;
-    height: 100%;
-    margin-left: 0;
+    letter-spacing: 1px;
+    color: black;
+    line-height: 20px;
+    border: 1px solid black;
+    background-color: transparent;
+    border-radius: 3px;
+    padding: 3px;
   }
 
-  .form .tmbh-tour{
+  .output{
+    display: flex;
     flex-direction: column;
   }
-  
-  .form .btn input{
+
+  .output img{
+    margin: 15px;
     width: 150px;
-    margin-bottom: 20px;
-    margin-top: 0;
+    height: 150px;
   }
-}

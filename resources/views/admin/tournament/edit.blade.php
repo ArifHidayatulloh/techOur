@@ -1,90 +1,104 @@
-@extends('layout.sidebar')
-@section('content')
+@extends('layout.header')
+@section('index-content')
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{ asset('assets/css/admin/tournament/tour.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{{ asset('assets/css/admin/tournament/tour.css') }}">
+
         <title>update tour</title>
     </head>
-
     <body>
-        <div class="bagan">
-            <h2>Update Tournament</h2>
-            <!-- FORM -->
-            <div class="form">
-                <form action="{{ route('tournament.update', $tournament->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <div class="tmbh-tour">
-                        <div class="form-left">
-                            <div class="input-tur">
-                                <span class="details">Competisi</span>
-                                <select name="competition_id" id="">
-                                    @forelse ($competition as $item)
-                                        @if ($tournament->competition_id == $item->id)
-                                        <option value="{{ $item->id }}" selected>{{ $item->competition }}</option>
-                                        
-                                        @else
-                                        <option value="{{ $item->id }}">{{ $item->competition }}</option>
+        <div class="d-flex justify-content-center m-3 content">
+            <div class="bagan">
+                <div class="card-header text-center fs-3 p-2 rounded-top text-white border-bottom border-dark" style="background-color:#576b7d;">
+                    <h2>Update Tournament</h2>
+                </div>
+                
+                <!-- FORM -->
+                <div class="form">
+                    <form action="{{ route('tournament.update', $tournament->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="tmbh-tour">
+                            <div class="form-left">
+                                <div class="input-tur">
+                                    <span class="details">Competisi</span>
+                                    <select name="competition_id" id="">
+                                        @forelse ($competition as $item)
+                                            @if ($tournament->competition_id == $item->id)
+                                            <option value="{{ $item->id }}" selected>{{ $item->competition }}</option>
                                             
-                                        @endif
-                                    @empty
-                                        <option selected>Null</option>
-                                    @endforelse
-                                </select>
+                                            @else
+                                            <option value="{{ $item->id }}">{{ $item->competition }}</option>
+                                                
+                                            @endif
+                                        @empty
+                                            <option selected>Null</option>
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Nama Tournament</span>
+                                    <input type="text" size="17" required name="tournament" value="{{ $tournament->tournament }}">
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Peserta</span>
+                                    <textarea name="participants" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->participants }}</textarea>
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Regulasi</span>
+                                    <textarea name="challenges" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->challenges }}</textarea>
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Hadiah</span>
+                                    <textarea name="prizes" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->prizes }}</textarea>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input border border-black" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Detail Team
+                                    </label>
+                                </div>
                             </div>
-                            <div class="input-tur">
-                                <span class="details">Nama Tournament</span>
-                                <input type="text" size="17" required name="tournament" value="{{ $tournament->tournament }}">
-                            </div>
-                            <div class="input-tur">
-                                <span class="details">Lokasi</span>
-                                <input type="text" size="17" required name="location" value="{{ $tournament->location }}">
-                            </div>
-                            <div class="input-tur">
-                                <span class="details">Peserta</span>
-                                <textarea name="participants" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->participants }}</textarea>
-                            </div>
-                            <div class="input-tur">
-                                <span class="details">Regulasi</span>
-                                <textarea name="challenges" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->challenges }}</textarea>
-                            </div>
-                            <div class="input-tur">
-                                <span class="details">Hadiah</span>
-                                <textarea name="prizes" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->prizes }}</textarea>
+                            <div class="form-right">
+                                <div class="input-tur">
+                                    <span class="details">Lokasi</span>
+                                    <input type="text" size="17" required name="location" value="{{ $tournament->location }}">
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Tanggal</span>
+                                    <input type="date" size="20" required name="date" value="{{ $tournament->date }}">
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Contact Person</span>
+                                    <textarea name="contact" id="" cols="26" rows="3" required>{{ $tournament->contact }}</textarea>
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Harga</span>
+                                    <input type="text" size="17" required name="registration_fee" value="{{ $tournament->registration_fee }}">
+                                </div>
+                                <div class="input-tur">
+                                    <span class="details">Poster</span>
+                                    <input type="file" style="box-shadow:none; border:none;" required name="image" id="inputFile">
+                                </div>
+                                <div class="output">
+                                    <span class="details">OUTPUT GAMBAR</span>
+                                    <img src="{{ asset('storage/' .$tournament->image) }}" alt="" id="review">
+                                </div>
                             </div>
                         </div>
-                        <div class="form-right">
-                            <div class="input-tur">
-                                <span class="details">Tanggal</span>
-                                <input type="date" size="20" required name="date" value="{{ $tournament->date }}">
-                            </div>
-                            <div class="input-tur">
-                                <span class="details">Contact Person</span>
-                                <textarea name="contact" id="" cols="26" rows="3" required>{{ $tournament->contact }}</textarea>
-                            </div>
-                            <div class="input-tur">
-                                <span class="details">Harga</span>
-                                <input type="text" size="17" required name="registration_fee" value="{{ $tournament->registration_fee }}">
-                            </div>
-                            <div class="input-tur">
-                                <span class="details">Poster</span>
-                                <input type="file" style="box-shadow:none" required name="image" id="inputFile">
-                            </div>
-                            <div class="output">
-                                <span class="details">OUTPUT GAMBAR</span>
-                                <img src="{{ asset('storage/' .$tournament->image) }}" alt="" id="review">
-                            </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <input type="reset" value="BATAL" class="btn btn-outline-danger w-25">
+                            <input type="submit" value="SIMPAN" class="btn btn-outline-success w-25">
                         </div>
-                    </div>
-                    <div class="btn">
-                        <input type="reset" value="BATAL" class="btn-reset">
-                        <input type="submit" value="SIMPAN" class="btn-submit">
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
 

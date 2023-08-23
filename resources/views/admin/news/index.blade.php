@@ -19,7 +19,7 @@
         .popup, .popup-update{
         display: none;
         position: absolute;
-        top: 5%;
+        top: 12%;
         left: 10%;
         width: 70rem;
         height: 35rem;
@@ -82,9 +82,7 @@
 <body>
     <div class="d-flex justify-content-center content">
         <table class="table caption-top text-center table-bordered w-75 ">
-            <caption class="fw-bold text-decoration-none text-success fs-4" id="show-popup">
-                + Add News
-                {{-- <a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4" id="show-popup">+ Add News</a>--}}
+            <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4" id="show-popup">+ Add News</a>
             </caption>
             <thead class="table-light">
                 <tr>
@@ -114,7 +112,7 @@
                                 </form>
                             </div>
                             <div class="update">
-                                <a class="btn btn-outline-success w-100" href="{{ route('news.edit', $item->id) }}" type="button">EDIT</a>
+                                <a class="btn btn-outline-success w-100" type="button" href="{{ route('news.edit', $item->id) }}">EDIT</a>
                             </div>
                         </div>
                     </td>
@@ -122,53 +120,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
-    <!-- FORM NEWS -->
-    <div class="popup" id="popup">
-        <div class="bagan">
-            <span class="close" id="close-popup">&times;</span>
-            <h2>+ News</h2>
-            <hr>
-    
-            <!-- FORM -->
-            <div class="form">
-                <form action="{{ route('news.store') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-news d-flex justify-content-center" style="gap: 8rem;">
-    
-                        <div class="form-left">
-                            <div class="input-news">
-                                <span class="details">Judul</span>
-                                <textarea class="w-100" cols="50" rows="3" required name="title"></textarea>
-                            </div>
-                            <div class="input-news">
-                                <span class="details">Detail</span>
-                                <textarea class="w-100" name="content" cols="50" rows="10" required></textarea>
-                            </div>  
-                        </div>
-                        <div class="form-right">
-                            <div class="input-news">
-                                <span class="details">Tanggal</span>
-                                <input class="w-100" type="date" name="date">
-                            </div> 
-                            <div class="input-news">
-                                <span class="details">Poster</span>
-                                <input type="file" style="box-shadow:none" required name="image" id="inputFile">
-                            </div>
-                            <div class="output">
-                                <span class="details">OUTPUT GAMBAR</span>
-                                <img src="" alt="" id="review">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn d-flex gap-2 p-1 m-3 justify-content-center">
-                        <input type="reset" value="BATAL" class="btn btn-outline-danger w-25">
-                        <input type="submit" value="SIMPAN" class="btn btn-outline-success w-25">
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 
         <script>
@@ -190,6 +141,16 @@
             document.getElementById('close-popup').addEventListener('click', function() {
                 document.getElementById('popup').style.display = 'none';
             });
+
+            /* POP UP UPDATE */
+            document.getElementById('show-popup-update').addEventListener('click', function() {
+                document.getElementById('popup-update').style.display = 'block';
+            });
+
+            document.getElementById('close-popup-update').addEventListener('click', function() {
+                document.getElementById('popup-update').style.display = 'none';
+            });
+
         </script>
     </body>
 

@@ -1,17 +1,20 @@
-@extends('layout.sidebar')
-@section('content')
+@extends('layout.header')
+@section('index-content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/competition/competition.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/competition/competition.css') }}">
     <title>form competition</title>
 </head>
-
 <body>
+    <div class="d-flex justify-content-center content">
     <div class="bagan">
-        <h2>+ Competition</h2>
+        <div class="card-header text-center fs-3 p-2 rounded-top text-white border-bottom border-dark" style="background-color:#576b7d;">
+            <h2>Competition</h2>
+        </div>
 
         <!-- FORM -->
         <div class="form">
@@ -25,7 +28,7 @@
                         </div>
                         <div class="input-competition">
                             <span class="details">Gambar</span>
-                            <input type="file" style="box-shadow:none" required name="image" id="inputFile">
+                            <input type="file" style="box-shadow:none;  border:none;" required name="image" id="inputFile">
                         </div>
                         <div class="output">
                             <span class="details">OUTPUT GAMBAR</span>
@@ -33,12 +36,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="btn">
-                    <input type="reset" value="BATAL" class="btn-reset">
-                    <input type="submit" value="SIMPAN" class="btn-submit">
+                <div class="d-flex justify-content-center gap-2">
+                    <input type="reset" value="BATAL" class="btn btn-outline-danger w-25">
+                    <input type="submit" value="SIMPAN" class="btn btn-outline-success w-25">
                 </div>
             </form>
         </div>
+    </div>
     </div>
 
     <script>

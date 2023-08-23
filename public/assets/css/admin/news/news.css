@@ -1,157 +1,48 @@
-:root{
-  --color-primary: #788794;
-  --color-side: #3E4C59;
+.bagan{        
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 70%;
+  margin: 20px;  
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/* SECTION */
-.bagan{
-  background-color: var(--color-primary);
-  height: 100vh;
-  margin-left: 18%;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-}
-
-h2{
-  padding: 20px;
-  letter-spacing: 1px;
-  color: white;
-  text-shadow: 2px 2px 3px black;
-  font-size: 33px;
-}
-
-/* FORM */
-.form{  
+.bagan .form{  
   justify-content: center;
   align-items: center;
-  background-color: var(--color-side);
-  margin-left: 25px;
-  width: 95%;
-  height: auto;
-  border-radius: 10px;
+  margin: 20px;
 }
+
 .form .tmbh-news{
   display: flex;
   padding: 20px;
-  justify-content: space-between;
+  gap: 8rem;
   border-radius: 10px;
 }
 
-.form .tmbh-news .input-news .details{
+.form .tmbh-news .input-news .details, .output .details{
   font-size: 20px;
-  color: white;
-  line-height: 30px;
+  color: black;
 }
 
-.form .tmbh-news input{
-  height: 22px;
-  padding: 5px;
+.form .tmbh-news .input-news input, textarea{
   width: 100%;
-  outline: none;
-  font-size: 16px;
-  font-family: 'Times New Roman', Times, serif;
   letter-spacing: 1px;
-  color: white;
-  box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+  color: black;
+  line-height: 20px;
+  border: 1px solid black;
   background-color: transparent;
+  border-radius: 3px;
+  padding: 3px;
 }
 
-.form .tmbh-news textarea{
-  padding: 15px;
-  width: 100%;
-  outline: none;
-  font-size: 16px;
-  font-family: 'Times New Roman', Times, serif;
-  letter-spacing: 1px;
-  color: white;
-  box-shadow: inset 3px 2px 4px 3px rgba(0, 0, 0, 0.5);
-  background-color: transparent;
-}
-
-.form .tmbh-tour img{
-  width: 200px;
-  height: 200px;
-}
-
- /* OUTPUT */
- .output{
-  margin-left: 50vh;
-  display: flex;
-  flex-direction: column;
-  margin: 15px;
-}
-.output span{
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-  line-height: 5vh;
+.output{
+display: flex;
+flex-direction: column;
 }
 
 .output img{
-  margin: 15px;
-  width: 45vh;
-  height: 45vh;
-}
-
-/* BUTTON */
-.form .btn{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding-bottom: 20px;
-}
-.form .btn input{
-  border-radius: 10px;
-  box-shadow: none;
-  width: 200px;
-  height: 25px;
-}
-
-.form .btn .btn-submit:hover{
-  background-color: #40da76;
-}
-
-form .btn .btn-reset:hover{
-  background-color: #cd3535;
-}
-
-@media screen and (max-width:796px) {
-  body{
-    background-color: var(--color-primary);
+    margin: 15px;
+    width: 250px;
+    height: 150px;
   }
-
-  h2{
-    padding: 15px;
-    text-align: center;
-  }
-
-  .bagan{
-    background-color: transparent;
-    margin-left: 0;
-    margin: 10px;
-    height: 100%;
-  }
-
-  .form .tmbh-news{
-    flex-direction: column;
-  }
-
-  .form{
-    width: 100%;
-    margin-left: 0;
-  }
-  
-  .form .tmbh-news input, .form .tmbh-news textarea{
-    width: 90%;
-  }
-
-  .output img{
-    width: 180px;
-    height: 180px;
-  }
-
-  .form .btn input{
-    width: 100px;
-    margin-top: -10px;
-  }
-}

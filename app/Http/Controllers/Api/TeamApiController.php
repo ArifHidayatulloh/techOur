@@ -31,6 +31,8 @@ class TeamApiController extends Controller
             'tournament_id' => 'required',
             'team' => 'required',
             'member' => 'required',
+            'contact' => 'required',
+            'status' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
@@ -40,6 +42,8 @@ class TeamApiController extends Controller
             'tournament_id' => $request->tournament_id, 
             'team' => $request->team,
             'member' => $request->member,
+            'contact' => $request->contact,
+            'status' => $request->status,
             'image' => $imagePath
         ]);
 

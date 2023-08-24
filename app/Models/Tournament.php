@@ -25,4 +25,8 @@ class Tournament extends Model
         return $this->hasMany(Team::class, 'tournament_id', 'id');
     }
 
+    public function approvedTeam(){
+        return $this->teams()->where('status','terdaftar')->count();
+    }
+
 }

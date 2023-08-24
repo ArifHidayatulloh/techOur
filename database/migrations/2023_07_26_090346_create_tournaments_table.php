@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('prizes');
             $table->string('contact');
             $table->string('registration_fee');
+            $table->string('info_team')->nullable();
             $table->string('image');
             $table->timestamps();
         });

@@ -65,6 +65,7 @@ class TournamentController extends Controller
             'prizes' => $request->prizes,
             'contact' => $request->contact,
             'registration_fee' => $request->registration_fee,
+            'info_team' => $request->info_team,
             'image' => $imagePath
         ]);
 
@@ -133,6 +134,7 @@ class TournamentController extends Controller
         $tournament->challenges = $request->challenges;
         $tournament->prizes = $request->prizes;
         $tournament->contact = $request->contact;
+        $tournament->info_team = $request->info_team;
         $tournament->registration_fee = $request->registration_fee;
 
         $tournament->save();

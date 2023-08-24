@@ -16,7 +16,9 @@
                 <th>Tournament</th>
                 <th>Nama Team</th>
                 <th>Nama Anggota</th>
+                <th>Kontak</th>
                 <th>Team Logo</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +27,15 @@
                 <td>{{ $item->tournament->tournament }}</td>
                 <td>{{ $item->team }}</td>
                 <td>{{ $item->member }}</td>
+                <td>{{ $item->contact }}</td>
                 <td><img src="{{ asset('storage/' .$item->image) }}" style="width: 50px;"></td>
+                <td>
+                    <form action="{{ route('team.destroy', $item->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-outline-danger" type="submit">delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -14,6 +14,12 @@ class TournamentDetailResource extends JsonResource
      */
     public function toArray($request)
     {
+        if ($this->info_team == 'true') {
+            $team_total = $this->approvedTeam();
+        }
+        else{
+            $team_total = null;
+        }
         return [
             'id' => $this->id,
             'competition_id' => $this->competition_id,
@@ -27,9 +33,9 @@ class TournamentDetailResource extends JsonResource
             'registration_fee' => $this->registration_fee,
             'image' => $this->image,
             'competition_category' => $this->whenLoaded('competition'),
-            'team_total' => $this->whenLoaded('teams', function(){
-                return $this->teams->count();
-            })
+            'info_team' => $team_total
+            
+            
         ];
     }
 }

@@ -46,7 +46,7 @@ class TournamentApiController extends Controller
     }
 
     public function teamList($id){
-        $team = Team::where('tournament_id',$id)->get();
+        $team = Team::where('status','terdaftar')->where('tournament_id',$id)->get();
 
         return TeamListResource::collection($team->loadMissing(['tournament:id,tournament']));
     }

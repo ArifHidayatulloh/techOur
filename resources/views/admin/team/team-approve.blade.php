@@ -16,8 +16,9 @@
                 <th>Tournament</th>
                 <th>Nama Team</th>
                 <th>Nama Anggota</th>
+                <th>Kontak</th>
                 <th>Team Logo</th>
-                <th>Approve</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -26,8 +27,20 @@
                 <td>{{ $item->tournament->tournament }}</td>
                 <td>{{ $item->team }}</td>
                 <td>{{ $item->member }}</td>
+                <td>{{ $item->contact }}</td>
                 <td><img src="{{ asset('storage/' .$item->image) }}" style="width: 50px;"></td>
-                <td><a class="btn btn-primary" href="#" role="button">approve</a></td>
+                <td>
+                    <form action="{{ route('antrian.ubah', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <button class="btn btn-primary" role="button" type="submit">approve</button>
+                    </form>
+                    <form action="{{ route('antrian.destroy', $item->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-outline-danger mt-1" type="submit">delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

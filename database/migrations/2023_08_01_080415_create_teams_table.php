@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('tournament_id');
             $table->string('team');
             $table->longtext('member');
+            $table->string('contact');
+            $table->string('status');
             $table->string('image');
             $table->timestamps();
         });

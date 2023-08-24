@@ -14,9 +14,9 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($tournamentid)
     {
-        $team = Team::all();
+        $team = Team::where('tournament_id',$tournamentid)->where('status','terdaftar')->get();
         return view('admin.team.index', compact('team'));
     }
 
@@ -65,9 +65,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($tournamentid)
     {
-        //
+        $team = Team::where('tournament_id',$tournamentid)->where('status','terdaftar')->get();
+        return view('admin.team.index', compact('team'));
     }
 
     /**
@@ -125,6 +126,6 @@ class TeamController extends Controller
     {
         Storage::disk('public')->delete($team->image);
         $team->delete();
-        return redirect()->route('team.index')->with('success','Deleted Team Successfully');
+        return redirect()->back()->with('success','Deleted Team Successfully');
     }
 }

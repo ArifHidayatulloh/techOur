@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AntrianTeamController;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\NewsController;
@@ -25,6 +26,9 @@ Route::resource('/competition', CompetitionController::class);
 Route::resource('/tournament',TournamentController::class);
 Route::resource('/news',NewsController::class);
 Route::resource('/team',TeamController::class);
+Route::resource('/antrian',AntrianTeamController::class);
+Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');
+// Route::get('/team/{id}',[TeamController::class,'index'])->name('team.index');
 
 // Route::prefix('competition')->group(function(){
 //     Route::get('/index',[CompetitionController::class,'index']);

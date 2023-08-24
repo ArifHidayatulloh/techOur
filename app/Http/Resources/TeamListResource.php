@@ -19,6 +19,8 @@ class TeamListResource extends JsonResource
             'tournament_id' => $this->tournament_id,
             'team' => $this->team,
             'member' => $this->member,
+            'contact' => $this->contact,
+            'status' => $this->status,
             'image' => $this->image,
             'tournament_name' => $this->whenLoaded('tournament')
         ];

@@ -25,6 +25,8 @@
                         <th>Regulasi</th>
                         <th>Hadiah</th>
                         <th>Contact</th>
+                        <th>Regis</th>
+                        <th>Team</th>
                         <th>Poster</th>
                         <th>Action</th>
                     </tr>
@@ -38,6 +40,14 @@
                             <td id="long-text">{{ $item->challenges }}</td>
                             <td id="long-text">{{ $item->prizes }}</td>
                             <td>{{ $item->contact }}</td>
+                            <td>{{ $item->registration_fee }}</td>
+                            <td>
+                                @if ($item->info_team == 1)
+                                    true
+                                @else
+                                    false                                    
+                                @endif
+                            </td>
                             <td><img src="{{ asset('storage/' . $item->image) }}" alt="" style="width: 50px;">
                             </td>
                             <td>

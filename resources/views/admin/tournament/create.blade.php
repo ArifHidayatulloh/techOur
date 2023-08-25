@@ -51,7 +51,7 @@
                             <textarea name="prizes" cols="35" rows="5" required style="white-space: pre-wrap;"></textarea>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input border border-black" type="checkbox" value="true" id="flexCheckDefault" name="info_team">
+                            <input class="form-check-input border border-black" type="checkbox"  id="flexCheckDefault" name="info_team">
                             <label class="form-check-label" for="flexCheckDefault">
                               Detail Team
                             </label>

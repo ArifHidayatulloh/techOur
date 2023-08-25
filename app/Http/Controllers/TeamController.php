@@ -44,6 +44,8 @@ class TeamController extends Controller
             'tournament_id' => 'required',
             'team' => 'required',
             'member' => 'required',
+            'contact' => 'required',
+            'status' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
@@ -53,6 +55,8 @@ class TeamController extends Controller
             'tournament_id' => $request->tournament_id,
             'team' => $request->team,
             'member' => $request->member,
+            'contact' => $request->contact,
+            'status' => $request->status,
             'image' => $imagePath
         ]);
 
@@ -68,7 +72,7 @@ class TeamController extends Controller
     public function show($tournamentid)
     {
         $team = Team::where('tournament_id',$tournamentid)->where('status','terdaftar')->get();
-        return view('admin.team.index', compact('team'));
+        return view('admin.team.index', ['team' => $team, 'tournamentid' => $tournamentid]);
     }
 
     /**

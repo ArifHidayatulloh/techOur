@@ -14,7 +14,7 @@ class TournamentDetailResource extends JsonResource
      */
     public function toArray($request)
     {
-        if ($this->info_team == 'true') {
+        if ($this->info_team == 1) {
             $team_total = $this->approvedTeam();
         }
         else{

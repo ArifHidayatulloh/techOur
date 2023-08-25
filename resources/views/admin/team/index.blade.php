@@ -8,6 +8,12 @@
     <title>INFO LENGKAP</title>
 </head>
 <body>
+    <div class="link w-200 mt-3 ms-5">
+        <div class="link-content ms-5">
+            <a href="{{ route('tournament.show', ['tournament' => $tournamentid]) }}" class="btn btn-primary">Back</a>
+            <a href="{{ route('antrian.show', ['antrian' => $tournamentid]) }}" class="btn btn-success">Team Antrian</a>
+        </div>
+    </div>
     <div class="d-flex justify-content-center">
     <table class="table caption-top text-center table-bordered w-75 m-5 justify-content-center">
         <caption><a href="{{ route('team.index') }}" class="fw-bold text-decoration-none text-success fs-4">Team</a></caption>

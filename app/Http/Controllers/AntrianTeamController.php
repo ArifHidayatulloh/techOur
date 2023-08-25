@@ -10,7 +10,8 @@ class AntrianTeamController extends Controller
 {
     public function show($tournamentId) {
         $team = Team::where('tournament_id',$tournamentId)->where('status','menunggu')->get();
-        return view('admin.team.team-approve', compact('team'));
+        // return view('admin.team.team-approve', compact('team'));
+        return view('admin.team.team-approve', ['team' => $team, 'tournamentId' => $tournamentId]);
     }
 
     public function update($id){

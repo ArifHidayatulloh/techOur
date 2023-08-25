@@ -58,3 +58,11 @@
   width: 250px;
   height: 150px;
 }
+
+@media screen and (max-width: 796px) {
+  .form .tmbh-tour{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  } 
+}

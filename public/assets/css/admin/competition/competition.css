@@ -55,3 +55,15 @@
     width: 150px;
     height: 150px;
   }
+
+  @media screen and (max-width: 796px) {
+    .bagan{    
+      width: 100%;
+    }
+
+    .form .tmbh-competition{
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+  }

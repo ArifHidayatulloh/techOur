@@ -45,6 +45,7 @@
         display: none;
         margin-top: 5px;
         margin-left: -50px;
+        width: 10px;
     }   
 
     .dropdown-menu li a{

@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <div class="sesion d-flex justify-content-center mt-5">
+        <div class="sesion d-flex justify-content-center mt-3">
             @if (session('success'))
                 <div class="alert alert-success w-75">
                     {{ session('success') }}

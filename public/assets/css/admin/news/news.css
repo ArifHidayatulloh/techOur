@@ -45,4 +45,21 @@ flex-direction: column;
     margin: 15px;
     width: 250px;
     height: 150px;
+}
+
+@media screen and (max-width: 796px){
+  .bagan{
+    width: 85%;
   }
+
+  .form .tmbh-news{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .output img{
+    width: 150px;
+    height: 150px;
+}
+}

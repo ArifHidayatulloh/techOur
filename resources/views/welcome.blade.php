@@ -23,21 +23,21 @@
             <div class="pilih">
                 <div class="pilihan">
                     <div class="box">
-                        <center><a href="{{ route('news.index') }}" class="link">NEWS</a></center>
-                        <a href="{{ route('news.index') }}"><img src="{{ ('assets/image/news.png') }}" alt=""></a>
+                        <center><a href="{{ route('competition.index') }}" class="link">CATEGORY COMPETITION</a></center>
+                        <a href="{{ route('competition.index') }}"><img src="{{ ('assets/image/category-comp.png') }}" alt=""></a>
                     </div>
                     <div class="box">
                         <center><a href="{{ route('tournament.index') }}" class="link">TOURNAMENT</a></center>
                         <a href="{{ route('tournament.index') }}"><img src="{{ ('assets/image/code.png') }}" alt=""></a>
                     </div>
                     <div class="box">
-                        <center><a href="{{ route('competition.index') }}" class="link">CATEGORY COMPETITION</a></center>
-                        <a href="{{ route('competition.index') }}"><img src="{{ ('assets/image/category-comp.png') }}" alt=""></a>
+                        <center><a href="{{ route('news.index') }}" class="link">NEWS</a></center>
+                        <a href="{{ route('news.index') }}"><img src="{{ ('assets/image/news.png') }}" alt=""></a>
                     </div>
-                    <div class="box">
+                    {{-- <div class="box">
                         <center><a href="{{ route('team.index') }}" class="link">TEAM</a></center>
                         <a href="{{ route('team.index') }}"><img src="{{ ('assets/image/team.png') }}" alt=""></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

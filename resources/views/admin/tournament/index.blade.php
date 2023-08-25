@@ -12,7 +12,14 @@
     </head>
 
     <body>
-        <div class="game">
+        <div class="sesion d-flex justify-content-center mt-5" style="margin-bottom: -10px">
+            @if (session('success'))
+                <div class="alert alert-success w-75">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
+        <div class="game" style="margin-top: 50px">
             <div class="list">
                 @foreach ($competition as $item)
                     <div class="gambar">

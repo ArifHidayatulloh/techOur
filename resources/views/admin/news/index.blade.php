@@ -80,7 +80,14 @@
     }
 </style>
 <body>
-    <div class="d-flex justify-content-center content">
+    <div class="sesion d-flex justify-content-center mt-5">
+        @if (session('success'))
+            <div class="alert alert-success w-75">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
+    <div class="d-flex justify-content-center content" style="margin-top: -15px">
         <table class="table caption-top text-center table-bordered w-75 ">
             <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4" id="show-popup">+ Add News</a>
             </caption>

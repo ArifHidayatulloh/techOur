@@ -23,7 +23,7 @@
                     <li><a href="/">HOME</a></li>
                     <li><a href="{{ route('tournament.index') }}">TOURNAMENT</a></li>
                     <li><a href="{{ route('competition.index') }}">COMPETITION</a></li>
-                    <li><a href="{{ route('team.index') }}">TEAM</a></li>
+                    {{-- <li><a href="{{ route('team.index') }}">TEAM</a></li> --}}
                     <li><a href="{{ route('news.index') }}">NEWS</a></li>
                 </ul>
             </center>

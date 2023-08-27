@@ -44,7 +44,7 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
-                                    <button class="btn btn-primary" role="button" type="submit">approve</button>
+                                    <button class="btn btn-outline-primary" role="button" type="submit">approve</button>
                                 </form>
                                 <form action="{{ route('antrian.destroy', $item->id) }}" method="post">
                                     @csrf

@@ -9,15 +9,23 @@
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <title>INFO LENGKAP</title>
     </head>
-
+    <style>
+        @media screen and (max-width: 796px){
+        .content{
+            display: flex;
+            flex-direction: column;
+            overflow-x: auto;
+            }
+        }
+    </style>
     <body>
         <div class="link w-200 mt-3 ms-5">
-            <div class="link-content ms-5">
+            <div class="link-content">
                 <a href="{{ route('tournament.show', ['tournament' => $tournamentId]) }}" class="btn btn-primary">Back</a>
                 <a href="{{ route('team.show', ['team' => $tournamentId]) }}" class="btn btn-success">Team Terdaftar</a>
             </div>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center content">
             <table class="table caption-top text-center table-bordered w-75 m-5 justify-content-center">
                 <caption><a href="{{ route('team.index') }}" class="fw-bold text-decoration-none text-success fs-4">Team</a>
                 </caption>

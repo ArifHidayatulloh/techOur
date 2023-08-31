@@ -34,8 +34,9 @@
                 <tbody>
                     @foreach ($competition as $item)
                         <tr>
-                            <td>{{ $item->competition }}</td>
-                            <td><img src="{{ asset('storage/' . $item->image) }}" alt="" style="width: 50px;">
+                            <td class="align-middle">{{ $item->competition }}</td>
+                            <td class="align-middle"><img src="{{ asset('storage/' . $item->image) }}" alt=""
+                                    style="width: 50px;">
                             </td>
                             <td>
                                 <div class="d-grid gap-2 p-3 d-md-flex justify-content-center">

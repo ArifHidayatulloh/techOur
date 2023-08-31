@@ -14,7 +14,7 @@
 
     <body>
         <div class="d-flex justify-content-center content" id="content">
-            <table class="table caption-top text-center table-bordered tbl">
+            <table class="table caption-top text-center table-bordered">
                 <caption><a href="{{ route('tournament.create') }}"
                         class="fw-bold text-decoration-none text-success fs-4">+Add Tournament</a></caption>
                 <thead class="table-light">

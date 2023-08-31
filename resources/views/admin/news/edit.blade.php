@@ -47,8 +47,8 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center gap-2">
-                    <input type="reset" value="BATAL" class="btn btn-outline-danger w-25">
-                    <input type="submit" value="SIMPAN" class="btn btn-outline-success text-center w-25">
+                    <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
+                    <input type="submit" value="SIMPAN" class="btn btn-outline-success text-center w-auto">
                 </div>
             </form>
         </div>

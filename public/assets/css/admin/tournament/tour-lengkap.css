@@ -7,32 +7,8 @@
         margin: 0;
     }
 
-    .container{
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-    }
-
     .content{
         margin: 2rem;
-    }
-
-    .bagan h2{
-        letter-spacing: 1px;
-        color: black;
-        text-shadow: 2px 2px 3px white;
-        font-size: 33px;
-        margin-left: 20px;
-        margin-top: 10px;
-        bottom: 0;
-    }
-
-    .form .input-form input, textarea{
-        letter-spacing: 1px;
-        color: black;
-        border: 1px solid black;
-        background-color: transparent;
-        padding: 5px;
     }
 
     .team{
@@ -72,16 +48,6 @@
             overflow: auto;
         }
     }
-
-    @media screen and (max-width: 1000px){
-        .content{
-            top: 0;
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
-        }
-    }
-
 /* TURNAMENT
 .turnamen{
     display: grid;

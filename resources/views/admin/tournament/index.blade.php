@@ -19,7 +19,7 @@
                 </div>
             @endif
         </div>
-        <div class="game" style="margin-top: 50px">
+        <div class="content">
             <div class="list">
                 @foreach ($competition as $item)
                     <div class="gambar">

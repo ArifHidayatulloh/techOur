@@ -30,57 +30,49 @@
 
     <body>
         <div class="sesion d-flex justify-content-center mt-5">
-            @if (session('success'))
-                <div class="alert alert-success w-75">
-                    {{ session('success') }}
-                </div>
-            @endif
+            {{-- @if (session('success'))
+            <div class="alert alert-success w-75">
+                {{ session('success') }}
+            </div>
+        @endif --}}
         </div>
         <div class="d-flex justify-content-center content">
             <table class="table caption-top text-center table-bordered w-75 ">
-                <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4">+ Add
-                        News</a>
+                <caption><a href="" class="fw-bold text-decoration-none text-success fs-4">User</a>
                 </caption>
                 <thead class="table-light">
                     <tr>
-                        <th class="w-25">Judul</th>
-                        <th class="w-50">Detail</th>
-                        <th>Tanggal</th>
-                        <th>Poster</th>
+                        <th>text</th>
+                        <th>text</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($news as $item)
-                        <tr>
-                            <td class="title">{{ $item->title }}</td>
-                            <td class="text-break p-3" id="text-news">
-                                {{ $item->content }}
-                            </td>
-                            <td>{{ $item->date }}</td>
-                            <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 80px"></td>
-                            <td>
-                                <div class="d-grid gap-2 p-3 text-center">
-                                    <div class="delete">
-                                        <form action="{{ route('news.destroy', $item->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-outline-danger" type="button">DELETE</button>
-                                        </form>
-                                    </div>
-                                    <div class="update">
-                                        <a class="btn btn-outline-success w-100" type="button"
-                                            href="{{ route('news.edit', $item->id) }}">EDIT</a>
-                                    </div>
+                    {{-- @foreach ($news as $item) --}}
+                    <tr>
+                        <td class="title">lorem ipsum</td>
+                        <td class="text-break p-3" id="text-news">lorem ipsum</td>
+                        <td>
+                            <div class="d-grid gap-2 p-3 text-center">
+                                <div class="delete">
+                                    <form action="">
+                                        {{-- @csrf
+                                    @method('DELETE') --}}
+                                        <button class="btn btn-outline-danger" type="button">DELETE</button>
+                                    </form>
                                 </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                                <div class="update">
+                                    <a class="btn btn-outline-success" type="button" href="">EDIT</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{-- @endforeach --}}
                 </tbody>
             </table>
         </div>
 
-        <script>
+        {{-- <script>
             const textNews = document.getElementById("text-news");
 
             const text = textNews.textContent;
@@ -108,7 +100,8 @@
             document.getElementById('close-popup-update').addEventListener('click', function() {
                 document.getElementById('popup-update').style.display = 'none';
             });
-        </script>
+
+        </script> --}}
     </body>
 
     </html>

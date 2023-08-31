@@ -8,10 +8,10 @@ body{
 }
 
 /* GAME */
-.game{
+.content{
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 50px;
 }
 
 .list{
@@ -33,7 +33,6 @@ body{
     .list{
         grid-template-columns: auto auto;
         gap: 40px;
-        margin-top: 50px;
     }
 
     .list img{

@@ -7,6 +7,9 @@
     background-color: var(--color-side);
 }
 
+.user{
+    margin-left: -20px;
+}
 #check, #arrow-down, #arrow-up{
     display: none;
 } 
@@ -32,9 +35,9 @@
     text-align: left;
 }
 
- .listmenu ul{
+.listmenu ul{
     display: flex;
-    float: left;
+    margin-left: 520px;
     font-size: 13px;
 }
 
@@ -73,6 +76,27 @@
     transform: scaleX(1);
 }
 
+.dropdown{
+    text-align: center;
+    margin-right: 20px;
+    font-size: 17px;
+  }
+  
+  .dropdown-menu li a{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: rgb(241, 241, 241);
+  } 
+  
+  .nav-item:hover .dropdown-menu {
+    display: block;
+    cursor: pointer;
+  }
+  
 /* RESPONSIVE */
 @media screen and (max-width: 796px) {
     .navbar .judul h3{

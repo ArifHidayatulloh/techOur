@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
@@ -15,7 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::where('user_id', Auth::user()->id)->get();
         return view('admin.news.index', compact('news'));
     }
 
@@ -40,6 +41,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'user_id'=> 'required',
             'title' => 'required',
             'date' => 'required',
             'content' => 'required',
@@ -50,6 +52,7 @@ class NewsController extends Controller
         $imagePath = $request->file('image')->store('news_images','public');
 
         News::create([
+            'user_id' => $request->user_id,
             'title' => $request->title,
             'date' => $request->date,
             'content' => $request->content,
@@ -91,6 +94,7 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $request->validate([
+            'user_id' => 'required',
             'title' => 'required',
             'date' => 'required',
             'content' => 'required',
@@ -103,6 +107,7 @@ class NewsController extends Controller
             $news->image = $imagePath;
         }
 
+        $news->user_id = $request->user_id;
         $news->title = $request->title;
         $news->date = $request->date;
         $news->content = $request->content;

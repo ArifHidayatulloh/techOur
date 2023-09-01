@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Competition;
 use App\Models\Tournament;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class TournamentController extends Controller
@@ -41,6 +42,7 @@ class TournamentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'user_id' => 'required',
             'competition_id' => 'required',
             'tournament' => 'required',
             'date' => 'required',
@@ -56,6 +58,7 @@ class TournamentController extends Controller
         $imagePath = $request->file('image')->store('tournament_images','public');
 
         Tournament::create([
+            'user_id' => $request->user_id,
             'competition_id' => $request->competition_id,
             'tournament' => $request->tournament,
             'date' => $request->date,
@@ -80,7 +83,7 @@ class TournamentController extends Controller
      */
     public function show($competitionId)
     {
-        $tournament = Tournament::where('competition_id', $competitionId)->get();
+        $tournament = Tournament::where(['competition_id' => $competitionId, 'user_id' => Auth::user()->id])->get();
         return view('admin.tournament.tour-lengkap', compact('tournament'));
     }
 
@@ -126,6 +129,7 @@ class TournamentController extends Controller
             $tournament->image = $imagePath;
         }
 
+        
         $tournament->competition_id = $request->competition_id;
         $tournament->tournament = $request->tournament;
         $tournament->date = $request->date;

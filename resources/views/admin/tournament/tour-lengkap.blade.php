@@ -19,6 +19,7 @@
                         class="fw-bold text-decoration-none text-success fs-4">+Add Tournament</a></caption>
                 <thead class="table-light">
                     <tr>
+                        <th>User</th>
                         <th>Nama</th>
                         <th>Lokasi</th>
                         <th>Tanggal</th>
@@ -34,6 +35,7 @@
                 <tbody>
                     @foreach ($tournament as $item)
                         <tr>
+                            <td>{{ $item->user->name }}</td>
                             <td>{{ $item->tournament }}</td>
                             <td>{{ $item->location }}</td>
                             <td>{{ $item->date }}</td>

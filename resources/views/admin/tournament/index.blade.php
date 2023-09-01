@@ -12,33 +12,25 @@
     </head>
 
     <body>
-        <div class="sesion d-flex justify-content-center mt-5" style="margin-bottom: -10px">
-            @if (session('success'))
-                <div class="alert alert-success w-75">
-                    {{ session('success') }}
-                </div>
-            @endif
-        </div>
         <div class="content">
-            <div class="list">
-                @foreach ($competition as $item)
+            <div class="session-container">
+                <div class="sesion  d-flex justify-content-center mt-5" style="margin-bottom: -10px">
+                    @if (session('success'))
+                        <div class="alert alert-success w-75">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="competition">
+                <div class="list">
+                    @foreach ($competition as $item)
                     <div class="gambar">
                         <a href="{{ route('tournament.show', ['tournament' => $item->id]) }}"><img src="{{ asset('storage/' .$item->image) }}"
                         alt=""></a>
                     </div>
-                @endforeach
-                    {{-- <div class="gambar">
-                        <a href="/turnament"><img src="{{ 'assets/image/it/data-science.jpg' }}" alt=""></a>
-                    </div>
-                    <div class="gambar">
-                        <a href="/turnament"><img src="{{ 'assets/image/it/metaverse.jpg' }}" alt=""></a>
-                    </div>
-                    <div class="gambar">
-                        <a href="/turnament"><img src="{{ 'assets/image/it/uiux.png' }}" alt=""></a>
-                    </div>
-                    <div class="gambar">
-                        <a href="/turnament"><img src="{{ 'assets/image/it/web-dev.jpg' }}" alt=""></a>
-                    </div> --}}
+                    @endforeach
+                </div>
             </div>
         </div>
     </body>

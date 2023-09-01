@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AntrianTeamController;
 use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/login', function () {
     return view('/login');
@@ -38,6 +41,18 @@ Route::get('/user', function () {
     return view('admin/user/index');
 });
 
+Route::get('/',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'actionlogin'])->name('actionlogin');
+
+Route::get('home',[HomeController::class,'index'])->name('home')->middleware('auth');
+Route::get('actionlogout',[LoginController::class,'actionlogout'])->name('actionlogout')->middleware('auth');
+
+Route::get('profile',[HomeController::class,'profile'])->name('profile')->middleware('auth');
+
+// Route::get('/user',[LoginController::class,'userData'])->name('userIndex');
+// Route::delete('deleteUser/{id}',[LoginController::class,'deleteUser'])->name('deleteUser');
+
+Route::resource('/users', UserController::class);
 Route::resource('/competition', CompetitionController::class);
 Route::resource('/tournament',TournamentController::class);
 Route::resource('/news',NewsController::class);

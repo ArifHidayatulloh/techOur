@@ -11,6 +11,11 @@ class Tournament extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $primaryKey = 'id';
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function competition(){
         return $this->belongsTo(Competition::class,'competition_id','id');
     }

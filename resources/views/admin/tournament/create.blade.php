@@ -34,6 +34,10 @@
                                 @endforelse
                             </select>
                         </div>
+                        <div class="input-tur d-none">
+                            <span class="details">user</span>
+                            <input type="text" size="17" required name="user_id" value="{{ Auth::user()->id }}">
+                        </div>
                         <div class="input-tur">
                             <span class="details">Nama Tournament</span>
                             <input type="text" size="17" required name="tournament">

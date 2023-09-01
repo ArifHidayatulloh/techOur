@@ -38,36 +38,39 @@
         </div>
         <div class="d-flex justify-content-center content">
             <table class="table caption-top text-center table-bordered w-75 ">
-                <caption><a href="" class="fw-bold text-decoration-none text-success fs-4">User</a>
+                <caption><a href="" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
                 </caption>
                 <thead class="table-light">
                     <tr>
-                        <th>text</th>
-                        <th>text</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($news as $item) --}}
-                    <tr>
-                        <td class="title">lorem ipsum</td>
-                        <td class="text-break p-3" id="text-news">lorem ipsum</td>
-                        <td>
-                            <div class="d-grid gap-2 p-3 text-center">
-                                <div class="delete">
-                                    <form action="">
-                                        {{-- @csrf
-                                    @method('DELETE') --}}
-                                        <button class="btn btn-outline-danger" type="button">DELETE</button>
-                                    </form>
+                    @foreach ($user as $item)
+                        <tr>
+                            <td class="title">{{ $item->name }}</td>
+                            <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
+                            <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
+                            <td>
+                                {{ $item->id }}
+                                <div class="d-grid gap-2 p-3 text-center">
+                                    <div class="delete">
+                                        <form action="{{ route('users.destroy',$item->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-outline-danger" type="submit">DELETE</button>
+                                        </form>
+                                    </div>
+                                    <div class="update">
+                                        <a class="btn btn-outline-success" type="button" href="">EDIT</a>
+                                    </div>
                                 </div>
-                                <div class="update">
-                                    <a class="btn btn-outline-success" type="button" href="">EDIT</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    {{-- @endforeach --}}
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

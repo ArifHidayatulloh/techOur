@@ -43,6 +43,7 @@
                 </caption>
                 <thead class="table-light">
                     <tr>
+                        <th>Pembuat</th>
                         <th class="w-25">Judul</th>
                         <th class="w-50">Detail</th>
                         <th>Tanggal</th>
@@ -53,6 +54,7 @@
                 <tbody>
                     @foreach ($news as $item)
                         <tr>
+                            <td>{{ $item->user->name }}</td>
                             <td class="title">{{ $item->title }}</td>
                             <td class="text-break p-3" id="text-news">
                                 {{ $item->content }}

@@ -43,6 +43,10 @@
                                         @endforelse
                                     </select>
                                 </div>
+                                <div class="input-tur d-none">
+                                    <span class="details">user</span>
+                                    <input type="text" size="17" required name="user_id" value="{{ Auth::user()->id }}">
+                                </div>
                                 <div class="input-tur">
                                     <span class="details">Nama Tournament</span>
                                     <input type="text" size="17" required name="tournament" value="{{ $tournament->tournament }}">
@@ -60,7 +64,7 @@
                                     <textarea name="prizes" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->prizes }}</textarea>
                                 </div>
                                 <div class="form-check">
-                                     <input class="form-check-input border border-black" type="checkbox" {{ $tournament->info_team == 'true' ? 'checked' : '' }} id="flexCheckDefault" name='info_team'>
+                                     <input class="form-check-input border border-black" type="checkbox" {{ $tournament->info_team == 1 ? 'checked' : '' }} id="flexCheckDefault" name='info_team'>
                                     <label class="form-check-label" for="flexCheckDefault">
                                       Detail Team
                                     </label>

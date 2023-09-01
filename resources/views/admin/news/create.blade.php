@@ -33,6 +33,10 @@
                         </div>
                     </div>
                     <div class="form-right">
+                        <div class="input-news d-none">
+                            <span class="details">user</span>
+                            <input type="text" name="user_id" value="{{ Auth::user()->id }}">
+                        </div>   
                         <div class="input-news">
                             <span class="details">Tanggal</span>
                             <input type="date" name="date">

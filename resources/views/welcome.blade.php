@@ -21,15 +21,16 @@
                 </div>
                 <div class="dropmenu w-100 d-flex align-items-center justify-content-end">
                     <ul class="dropdown">
-                        <li class="nav-item dropdown border p-1 list-unstyled rounded" style="
+                        <li class="nav-item dropdown border p-1 list-unstyled rounded"
+                            style="
                         background-color: #f6f6f6;">
                             <a class="nav-link dropdown-toggle text-dark pe-3 ps-3 text-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                embun@gmail.com
+                                {{ Auth::user()->email }}
                             </a>
                             <ul class="dropdown-menu text-center" id="dropdown-menu">
-                                <li><a href="/profile">Profile</a></li>
-                                <li><a href="/login">Log Out</a>
+                                <li><a href="{{ route('profile') }}">Profile</a></li>
+                                <li><a href="{{ route('actionlogout') }}">Log Out</a>
                                 </li>
                             </ul>
                         </li>
@@ -40,12 +41,15 @@
         <div class="container">
             <div class="pilih">
                 <div class="pilihan">
-                    <div class="box">
-                        <center><a href="{{ route('competition.index') }}" class="link">CATEGORY COMPETITION</a>
-                        </center>
-                        <a href="{{ route('competition.index') }}"><img src="{{ 'assets/image/category-comp.png' }}"
-                                alt=""></a>
-                    </div>
+                    @if (Auth::user()->role == 'admin')
+                        <div class="box">
+                            <center><a href="{{ route('competition.index') }}" class="link">CATEGORY COMPETITION</a>
+                            </center>
+                            <a href="{{ route('competition.index') }}"><img src="{{ 'assets/image/category-comp.png' }}"
+                                    alt=""></a>
+                        </div>
+                    @else
+                    @endif
                     <div class="box">
                         <center><a href="{{ route('tournament.index') }}" class="link">TOURNAMENT</a></center>
                         <a href="{{ route('tournament.index') }}"><img src="{{ 'assets/image/code.png' }}"
@@ -56,10 +60,14 @@
                         <a href="{{ route('news.index') }}"><img src="{{ 'assets/image/news.png' }}"
                                 alt=""></a>
                     </div>
-                    <div class="box">
-                        <center><a href="{{ route('team.index') }}" class="link">User Control</a></center>
-                        <a href="{{ route('team.index') }}"><img src="{{ ('assets/image/team.png') }}" alt=""></a>
-                    </div>
+                    @if (Auth::user()->role == 'admin')
+                        <div class="box">
+                            <center><a href="{{ route('users.index') }}" class="link">User Control</a></center>
+                            <a href="{{ route('users.index') }}"><img src="{{ 'assets/image/team.png' }}"
+                                    alt=""></a>
+                        </div>
+                    @else
+                    @endif
                 </div>
             </div>
         </div>

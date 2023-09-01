@@ -23,13 +23,13 @@
                 <!-- Name input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form7Example1">Name</label>
-                    <input type="text" id="form7Example1" class="form-control" />
+                    <input type="text" id="form7Example1" class="form-control" name="name" value="{{ Auth::user()->name }}"/>
                 </div>
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form7Example2">Email address</label>
-                    <input type="email" id="form7Example2" class="form-control" />
+                    <input type="email" id="form7Example2" class="form-control" name="email" value="{{ Auth::user()->email }}"/>
                 </div>
 
                 <!-- Submit button -->

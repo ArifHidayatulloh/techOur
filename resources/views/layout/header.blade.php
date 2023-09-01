@@ -26,9 +26,15 @@
                 <ul>
                     <li><a href="/">HOME</a></li>
                     <li><a href="{{ route('tournament.index') }}">TOURNAMENT</a></li>
-                    <li><a href="{{ route('competition.index') }}">COMPETITION</a></li>
+                    @if (Auth::user()->role == 'admin')
+                        <li><a href="{{ route('competition.index') }}">COMPETITION</a></li>
+                    @else
+                    @endif
                     <li><a href="{{ route('news.index') }}">NEWS</a></li>
-                    <li><a href="">USER</a></li>
+                    @if (Auth::user()->role == 'admin')
+                        <li><a href="{{ route('users.index') }}">USER</a></li>
+                    @else
+                    @endif
                 </ul>
             </center>
         </div>
@@ -40,7 +46,7 @@
                         <i class="fa-solid fa-user" style="color: #ffffff;"></i>
                         <ul class="dropdown-menu text-center" id="dropdown-menu" style="margin-left:-110px">
                             <li><a href="/profile">Profile</a></li>
-                            <li><a href="/login">Log Out</a>
+                            <li><a href="{{ route('actionlogout') }}">Log Out</a>
                             </li>
                         </ul>
                     </li>

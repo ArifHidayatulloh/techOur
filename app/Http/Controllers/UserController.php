@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+// use Illuminate\Support\Facedes\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -25,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('register');
     }
 
     /**
@@ -36,7 +37,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'hp' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'hp' => $request->hp,
+            'password' => bcrypt($request->password),
+            'role' => $request->role
+
+        ]);
+
+        return redirect()->route('users.index')->with('Success','Added Account Successfully');
+
     }
 
     /**
@@ -47,7 +67,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,10 +76,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User  $user)
     {
-        //
+        return view('update', [
+           'user' => $user,
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -68,9 +91,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'hp' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->hp = $request->hp;
+        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+
+        $user->save();
+
+        return redirect()->route('users.index')->with('success','Updated Account Successfully');
     }
 
     /**

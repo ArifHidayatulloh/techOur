@@ -38,12 +38,13 @@
         </div>
         <div class="d-flex justify-content-center content">
             <table class="table caption-top text-center table-bordered w-75 ">
-                <caption><a href="" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
+                <caption><a href="{{  route('users.create')  }}" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
                 </caption>
                 <thead class="table-light">
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>No Telpon</th>
                         <th>Role</th>
                         <th>Action</th>
                     </tr>
@@ -53,9 +54,9 @@
                         <tr>
                             <td class="title">{{ $item->name }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
+                            <td class="text-break p-3" id="text-news">{{ $item->hp }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
                             <td>
-                                {{ $item->id }}
                                 <div class="d-grid gap-2 p-3 text-center">
                                     <div class="delete">
                                         <form action="{{ route('users.destroy',$item->id) }}" method="post">
@@ -65,7 +66,7 @@
                                         </form>
                                     </div>
                                     <div class="update">
-                                        <a class="btn btn-outline-success" type="button" href="">EDIT</a>
+                                        <a class="btn btn-outline-success" type="button" href="{{  route('users.edit', $item->id) }}">EDIT</a>
                                     </div>
                                 </div>
                             </td>

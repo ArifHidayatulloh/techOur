@@ -15,44 +15,46 @@
             <div class="col-lg-6">
 
                     <!-- Form -->
-                <form action="{{  route('users.store')  }}" method="POST">
+                <form action="{{  route('users.update', $user->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="d-flex flex-row align-items-center justify-content-center">
-                        <p class="lead fw-bold mb-3">Register</p>
+                        <p class="lead fw-bold mb-3">Update</p>
                     </div>
 
                     <!-- Email name -->
                     <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name" value="{{ $user->name }}">
                         <label for="floatingInput">Name</label>
                     </div>
 
                     <!-- Email input -->
                     <div class="form-floating mb-4">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="Email address" name="email">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="Email address" name="email" value="{{ $user->email }}">
                         <label for="floatingInput">Email address</label>
                     </div> 
 
                     <!-- Hp input -->
                     <div class="form-floating mb-4">
-                        <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="hp">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="hp" value="{{ $user->hp }}">
                         <label for="floatingInput">No Telpon</label>
                     </div>                    
 
                     <!-- Password input -->
                     <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" value="{{ $user->password }}">
                         <label for="floatingPassword">Password</label>
                     </div>
 
-                    <select class="form-select form-select-lg" style="font-size: 17px" aria-label="Large select example" name="role">
+                    <select class="form-select form-select-lg" style="font-size: 17px" aria-label="Large select example" name="role" value="{{ $user->role }}">
                         <option selected>Choose Role</option>
-                        <option value="sub_admin">Sub Admin</option>
-                        <option value="admin">Admin</option>
+                        <option value="Sub Admin">Sub Admin</option>
+                        <option value="Admin">Admin</option>
                       </select>
 
                     <div class="text-center text-lg-start mt-4 pt-2">
-                        <button type="submit" class="btn text-white w-auto ps-5 pe-5" style="background-color: #3E4C59;">Register</button>
+                        <button type="submit" class="btn text-white w-auto ps-5 pe-5" style="background-color: #3E4C59;">Simpan</button>
+                        <button type="reset" class="btn text-white w-auto ps-5 pe-5" style="background-color: #3E4C59;">Batal</button>
                     </div>
 
                 </form>

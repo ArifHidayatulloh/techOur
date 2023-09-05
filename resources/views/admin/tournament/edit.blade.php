@@ -22,9 +22,8 @@
                 
                 <!-- FORM -->
                 <div class="form">
-                    <form action="{{ route('tournament.update', $tournament->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="/tournament/update/{{ $tournament->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                         <div class="tmbh-tour">
                             <div class="form-left">
                                 <div class="input-tur">

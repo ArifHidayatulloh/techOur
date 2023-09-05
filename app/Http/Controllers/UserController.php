@@ -42,20 +42,26 @@ class UserController extends Controller
             'email' => 'required',
             'hp' => 'required',
             'password' => 'required',
-            'role' => 'required'
+            'role' => 'required',
+            'limit' => 'required'
         ]);
 
+        $existingUser = User::where('email', $request->email)->first();
+
+        if ($existingUser) {
+            return back()->with('errors', 'Email sudah terdaftar');
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'hp' => $request->hp,
             'password' => bcrypt($request->password),
-            'role' => $request->role
-
+            'role' => $request->role,
+            'limit' => $request->limit
         ]);
 
-        return redirect()->route('users.index')->with('Success','Added Account Successfully');
+        return redirect()->route('users.index')->with('success','Added Account Successfully');
 
     }
 
@@ -98,7 +104,8 @@ class UserController extends Controller
             'email' => 'required',
             'hp' => 'required',
             'password' => 'required',
-            'role' => 'required'
+            'role' => 'required',
+            'limit' => 'required'
         ]);
 
         $user->name = $request->name;
@@ -106,6 +113,7 @@ class UserController extends Controller
         $user->hp = $request->hp;
         $user->password = bcrypt($request->password);
         $user->role = $request->role;
+        $user->limit = $request->limit;
 
         $user->save();
 

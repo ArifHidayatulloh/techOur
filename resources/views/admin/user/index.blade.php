@@ -30,22 +30,24 @@
 
     <body>
         <div class="sesion d-flex justify-content-center mt-5">
-            {{-- @if (session('success'))
+            @if (session('success'))
             <div class="alert alert-success w-75">
                 {{ session('success') }}
             </div>
-        @endif --}}
+        @endif
         </div>
         <div class="d-flex justify-content-center content">
             <table class="table caption-top text-center table-bordered w-75 ">
                 <caption><a href="{{  route('users.create')  }}" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
                 </caption>
+                
                 <thead class="table-light">
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>No Telpon</th>
                         <th>Role</th>
+                        <th>Limit</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -56,6 +58,7 @@
                             <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->hp }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
+                            <td class="text-break p-3" id="text-news">{{ $item->limit }}</td>
                             <td>
                                 <div class="d-grid gap-2 p-3 text-center">
                                     <div class="delete">

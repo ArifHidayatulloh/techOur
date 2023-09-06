@@ -29,6 +29,9 @@ Route::get('home',[HomeController::class,'index'])->name('home')->middleware('au
 Route::get('actionlogout',[LoginController::class,'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::get('profile',[HomeController::class,'profile'])->name('profile')->middleware('auth');
+Route::post('/profile/{id}',[HomeController::class,'editProfile'])->name('profile.edit')->middleware('auth');
+Route::post('/password/{id}',[HomeController::class, 'updatePassword'])->name('password.update')->middleware('auth');
+
 
 // Route::get('/user',[LoginController::class,'userData'])->name('userIndex');
 // Route::delete('deleteUser/{id}',[LoginController::class,'deleteUser'])->name('deleteUser');

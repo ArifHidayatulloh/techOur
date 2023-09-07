@@ -33,19 +33,6 @@ class AuthController extends Controller
         return response()->json(['message' => 'Pendaftaran berhasil'], 201);
     }
 
-    // public function login(Request $request)
-    // {
-    //     $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         $user = Auth::user();
-    //         $token = $user->createToken('AuthToken')->accessToken;
-
-    //         return response()->json(['token' => $token], 200);
-    //     } else {
-    //         return response()->json(['error' => 'Login gagal'], 401);
-    //     }
-    // }
     public function login(Request $request)
     {
         $request->validate([
@@ -61,12 +48,19 @@ class AuthController extends Controller
             ]);
         }
 
-        return $user->createToken('user login')->plainTextToken;
+        $user->last_login = now();
+        $user->save();
+        $token = $user->createToken('user login')->plainTextToken;
+
+        return response()->json(['token' => $token], 200);
+        
     }
 
     public function logout(Request $request)
     {
         $user = Auth::user();
+        $user->last_logout = now();
+        $user->save();
         $user->tokens->each(function ($token, $key) {
             $token->delete();
         });

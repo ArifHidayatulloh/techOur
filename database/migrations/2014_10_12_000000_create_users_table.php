@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('role');
             $table->integer('limit');
+            $table->timestamp('last_login')->nullable();
+            $table->timestamp('last_logout')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

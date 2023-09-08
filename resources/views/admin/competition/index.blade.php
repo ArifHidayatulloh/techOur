@@ -40,16 +40,16 @@
                             </td>
                             <td>
                                 <div class="d-grid gap-2 p-3 d-md-flex justify-content-center">
+                                    <div class="update">
+                                        <a class="btn btn-outline-success w-100" type="button"
+                                            href="{{ route('competition.edit', $item->id) }}">EDIT</a>
+                                    </div>
                                     <div class="delete">
                                         <form action="{{ route('competition.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger" type="submit">DELETE</button>
                                         </form>
-                                    </div>
-                                    <div class="update">
-                                        <a class="btn btn-outline-success w-100" type="button"
-                                            href="{{ route('competition.edit', $item->id) }}">EDIT</a>
                                     </div>
                                 </div>
                             </td>

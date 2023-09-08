@@ -7,27 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>INDEX</title>
 </head>
 
 <body>
-    <div class="menu">
-        <div class="bagan">
-            <div class="admin">
+    <div class="content">
+        <div class="nav">
+            <div class="nav-content">
                 <div class="d-flex">
                     <img src="{{ 'assets/image/TECH_TOURNAMENT.png' }}" alt="">
                     <h2>ADMIN</h2>
                 </div>
                 <div class="dropmenu w-100 d-flex align-items-center justify-content-end">
                     <ul class="dropdown">
-                        <li class="nav-item dropdown border p-1 list-unstyled rounded"
-                            style="
-                        background-color: #f6f6f6;">
+                        <li class="nav-item dropdown p-1 list-unstyled rounded">
                             <a class="nav-link dropdown-toggle text-dark pe-3 ps-3 text-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->email }}
                             </a>
+                            <i class="fa-solid fa-circle-user fa-xl mt-2" style="color: #ffffff;"></i>
                             <ul class="dropdown-menu text-center" id="dropdown-menu">
                                 <li><a href="{{ route('profile') }}">Profile</a></li>
                                 <li><a href="{{ route('actionlogout') }}">Log Out</a>

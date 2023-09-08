@@ -14,16 +14,28 @@
             font-size: 15px;
         }
 
+        .tbl{
+            margin-left: 5rem;
+            margin-right: 5rem;
+        }
+
         @media screen and (max-width: 796px) {
             .title {
                 font-size: 15px;
             }
 
             .content {
-                flex-direction: column;
-                overflow: auto;
-                margin: 10px;
+                width: 420px;
                 margin-top: -15px;
+            }
+
+            .content .tbl{
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .btn{
+                flex-direction: column;
             }
         }
     </style>
@@ -34,10 +46,10 @@
             <div class="alert alert-success w-75">
                 {{ session('success') }}
             </div>
-        @endif --}}
+            @endif --}}
         </div>
         <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center table-bordered w-75 ">
+            <table class="table caption-top text-center table-bordered tbl">
                 <caption><a href="" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
                 </caption>
                 <thead class="table-light">
@@ -56,16 +68,16 @@
                             <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
                             <td>
                                 {{ $item->id }}
-                                <div class="d-grid gap-2 p-3 text-center">
+                                <div class="btn d-flex gap-2 p-3 text-center justify-content-center">
+                                    <div class="update">
+                                        <a class="btn btn-outline-success w-100" type="button" href="">EDIT</a>
+                                    </div>
                                     <div class="delete">
-                                        <form action="{{ route('users.destroy',$item->id) }}" method="post">
+                                        <form action="{{ route('users.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger" type="submit">DELETE</button>
                                         </form>
-                                    </div>
-                                    <div class="update">
-                                        <a class="btn btn-outline-success" type="button" href="">EDIT</a>
                                     </div>
                                 </div>
                             </td>

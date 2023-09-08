@@ -27,6 +27,9 @@ class User extends Authenticatable
         'hp',
         'password',
         'role',
+        'limit',
+        'last_login',
+        'last_logout'
     ];
 
     /**

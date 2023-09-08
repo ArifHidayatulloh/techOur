@@ -21,25 +21,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/login', function () {
-    return view('/login');
-});
-
-Route::get('/register', function () {
-    return view('/register');
-});
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-
-Route::get('/user', function () {
-    return view('admin/user/index');
-});
 
 Route::get('/',[LoginController::class,'login'])->name('login');
 Route::post('/login',[LoginController::class,'actionlogin'])->name('actionlogin');
@@ -48,24 +29,34 @@ Route::get('home',[HomeController::class,'index'])->name('home')->middleware('au
 Route::get('actionlogout',[LoginController::class,'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::get('profile',[HomeController::class,'profile'])->name('profile')->middleware('auth');
+Route::post('/profile/{id}',[HomeController::class,'editProfile'])->name('profile.edit')->middleware('auth');
+Route::post('/password/{id}',[HomeController::class, 'updatePassword'])->name('password.update')->middleware('auth');
+
 
 // Route::get('/user',[LoginController::class,'userData'])->name('userIndex');
 // Route::delete('deleteUser/{id}',[LoginController::class,'deleteUser'])->name('deleteUser');
 
+// Route::post('/news', [NewsController::class,'store'])->name('news.store')->middleware('check_create_limit:news');
+
 Route::resource('/users', UserController::class);
 Route::resource('/competition', CompetitionController::class);
-Route::resource('/tournament',TournamentController::class);
-Route::resource('/news',NewsController::class);
 Route::resource('/team',TeamController::class);
 Route::resource('/antrian',AntrianTeamController::class);
-Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');
-// Route::get('/team/{id}',[TeamController::class,'index'])->name('team.index');
 
-// Route::prefix('competition')->group(function(){
-//     Route::get('/index',[CompetitionController::class,'index']);
-//     Route::get('/create',[CompetitionController::class,'create']);
-//     Route::post('/store',[CompetitionController::class,'store']);
-//     Route::get('/edit/{competition}',[CompetitionController::class,'edit']);
-//     Route::post('/update/{comppetition}',[CompetitionController::class,'update']);
-//     Route::get('/destroy/{competition}',[CompetitionController::class,'destroy']);
-// });
+
+Route::get('/tournament',[TournamentController::class,'index'])->name('tournament.index');
+Route::get('/tournament/create',[TournamentController::class,'create'])->name('tournament.create');
+Route::post('/tournament',[TournamentController::class,'store'])->name('tournament.store')->middleware(['auth', 'check_data_limit:tournament']);
+Route::get('/tournament/show/{tournament}',[TournamentController::class,'show'])->name('tournament.show');
+Route::get('/tournament/{tournament}/edit',[TournamentController::class,'edit'])->name('tournament.edit');
+Route::post('/tournament/update/{tournament}',[TournamentController::class,'update']);
+Route::delete('/tournament/{tournament}',[TournamentController::class,'destroy'])->name('tournament.destroy');
+
+Route::get('/news',[NewsController::class,'index'])->name('news.index');
+Route::get('/news/create',[NewsController::class,'create'])->name('news.create');
+Route::post('/news',[NewsController::class,'store'])->name('news.store')->middleware(['auth', 'check_data_limit:news']);
+Route::get('/news/{news}/edit',[NewsController::class,'edit'])->name('news.edit');
+Route::post('/news/update/{news}',[NewsController::class,'update']);
+Route::delete('/news/{news}',[NewsController::class,'destroy'])->name('news.destroy');
+
+Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');

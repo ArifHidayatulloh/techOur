@@ -16,6 +16,7 @@ class TeamListResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'user_id' => $this->user_id,
             'tournament_id' => $this->tournament_id,
             'team' => $this->team,
             'member' => $this->member,

@@ -7,11 +7,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>register page</title>
+        <title>update page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
     </head>
 
     <body>
@@ -20,55 +18,50 @@
                 <div class="col-lg-6">
 
                     <!-- Form -->
-                    <form action="{{ route('users.store') }}" method="POST">
+                    <form action="{{ route('users.update', $user->id) }}" method="POST">
                         @csrf
-
-
+                        @method('PUT')
                         <div class="d-flex flex-row align-items-center justify-content-center">
-                            <p class="lead fw-bold mb-3">Register</p>
+                            <p class="lead fw-bold mb-3">Update</p>
                         </div>
 
                         <!-- Email name -->
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name"
+                                value="{{ $user->name }}">
                             <label for="floatingInput">Name</label>
                         </div>
-
 
                         <!-- Email input -->
                         <div class="form-floating mb-4">
                             <input type="email" class="form-control" id="floatingInput" placeholder="Email address"
-                                name="email">
+                                name="email" value="{{ $user->email }}">
                             <label for="floatingInput">Email address</label>
                         </div>
 
-                        @if (session('errors'))
-                            <div class="alert alert-warning w-80">
-                                <i class='bx bx-error'></i> {{ session('errors') }}
-                            </div>
-                        @endif
-
                         <!-- Hp input -->
                         <div class="form-floating mb-4">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="hp">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="hp"
+                                value="{{ $user->hp }}">
                             <label for="floatingInput">No Telpon</label>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                                name="password">
+                                name="password" value="{{ $user->password }}">
                             <label for="floatingPassword">Password</label>
                         </div>
 
+
                         {{-- Limit --}}
                         <div class="form-floating mb-4">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="limit">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Limit" name="limit" value="{{ $user->limit }}">
                             <label for="floatingInput">Limit</label>
                         </div>
 
                         <select class="form-select form-select-lg" style="font-size: 17px" aria-label="Large select example"
-                            name="role">
+                            name="role" value="{{ $user->role }}">
                             <option selected>Choose Role</option>
                             <option value="sub admin">Sub Admin</option>
                             <option value="admin">Admin</option>
@@ -76,7 +69,9 @@
 
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="submit" class="btn text-white w-auto ps-5 pe-5"
-                                style="background-color: #3E4C59;">Register</button>
+                                style="background-color: #3E4C59;">Simpan</button>
+                            <button type="reset" class="btn text-white w-auto ps-5 pe-5"
+                                style="background-color: #3E4C59;">Batal</button>
                         </div>
 
                     </form>

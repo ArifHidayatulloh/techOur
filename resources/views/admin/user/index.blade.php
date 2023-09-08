@@ -42,21 +42,32 @@
 
     <body>
         <div class="sesion d-flex justify-content-center mt-5">
-            {{-- @if (session('success'))
+            @if (session('success'))
             <div class="alert alert-success w-75">
                 {{ session('success') }}
             </div>
+<<<<<<< HEAD
             @endif --}}
         </div>
         <div class="d-flex justify-content-center content">
             <table class="table caption-top text-center table-bordered tbl">
                 <caption><a href="" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
+=======
+        @endif
+        </div>
+        <div class="d-flex justify-content-center content">
+            <table class="table caption-top text-center table-bordered w-75 ">
+                <caption><a href="{{  route('users.create')  }}" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
+>>>>>>> 8ea2f483436ee3e576705135698649b927b53985
                 </caption>
+                
                 <thead class="table-light">
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>No Telpon</th>
                         <th>Role</th>
+                        <th>Limit</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -65,13 +76,19 @@
                         <tr>
                             <td class="title">{{ $item->name }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
+                            <td class="text-break p-3" id="text-news">{{ $item->hp }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
+                            <td class="text-break p-3" id="text-news">{{ $item->limit }}</td>
                             <td>
+<<<<<<< HEAD
                                 {{ $item->id }}
                                 <div class="btn d-flex gap-2 p-3 text-center justify-content-center">
                                     <div class="update">
                                         <a class="btn btn-outline-success w-100" type="button" href="">EDIT</a>
                                     </div>
+=======
+                                <div class="d-grid gap-2 p-3 text-center">
+>>>>>>> 8ea2f483436ee3e576705135698649b927b53985
                                     <div class="delete">
                                         <form action="{{ route('users.destroy', $item->id) }}" method="post">
                                             @csrf
@@ -79,6 +96,12 @@
                                             <button class="btn btn-outline-danger" type="submit">DELETE</button>
                                         </form>
                                     </div>
+<<<<<<< HEAD
+=======
+                                    <div class="update">
+                                        <a class="btn btn-outline-success" type="button" href="{{  route('users.edit', $item->id) }}">EDIT</a>
+                                    </div>
+>>>>>>> 8ea2f483436ee3e576705135698649b927b53985
                                 </div>
                             </td>
                         </tr>

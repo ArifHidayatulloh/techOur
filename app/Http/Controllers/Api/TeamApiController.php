@@ -32,22 +32,23 @@ class TeamApiController extends Controller
             'team' => 'required',
             'member' => 'required',
             'contact' => 'required',
-            'status' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
         $imagePath = $request->file('image')->store('team_images', 'public');
 
+        $user_id = $request->user()->id;
         $team = Team::create([
+            'user_id' => $user_id,
             'tournament_id' => $request->tournament_id, 
             'team' => $request->team,
             'member' => $request->member,
             'contact' => $request->contact,
-            'status' => $request->status,
+            'status' => 'menunggu',
             'image' => $imagePath
         ]);
 
-        return new TeamListResource($team->loadMissing(['tournament:id,tournament']));
+        return new TeamListResource($team->loadMissing(['tournament:id,tournament']), 200);
     }
 
     /**

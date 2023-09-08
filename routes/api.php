@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CompetitionApiController;
 use App\Http\Controllers\Api\NewsApiController;
 use App\Http\Controllers\Api\TeamApiController;
@@ -22,13 +23,18 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->post('/logout', [AuthController::class,'logout']);
+
+
 Route::get('/competition',[CompetitionApiController::class,'index']);
 Route::get('/competition/{id}',[CompetitionApiController::class,'tournamentList']);
 
 Route::get('/tournament/{id}',[TournamentApiController::class,'show']);
 Route::get('/team/{id}',[TournamentApiController::class,'teamList']);
 
-Route::post('/team', [TeamApiController::class,'store']);
+Route::post('/team', [TeamApiController::class,'store'])->middleware('auth:sanctum');
 
 
 Route::get('/news',[NewsApiController::class,'index']);

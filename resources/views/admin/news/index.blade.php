@@ -64,10 +64,10 @@
                             <td>
                                 <div class="d-grid gap-2 p-3 text-center">
                                     <div class="delete">
-                                        <form action="{{ route('news.destroy', $item->id) }}">
+                                        <form action="{{ route('news.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger" type="button">DELETE</button>
+                                            <button class="btn btn-outline-danger w-100" type="submit">DELETE</button>
                                         </form>
                                     </div>
                                     <div class="update">

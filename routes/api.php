@@ -34,7 +34,7 @@ Route::get('/competition/{id}',[CompetitionApiController::class,'tournamentList'
 Route::get('/tournament/{id}',[TournamentApiController::class,'show']);
 Route::get('/team/{id}',[TournamentApiController::class,'teamList']);
 
-Route::post('/team', [TeamApiController::class,'store']);
+Route::post('/team', [TeamApiController::class,'store'])->middleware('auth:sanctum');
 
 
 Route::get('/news',[NewsApiController::class,'index']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
@@ -30,7 +31,7 @@ class AuthController extends Controller
             'limit' => 1,
         ]);
 
-        return response()->json(['message' => 'Pendaftaran berhasil'], 201);
+        return response()->json(['message' => 'Pendaftaran berhasil'], 200);
     }
 
     public function login(Request $request)
@@ -48,7 +49,7 @@ class AuthController extends Controller
             ]);
         }
 
-        $user->last_login = now();
+        $user->last_login = Carbon::now();
         $user->save();
         $token = $user->createToken('user login')->plainTextToken;
 
@@ -59,7 +60,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $user = Auth::user();
-        $user->last_logout = now();
+        $user->last_logout = Carbon::now();
         $user->save();
         $user->tokens->each(function ($token, $key) {
             $token->delete();

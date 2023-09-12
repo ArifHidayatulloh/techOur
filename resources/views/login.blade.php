@@ -8,6 +8,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
+<style>
+    @media screen and (max-width: 796px){
+        .row{
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .row-form{
+            margin-top: 2rem;
+        }
+    }
+</style>
 
 <body>
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh; background-color: #303234">
@@ -17,15 +29,14 @@
                     <b>Opps!</b> {{ session('error') }}
                 </div>
             @endif
-            <div class="col-lg-6">
-                <img src="https://i.pinimg.com/564x/f1/7b/7c/f17b7c18cbff2108b875e05eaae1020d.jpg" class="img-fluid"
-                    alt="Sample image">
+            <div class="row-img col-lg-6">
+                <img src="https://i.pinimg.com/564x/f1/7b/7c/f17b7c18cbff2108b875e05eaae1020d.jpg" class="img-fluid">
             </div>
-            <div class="col-lg-6">
+            <div class="row-form col-lg-6">
                 <form action="{{ route('actionlogin') }}" method="post">
                     @csrf
                     <div class="d-flex flex-row align-items-center justify-content-center">
-                        <p class="lead fw-bold mb-3">Log in</p>
+                        <p class="lead fw-bold mb-3" style="font-family: Georgia; letter-spacing: 1px;">Log in</p>
                     </div>
 
                     <!-- Email input -->

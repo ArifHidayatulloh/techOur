@@ -14,28 +14,28 @@
             font-size: 15px;
         }
 
-        .tbl{
-            margin-left: 5rem;
-            margin-right: 5rem;
+        .content .table{
+            width: 75%;
+        }
+
+        .btn{
+            width: 50%;
         }
 
         @media screen and (max-width: 796px) {
-            .title {
-                font-size: 15px;
-            }
-
             .content {
-                width: 420px;
+                flex-direction: column;
+                overflow: auto;
+                margin: 10px;
                 margin-top: -15px;
             }
 
-            .content .tbl{
-                margin-left: 1rem;
-                margin-right: 1rem;
+            .content .table{
+                width: 600px;
             }
 
             .btn{
-                flex-direction: column;
+                width: 100%;
             }
         }
     </style>
@@ -46,19 +46,11 @@
             <div class="alert alert-success w-75">
                 {{ session('success') }}
             </div>
-<<<<<<< HEAD
-            @endif --}}
-        </div>
-        <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center table-bordered tbl">
-                <caption><a href="" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
-=======
         @endif
         </div>
         <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center table-bordered w-75 ">
+            <table class="table caption-top text-center">
                 <caption><a href="{{  route('users.create')  }}" class="fw-bold text-decoration-none text-success fs-4">+Add User</a>
->>>>>>> 8ea2f483436ee3e576705135698649b927b53985
                 </caption>
                 
                 <thead class="table-light">
@@ -74,21 +66,13 @@
                 <tbody>
                     @foreach ($user as $item)
                         <tr>
-                            <td class="title">{{ $item->name }}</td>
-                            <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
-                            <td class="text-break p-3" id="text-news">{{ $item->hp }}</td>
-                            <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
-                            <td class="text-break p-3" id="text-news">{{ $item->limit }}</td>
+                            <td class="title align-middle">{{ $item->name }}</td>
+                            <td class="text-break align-middle p-3" id="text-news">{{ $item->email }}</td>
+                            <td class="text-break align-middle p-3" id="text-news">{{ $item->hp }}</td>
+                            <td class="text-break align-middle p-3" id="text-news">{{ $item->role }}</td>
+                            <td class="text-break align-middle p-3" id="text-news">{{ $item->limit }}</td>
                             <td>
-<<<<<<< HEAD
-                                {{ $item->id }}
-                                <div class="btn d-flex gap-2 p-3 text-center justify-content-center">
-                                    <div class="update">
-                                        <a class="btn btn-outline-success w-100" type="button" href="">EDIT</a>
-                                    </div>
-=======
-                                <div class="d-grid gap-2 p-3 text-center">
->>>>>>> 8ea2f483436ee3e576705135698649b927b53985
+                                <div class="action d-grid gap-2 p-3 text-center">
                                     <div class="delete">
                                         <form action="{{ route('users.destroy', $item->id) }}" method="post">
                                             @csrf
@@ -96,12 +80,9 @@
                                             <button class="btn btn-outline-danger" type="submit">DELETE</button>
                                         </form>
                                     </div>
-<<<<<<< HEAD
-=======
                                     <div class="update">
                                         <a class="btn btn-outline-success" type="button" href="{{  route('users.edit', $item->id) }}">EDIT</a>
                                     </div>
->>>>>>> 8ea2f483436ee3e576705135698649b927b53985
                                 </div>
                             </td>
                         </tr>

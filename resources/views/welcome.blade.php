@@ -24,7 +24,7 @@
                 </div>
                 <div class="dropmenu w-100 d-flex align-items-center justify-content-end">
                     <ul class="dropdown">
-                        <li class="nav-item dropdown p-1 list-unstyled rounded">
+                        <li class="nav-item dropdown mt-2 list-unstyled rounded">
                             <a class="nav-link dropdown-toggle text-dark pe-3 ps-3 text-center" href="#"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->email }}

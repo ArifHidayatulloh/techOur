@@ -19,7 +19,7 @@
             @endif
         </div>
         <div class="d-flex justify-content-center ms-5 me-5">
-            <table class="table caption-top text-center table-bordered w-75">
+            <table class="table caption-top text-center w-75">
                 <!-- tabel -->
                 <caption><a href="{{ route('competition.create') }}"
                         class="fw-bold text-decoration-none text-success fs-4">+

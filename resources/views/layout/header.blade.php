@@ -40,9 +40,9 @@
         </div>
 
         <div class="user align-items-center justify-content-center">
-            <div class="dropmenu w-100 d-flex align-items-center justify-content-end mt-3" style="width: 10px">
+            <div class="dropmenu d-flex align-items-center justify-content-end mt-3">
                 <ul class="dropdown">
-                    <li class="nav-item dropdown p-1 list-unstyled rounded ">
+                    <li class="nav-item dropdown list-unstyled rounded ">
                         <i class="fa-solid fa-circle-user fa-xl" style="color: #ffffff;"></i>
                         <ul class="dropdown-menu text-center" id="dropdown-menu" style="margin-left:-130px">
                             <li><a href="/profile">Profile</a></li>

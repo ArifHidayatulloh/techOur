@@ -15,10 +15,6 @@
         }
 
         @media screen and (max-width: 796px) {
-            .title {
-                font-size: 15px;
-            }
-
             .content {
                 flex-direction: column;
                 overflow: auto;
@@ -54,13 +50,13 @@
                 <tbody>
                     @foreach ($news as $item)
                         <tr>
-                            <td>{{ $item->user->name }}</td>
-                            <td class="title">{{ $item->title }}</td>
-                            <td class="text-break p-3" id="text-news">
+                            <td class="align-middle">{{ $item->user->name }}</td>
+                            <td class="title align-middle">{{ $item->title }}</td>
+                            <td class="text-break align-middle p-3" id="text-news">
                                 {{ $item->content }}
                             </td>
-                            <td>{{ $item->date }}</td>
-                            <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 80px"></td>
+                            <td class="align-middle">{{ $item->date }}</td>
+                            <td class="align-middle"><img src="{{ asset('storage/' . $item->image) }}" style="width: 80px"></td>
                             <td>
                                 <div class="d-grid gap-2 p-3 text-center">
                                     <div class="delete">

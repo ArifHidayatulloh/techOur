@@ -41,7 +41,7 @@
 
 .listmenu ul {
     display: flex;
-    margin-left: 520px;
+    margin-left: 550px;
     font-size: 13px;
 }
 
@@ -83,7 +83,6 @@
 .dropdown {
     text-align: center;
     margin-right: 20px;
-    font-size: 17px;
 }
 
 .dropdown-menu li a {

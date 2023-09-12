@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
         <title>index</title>
     </head>
 
@@ -41,14 +43,16 @@
                             <td>
                                 <div class="d-grid gap-2 p-3 d-md-flex justify-content-center">
                                     <div class="update">
-                                        <a class="btn btn-outline-success w-100" type="button"
-                                            href="{{ route('competition.edit', $item->id) }}">EDIT</a>
+                                        <a class="btn btn-outline-warning w-100" type="button"
+                                            href="{{ route('competition.edit', $item->id) }}"><i
+                                                class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
                                     </div>
                                     <div class="delete">
                                         <form action="{{ route('competition.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger" type="submit">DELETE</button>
+                                            <button class="btn btn-outline-danger" type="submit"><i
+                                                    class='bx bx-trash bx-sm' style="color: black"></i></button>
                                         </form>
                                     </div>
                                 </div>

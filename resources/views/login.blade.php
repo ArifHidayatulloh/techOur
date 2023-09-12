@@ -51,6 +51,7 @@
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                             name="password">
                         <label for="floatingPassword">Password</label>
+                        <input type="checkbox" onclick="myFunction()" class="ms-1"> show password
                     </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2">
@@ -62,6 +63,17 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("floatingPassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 </body>
 
 </html>

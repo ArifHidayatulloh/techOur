@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
             <div class="row d-flex justify-content-center align-items-center p-5 rounded" style="background-color: #f6f6f6">
                 <div class="col-lg-6">
 

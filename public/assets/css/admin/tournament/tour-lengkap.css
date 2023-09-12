@@ -12,16 +12,14 @@
     }
 
     .team{
-        width: 100%;
         padding: 0;
         font-size: 17px;
     }
 
     .dropdown-menu{
         display: none;
-        margin-top: 5px;
-        margin-left: -50px;
-        width: 10px;
+        margin-top: 7px;
+        margin-left: -30px;
     }   
 
     .dropdown-menu li a{

@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
         <title>index</title>
     </head>
     <style>
@@ -33,7 +35,7 @@
             @endif
         </div>
         <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center table-bordered w-75 ">
+            <table class="table caption-top text-center w-75 ">
                 <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4">+ Add
                         News</a>
                 </caption>
@@ -49,26 +51,28 @@
                 </thead>
                 <tbody>
                     @foreach ($news as $item)
-                        <tr>
-                            <td class="align-middle">{{ $item->user->name }}</td>
-                            <td class="title align-middle">{{ $item->title }}</td>
-                            <td class="text-break align-middle p-3" id="text-news">
+                        <tr class="align-middle">
+                            <td>{{ $item->user->name }}</td>
+                            <td class="title">{{ $item->title }}</td>
+                            <td class="text-break p-3" id="text-news">
                                 {{ $item->content }}
                             </td>
-                            <td class="align-middle">{{ $item->date }}</td>
-                            <td class="align-middle"><img src="{{ asset('storage/' . $item->image) }}" style="width: 80px"></td>
+                            <td>{{ $item->date }}</td>
+                            <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 80px"></td>
                             <td>
                                 <div class="d-grid gap-2 p-3 text-center">
+                                    <div class="update">
+                                        <a class="btn btn-outline-warning w-100" type="button"
+                                            href="{{ route('news.edit', $item->id) }}"><i class='bx bxs-edit-alt bx-sm'
+                                                style="color: black"></i></a>
+                                    </div>
                                     <div class="delete">
                                         <form action="{{ route('news.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-outline-danger w-100" type="submit">DELETE</button>
+                                            <button class="btn btn-outline-danger w-100" type="submit"><i
+                                                    class='bx bx-trash bx-sm' style="color: black"></i></button>
                                         </form>
-                                    </div>
-                                    <div class="update">
-                                        <a class="btn btn-outline-success w-100" type="button"
-                                            href="{{ route('news.edit', $item->id) }}">EDIT</a>
                                     </div>
                                 </div>
                             </td>

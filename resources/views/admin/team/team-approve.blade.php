@@ -7,17 +7,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
         <title>INFO LENGKAP</title>
     </head>
     <style>
-        @media screen and (max-width: 796px){
-        .content{
-            display: flex;
-            flex-direction: column;
-            overflow-x: auto;
+        @media screen and (max-width: 796px) {
+            .content {
+                display: flex;
+                flex-direction: column;
+                overflow-x: auto;
             }
         }
     </style>
+
     <body>
         <div class="link w-200 mt-3 ms-5">
             <div class="link-content">
@@ -26,7 +29,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center table-bordered w-75 m-5 justify-content-center">
+            <table class="table caption-top text-center w-75 m-5 justify-content-center">
                 <caption><a href="{{ route('team.index') }}" class="fw-bold text-decoration-none text-success fs-4">Team</a>
                 </caption>
                 <thead class="table-light">
@@ -57,7 +60,8 @@
                                 <form action="{{ route('antrian.destroy', $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-outline-danger mt-1" type="submit">delete</button>
+                                    <button class="btn btn-outline-danger mt-1" type="submit"><i class='bx bx-trash bx-sm'
+                                            style="color: black"></i></button>
                                 </form>
                             </td>
                         </tr>

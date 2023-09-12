@@ -59,6 +59,7 @@
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                                 name="password">
                             <label for="floatingPassword">Password</label>
+                            <input type="checkbox" onclick="myFunction()" class="ms-1"> show password
                         </div>
 
                         {{-- Limit --}}
@@ -86,6 +87,18 @@
                         alt="Sample image">
                 </div>
             </div>
+
+
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("floatingPassword");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+            </script>
 
             {{-- <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
         <div class="card border-black" style="width: 30rem; background-color: #F6F6F6;">

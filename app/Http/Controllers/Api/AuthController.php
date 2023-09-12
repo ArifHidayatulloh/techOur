@@ -68,4 +68,49 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Logout berhasil'], 200);
     }
+
+    public function me(Request $request){
+        return response()->json(['user'=> $request->user()]);
+    }
+
+    public function updateProfile(Request $request){
+        $user = Auth::user();
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'hp' => 'required'
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'hp' => $request->hp,
+        ]);
+
+        return response()->json(['message' =>'Profile updated successfully']);
+    }
+
+    public function updatePassword(Request $request){
+        $user = Auth::user();
+
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required',
+            'new_password_confirm' => 'required',
+        ]);
+
+        if(!Hash::check($request->current_password, $user->password)){
+            return response()->json(['message' => 'Current password is incorrect']);
+        }
+        elseif ($request->new_password_confirm != $request->new_password) {
+            return response()->json(['message' => 'Confirm password does not match']);
+        }
+        else{
+           $user->update([
+            'password' => bcrypt($request->new_password_confirm),
+           ]);
+           return response()->json(['message' => 'Password updated successfully']);
+        }
+    }
 }

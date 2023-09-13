@@ -33,11 +33,7 @@
             }
 
             .content .table {
-                width: 600px;
-            }
-
-            .btn {
-                width: 100%;
+                width: 50rem;
             }
         }
     </style>

@@ -1,12 +1,3 @@
-    :root{
-        --color-primary: #788794;
-        --color-side: #3E4C59;
-    }
-    body{
-        padding: 0;
-        margin: 0;
-    }
-
     .content{
         margin: 2rem;
     }
@@ -44,6 +35,10 @@
             display: flex;
             flex-direction: column;
             overflow: auto;
+        }
+
+        .content .table {
+            width: 70rem;
         }
     }
 /* TURNAMENT

@@ -4,14 +4,59 @@
     <html lang="en">
 
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-        <link rel="stylesheet" href="{{ asset('assets/css/admin/tournament/tour-lengkap.css') }}">
-
         <title>INFO LENGKAP</title>
     </head>
+
+    <style>
+        .content{
+        margin: 2rem;
+    }
+
+    .team{
+        padding: 0;
+        font-size: 17px;
+    }
+
+    .dropdown-menu{
+        display: none;
+        margin-top: 7px;
+        margin-left: -30px;
+    }   
+
+    .dropdown-menu li a{
+        text-decoration: none;
+        text-align: center;
+        color: black;
+    }
+
+    .dropdown-menu li:hover {
+        background-color: rgb(241, 241, 241);
+      }
+
+    .nav-item:hover .dropdown-menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 796px){
+        .content{
+            top: 0;
+            margin: 1rem;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        .content .table {
+            width: 70rem;
+        }
+    }
+    </style>
 
     <body>
         <div class="d-flex justify-content-center content" id="content">

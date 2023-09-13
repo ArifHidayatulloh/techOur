@@ -20,6 +20,14 @@ class TournamentDetailResource extends JsonResource
         else{
             $team_total = null;
         }
+
+        $show_team = strval($this->info_team);
+
+        if($show_team == "1"){
+            $show_team = 'true';
+        }else{
+            $show_team = 'false';
+        }
         return [
             'id' => $this->id,
             'competition_id' => $this->competition_id,
@@ -31,6 +39,7 @@ class TournamentDetailResource extends JsonResource
             'prizes' => $this->prizes,
             'contact' => $this->contact,
             'registration_fee' => $this->registration_fee,
+            'show_team' => $show_team,
             'image' => $this->image,
             'competition_category' => $this->whenLoaded('competition'),
             'info_team' => $team_total

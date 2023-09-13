@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Sep 2023 pada 04.47
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.0.28
+-- Generation Time: Sep 13, 2023 at 05:28 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `competitions`
+-- Table structure for table `competitions`
 --
 
 CREATE TABLE `competitions` (
@@ -36,7 +36,7 @@ CREATE TABLE `competitions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `competitions`
+-- Dumping data for table `competitions`
 --
 
 INSERT INTO `competitions` (`id`, `competition`, `image`, `created_at`, `updated_at`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `competitions` (`id`, `competition`, `image`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -65,7 +65,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -75,7 +75,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -91,7 +91,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -105,10 +105,19 @@ CREATE TABLE `news` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `user_id`, `title`, `date`, `content`, `image`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Peluncuran Smartphone Terbaru XYZ: Inovasi Terkini di Dunia Teknologi', '2023-09-13', 'Jakarta, 13 September 2023 - Hari ini, perusahaan teknologi terkemuka, XYZ Electronics, secara resmi meluncurkan smartphone terbaru mereka, yaitu XYZ ProMax. Peluncuran ini menjadi perhatian utama dalam dunia teknologi, mengingat berbagai inovasi terkini yang ditawarkan oleh perangkat ini.\r\n\r\nDengan layar OLED 6,7 inci yang tajam dan canggih, XYZ ProMax menawarkan pengalaman visual yang memukau. Prosesor terbaru dari XYZ, yang disebut XYZ A12, diklaim menjadi yang tercepat di kelasnya, membuat multitasking dan pemrosesan grafis menjadi lebih lancar daripada sebelumnya.\r\n\r\nSalah satu fitur unggulan yang disematkan dalam smartphone ini adalah sistem kamera ganda dengan teknologi canggih AI yang mampu mengenali objek secara otomatis dan menghasilkan foto dan video berkualitas tinggi. XYZ ProMax juga dilengkapi dengan baterai tahan lama, mendukung pengisian cepat, dan sistem keamanan biometrik yang canggih.\r\n\r\nCEO XYZ Electronics, John Smith, mengatakan, \"Kami sangat bangga dengan kemajuan teknologi terbaru yang kami bawa ke pasar melalui XYZ ProMax. Kami percaya bahwa perangkat ini akan mengubah cara orang berinteraksi dengan teknologi di sekitar mereka.\"\r\n\r\nDalam peluncuran ini, XYZ Electronics juga mengumumkan kemitraan dengan penyedia layanan jaringan terkemuka untuk memberikan paket eksklusif kepada pelanggan yang membeli XYZ ProMax. Pelanggan akan mendapatkan akses ke kecepatan internet 5G tercepat dan berbagai layanan eksklusif lainnya.\r\n\r\nXYZ ProMax akan tersedia dalam beberapa varian warna dan kapasitas penyimpanan, dengan harga mulai dari $999. Perangkat ini akan mulai dipasarkan secara resmi mulai tanggal 20 September 2023, dan para konsumen sudah dapat melakukan pre-order mulai dari hari ini.\r\n\r\nDengan peluncuran ini, XYZ Electronics kembali memperkuat posisinya sebagai salah satu pemimpin dalam industri teknologi, dan XYZ ProMax diharapkan akan menjadi pilihan utama bagi mereka yang mencari smartphone dengan kinerja dan inovasi terdepan.', 'news_images/uMY2CptIfsDOG9aygeVJVCkmiEfWXa8YBsdO9ClX.jpg', '2023-09-12 19:36:04', '2023-09-12 19:36:04'),
+(2, 1, 'Peretasan Besar-Besaran Mengguncang Dunia Perbankan: Miliaran Data Nasabah Terancam', '2023-05-25', 'New York, 25 Mei 2023 - Dunia perbankan dikejutkan oleh peretasan besar-besaran yang mengancam keamanan miliaran data nasabah di seluruh dunia. Serangan siber ini terjadi pada tanggal 23 Mei, ketika sekelompok peretas berhasil meretas beberapa sistem perbankan terbesar di dunia.\r\n\r\nPara peretas, yang belum diidentifikasi, telah mengakses data pribadi dan keuangan sekitar 2 miliar nasabah dari berbagai lembaga keuangan global. Data yang dicuri termasuk nomor kartu kredit, informasi akun bank, dan informasi pribadi lainnya.\r\n\r\nKejadian ini mengingatkan dunia akan pentingnya perlindungan data dan keamanan siber. Lembaga-lembaga keuangan dan pemerintah di seluruh dunia sekarang bekerja sama untuk melacak pelaku peretasan dan mengamankan data nasabah yang terancam.\r\n\r\nCEO sebuah bank terkemuka mengatakan, \"Ini adalah pukulan besar bagi industri perbankan dan menyoroti betapa pentingnya investasi dalam keamanan siber. Kami akan bekerja keras untuk memulihkan data nasabah dan mengambil langkah-langkah tambahan untuk melindungi informasi pelanggan kami di masa depan.\"', 'news_images/Nkdbq2ET5LBhKxrBFHw9LVIW05RU6Y9DmQZGWswI.jpg', '2023-09-12 19:39:33', '2023-09-12 19:39:33'),
+(3, 1, 'Perkembangan Terbaru dalam Dunia Kecerdasan Buatan: Robot \'AlphaBot\' Mampu Belajar Secara Mandiri', '2023-08-10', 'Silicon Valley, 10 Agustus 2023 - Perusahaan teknologi terkemuka, AI Innovations, baru-baru ini mengumumkan terobosan besar dalam pengembangan kecerdasan buatan (AI). Mereka telah berhasil menciptakan robot cerdas yang dikenal sebagai \"AlphaBot\" yang memiliki kemampuan untuk belajar secara mandiri dari pengalaman.\r\n\r\nAlphaBot dilengkapi dengan sistem kecerdasan buatan yang canggih, yang memungkinkannya untuk memahami lingkungannya, berinteraksi dengan objek dan orang, serta mengejar tujuan tertentu. Yang membuatnya istimewa adalah kemampuannya untuk mengambil keputusan dan memodifikasi perilaku berdasarkan pengalaman sebelumnya.\r\n\r\nCEO AI Innovations, Sarah Johnson, mengatakan, \"AlphaBot adalah hasil kerja keras tim kami dalam menggabungkan pemahaman mendalam tentang kecerdasan buatan dengan teknologi robotik. Kami melihat potensi besar dalam penggunaan AlphaBot dalam berbagai bidang, mulai dari perawatan kesehatan hingga manufaktur.\"\r\n\r\nPara ahli teknologi berharap bahwa perkembangan seperti AlphaBot akan membawa revolusi dalam otomatisasi dan penggunaan kecerdasan buatan dalam industri masa depan. Meskipun masih dalam tahap pengembangan awal, AlphaBot telah menciptakan buzz besar dalam komunitas teknologi global.', 'news_images/GfCLdVIJSIGU7YxtaqEF0S2v3OIGpO8kpYqHYBnM.jpg', '2023-09-12 19:41:48', '2023-09-12 19:41:48');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -120,7 +129,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -137,7 +146,7 @@ CREATE TABLE `personal_access_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `personal_access_tokens`
+-- Dumping data for table `personal_access_tokens`
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
@@ -149,7 +158,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `teams`
+-- Table structure for table `teams`
 --
 
 CREATE TABLE `teams` (
@@ -168,7 +177,7 @@ CREATE TABLE `teams` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tournaments`
+-- Table structure for table `tournaments`
 --
 
 CREATE TABLE `tournaments` (
@@ -190,16 +199,20 @@ CREATE TABLE `tournaments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `tournaments`
+-- Dumping data for table `tournaments`
 --
 
 INSERT INTO `tournaments` (`id`, `user_id`, `competition_id`, `tournament`, `date`, `location`, `participants`, `challenges`, `prizes`, `contact`, `registration_fee`, `info_team`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'tes', '2023-09-19', 'l lk l', 'asdad', 'lkmklm', 'mmo', 'mmm', 'mmkni', '0', 'tournament_images/A5YON9u4mZKPSMXu5JaTsQ6Sejfn044z3zfBIsIn.png', '2023-09-07 08:06:23', '2023-09-07 08:06:23');
+(1, 1, 1, 'Meta Indonesia', '2023-09-22', 'cibinong city mall', 'maks 40 tim 1 tim terdiri 4 orang', 'gratis', 'juara 1 mendaparkan sertifikat dan uang tunai 500 rb.\r\njuara 2 mendaparkan sertifikat dan uang tunai 300 rb.\r\njuara 3 mendapatkan sertifikat dan uang tunai 50rb', '@metaverseindonesia', 'gratis', '0', 'tournament_images/bbAF1mQh7zr5yFN7oIymUG8o2sxVwXk9VZ1bAYpk.jpg', '2023-09-07 08:06:23', '2023-09-12 19:44:57'),
+(2, 1, 2, 'Indonesia Creative', '2023-09-16', 'botani square', '100 peserta', '10ribu per orang', 'juara 1 sertifikat + Rp.500.000\r\njuara 2 sertifikat + Rp.250.000\r\njuara 3 sertifikat + Rp.75.000\r\njuara 4 sertifikat', '@indonesiamaju', '10ribu per orang', '0', 'tournament_images/K3DONpJ7rAXGyqcW6YeDngdmvMTmTFtbjvHEKSpR.jpg', '2023-09-12 20:20:19', '2023-09-12 20:20:19'),
+(3, 1, 3, 'Indonesia Cerdas', '2023-09-19', 'bogor square', '20 tim, 1 tim berisikan 3 orang', 'Rp.12.000 per tim', 'juara 1 sertifikat + Rp.1.000.000\r\njuara 2 sertifikat + Rp.500.000', '@indonesiacerdas', 'Rp.12.000 per tim', '1', 'tournament_images/QknZPOUrdWMp0Q4DuJYldNndlYdZPsnGdh4fOzKP.jpg', '2023-09-12 20:22:43', '2023-09-12 20:27:59'),
+(4, 1, 4, 'Gesiah Cyber', '2023-09-17', 'btm mall', '25 peserta', 'gratis', 'juara 1 sertifikat + beasiswa\r\njuara 2 sertifikat', '@ges1ah', 'Gratis', '0', 'tournament_images/nWczOFnauqMJy69eQV9bcQaP1Adsbfvar0U9FPJJ.jpg', '2023-09-12 20:24:17', '2023-09-12 20:24:17'),
+(5, 1, 5, '+62 Pasti bisa', '2023-11-15', 'pondok indah mall', '120 peserta', 'gratis', 'juara 1 sampai juara 3 sertifikat dan beasiswa kuliah di kampus idaman', '@62pastibisa', 'Gratis', '0', 'tournament_images/gbjeU9Sg2oyaXu1tDpjomNDcJ9oIpOz8yGb71gGA.jpg', '2023-09-12 20:27:00', '2023-09-12 20:27:29');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -219,7 +232,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `hp`, `email_verified_at`, `password`, `role`, `limit`, `last_login`, `last_logout`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -233,38 +246,38 @@ INSERT INTO `users` (`id`, `name`, `email`, `hp`, `email_verified_at`, `password
 --
 
 --
--- Indeks untuk tabel `competitions`
+-- Indexes for table `competitions`
 --
 ALTER TABLE `competitions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -272,72 +285,72 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `teams`
+-- Indexes for table `teams`
 --
 ALTER TABLE `teams`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tournaments`
+-- Indexes for table `tournaments`
 --
 ALTER TABLE `tournaments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `competitions`
+-- AUTO_INCREMENT for table `competitions`
 --
 ALTER TABLE `competitions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `teams`
+-- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tournaments`
+-- AUTO_INCREMENT for table `tournaments`
 --
 ALTER TABLE `tournaments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;

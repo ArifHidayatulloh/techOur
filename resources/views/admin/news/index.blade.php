@@ -23,6 +23,10 @@
                 margin: 10px;
                 margin-top: -15px;
             }
+
+            .content .table{
+                width: 50rem;
+            }
         }
     </style>
 
@@ -34,16 +38,16 @@
                 </div>
             @endif
         </div>
-        <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center w-75 ">
+        <div class="d-flex justify-content-center content mb-5">
+            <table class="table caption-top text-center ms-5 me-5">
                 <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4">+ Add
                         News</a>
                 </caption>
                 <thead class="table-light">
                     <tr>
                         <th>Pembuat</th>
-                        <th class="w-25">Judul</th>
-                        <th class="w-50">Detail</th>
+                        <th>Judul</th>
+                        <th>Detail</th>
                         <th>Tanggal</th>
                         <th>Poster</th>
                         <th>Action</th>
@@ -54,8 +58,8 @@
                         <tr class="align-middle">
                             <td>{{ $item->user->name }}</td>
                             <td class="title">{{ $item->title }}</td>
-                            <td class="text-break p-3" id="text-news">
-                                {{ $item->content }}
+                            <td>
+                                {{ Str::limit($item->content, '150', '...')}}
                             </td>
                             <td>{{ $item->date }}</td>
                             <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 80px"></td>
@@ -83,17 +87,6 @@
         </div>
 
         <script>
-            const textNews = document.getElementById("text-news");
-
-            const text = textNews.textContent;
-
-            const kalimatArray = text.split(".");
-
-            if (kalimatArray.length > 1) {
-                const kalimatTerkondensasi = kalimatArray.slice(0, 1).join(".") + "...";
-                textNews.textContent = kalimatTerkondensasi;
-            }
-
             document.getElementById('show-popup').addEventListener('click', function() {
                 document.getElementById('popup').style.display = 'block';
             });

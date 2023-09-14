@@ -75,7 +75,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger w-100" type="submit"><i
-                                                    class='bx bx-trash bx-sm' style="color: black"></i></button>
+                                                    class='bx bx-trash bx-sm'></i></button>
                                         </form>
                                     </div>
                                 </div>

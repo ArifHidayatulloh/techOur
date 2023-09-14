@@ -13,49 +13,49 @@
     </head>
 
     <style>
-        .content{
-        margin: 2rem;
-    }
-
-    .team{
-        padding: 0;
-        font-size: 17px;
-    }
-
-    .dropdown-menu{
-        display: none;
-        margin-top: 7px;
-        margin-left: -30px;
-    }   
-
-    .dropdown-menu li a{
-        text-decoration: none;
-        text-align: center;
-        color: black;
-    }
-
-    .dropdown-menu li:hover {
-        background-color: rgb(241, 241, 241);
-      }
-
-    .nav-item:hover .dropdown-menu {
-        display: block;
-        cursor: pointer;
-    }
-
-    @media screen and (max-width: 796px){
-        .content{
-            top: 0;
-            margin: 1rem;
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
+        .content {
+            margin: 2rem;
         }
 
-        .content .table {
-            width: 70rem;
+        .team {
+            padding: 0;
+            font-size: 17px;
         }
-    }
+
+        .dropdown-menu {
+            display: none;
+            margin-top: 7px;
+            margin-left: -30px;
+        }
+
+        .dropdown-menu li a {
+            text-decoration: none;
+            text-align: center;
+            color: black;
+        }
+
+        .dropdown-menu li:hover {
+            background-color: rgb(241, 241, 241);
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 796px) {
+            .content {
+                top: 0;
+                margin: 1rem;
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+            }
+
+            .content .table {
+                width: 70rem;
+            }
+        }
     </style>
 
     <body>
@@ -110,14 +110,13 @@
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger" type="submit"><i
-                                                    class='bx bx-trash bx-sm' style="color: black"></i></button>
+                                                    class='bx bx-trash bx-sm'></i></button>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <ul class="team">
-                                        <li
-                                            class="nav-item dropdown border p-1 list-unstyled rounded border border-secondary">
+                                        <li class="nav-item dropdown p-1 list-unstyled rounded border border-secondary">
                                             <a class="nav-link dropdown-toggle text-dark" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 team

@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center w-75 m-5 justify-content-center">
+            <table class="table caption-top text-center w-75 justify-content-center">
                 <caption><a href="{{ route('team.index') }}" class="fw-bold text-decoration-none text-success fs-4">Team</a>
                 </caption>
                 <thead class="table-light">
@@ -43,7 +43,7 @@
                 </thead>
                 <tbody>
                     @foreach ($team as $item)
-                        <tr>
+                        <tr class="align-middle">
                             <td>{{ $item->tournament->tournament }}</td>
                             <td>{{ $item->team }}</td>
                             <td>{{ $item->member }}</td>
@@ -53,8 +53,7 @@
                                 <form action="{{ route('team.destroy', $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-outline-danger" type="submit"><i class='bx bx-trash bx-sm'
-                                            style="color: black"></i></button>
+                                    <button class="btn btn-outline-danger" type="submit"><i class='bx bx-trash bx-sm'></i></button>
                                 </form>
                             </td>
                         </tr>

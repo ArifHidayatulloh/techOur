@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center w-75 m-5 justify-content-center">
+            <table class="table caption-top text-center w-75 justify-content-center">
                 <caption><a href="{{ route('team.index') }}" class="fw-bold text-decoration-none text-success fs-4">Team</a>
                 </caption>
                 <thead class="table-light">
@@ -44,25 +44,28 @@
                 </thead>
                 <tbody>
                     @foreach ($team as $item)
-                        <tr>
+                        <tr class="align-middle">
                             <td>{{ $item->tournament->tournament }}</td>
                             <td>{{ $item->team }}</td>
                             <td>{{ $item->member }}</td>
                             <td>{{ $item->contact }}</td>
                             <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 50px;"></td>
                             <td>
-                                <form action="{{ route('antrian.ubah', ['id' => $item->id]) }}" method="post"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button class="btn btn-outline-primary" role="button" type="submit">approve</button>
-                                </form>
-                                <form action="{{ route('antrian.destroy', $item->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-outline-danger mt-1" type="submit"><i class='bx bx-trash bx-sm'
-                                            style="color: black"></i></button>
-                                </form>
+                                <div class="d-flex gap-2 p-3 w-100 justify-content-center">
+                                    <form action="{{ route('antrian.ubah', ['id' => $item->id]) }}" method="post"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button class="btn btn-outline-primary" role="button" type="submit"><i
+                                                class='bx bx-check bx-sm'></i></button>
+                                    </form>
+                                    <form action="{{ route('antrian.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger" type="submit"><i
+                                                class='bx bx-trash bx-sm'></i></button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

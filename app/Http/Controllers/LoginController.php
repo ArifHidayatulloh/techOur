@@ -15,7 +15,14 @@ class LoginController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect('home');
+            if (Auth::user()->role == 'user') {
+                Auth::logout();
+                return redirect('/')->with('error','email atau password salah');
+
+            }
+            else{
+                return redirect('home');
+            }
         } else {
             return view('login');
         }
@@ -28,11 +35,15 @@ class LoginController extends Controller
             'password' => $request->password
         );
         
-        if (Auth::attempt($data)) { 
-            $user = Auth::user();
-            $user->last_login = now();
-            $user->save();
-            return redirect('home');
+        if (Auth::attempt($data)) {
+            if (Auth::user()->role != 'user') {
+                $user = Auth::user();
+                $user->last_login = now();
+                $user->save();
+                return redirect('home');
+            } else{
+                return back()->with('error','email atau password salah');    
+            }
         }
         else{
             return back()->with('error','email atau password salah');

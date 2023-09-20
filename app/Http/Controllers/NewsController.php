@@ -15,8 +15,12 @@ class NewsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $news = News::where('user_id', Auth::user()->id)->get();
+    {   
+        if(Auth::user()->role == 'admin'){
+            $news = News::all();
+        }else{
+            $news = News::where('user_id', Auth::user()->id)->get();
+        }
         return view('admin.news.index', compact('news'));
     }
 

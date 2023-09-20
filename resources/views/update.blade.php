@@ -46,14 +46,6 @@
                             <label for="floatingInput">No Telpon</label>
                         </div>
 
-                        <!-- Password input -->
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                                name="password" value="{{ $user->password }}">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-
-
                         {{-- Limit --}}
                         <div class="form-floating mb-4">
                             <input type="number" class="form-control" id="floatingInput" placeholder="Limit" name="limit" value="{{ $user->limit }}">
@@ -62,9 +54,14 @@
 
                         <select class="form-select form-select-lg" style="font-size: 17px" aria-label="Large select example"
                             name="role" value="{{ $user->role }}">
-                            <option selected>Choose Role</option>
-                            <option value="sub admin">Sub Admin</option>
-                            <option value="admin">Admin</option>
+                            @if ($user->role != null)
+                            <option selected value="{{ $user->role }}">{{ $user->role }}</option>
+                            <option value="admin">admin</option>
+                            <option value="sub admin">sub admin</option>
+                            @else
+                            <option value="admin">admin</option>
+                            <option value="sub admin">sub admin</option>
+                            @endif
                         </select>
 
                         <div class="text-center text-lg-start mt-4 pt-2">

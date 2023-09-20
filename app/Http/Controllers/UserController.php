@@ -103,7 +103,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'hp' => 'required',
-            'password' => 'required',
+            // 'password' => 'required',
             'role' => 'required',
             'limit' => 'required'
         ]);
@@ -111,7 +111,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->hp = $request->hp;
-        $user->password = bcrypt($request->password);
+        // $user->password = bcrypt($request->password);
         $user->role = $request->role;
         $user->limit = $request->limit;
 

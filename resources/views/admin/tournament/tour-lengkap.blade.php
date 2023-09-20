@@ -14,7 +14,8 @@
 
     <style>
         .content {
-            margin: 2rem;
+            margin: 1rem;
+            width: auto;
         }
 
         .team {
@@ -59,10 +60,10 @@
     </style>
 
     <body>
+        <a href="{{ route('tournament.create') }}"
+            class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-4 mt-4">+Add Tournament</a>
         <div class="d-flex justify-content-center content" id="content">
-            <table class="table caption-top text-center">
-                <caption><a href="{{ route('tournament.create') }}"
-                        class="fw-bold text-decoration-none text-success fs-4">+Add Tournament</a></caption>
+            <table class="table text-center">
                 <thead class="table-light">
                     <tr>
                         <th>User</th>
@@ -85,8 +86,8 @@
                             <td>{{ $item->tournament }}</td>
                             <td>{{ $item->location }}</td>
                             <td>{{ $item->date }}</td>
-                            <td id="long-text">{{ $item->challenges }}</td>
-                            <td id="long-text">{{ $item->prizes }}</td>
+                            <td>{{ $item->challenges }}</td>
+                            <td style="white-space: pre-wrap;">{{ $item->prizes }}</td>
                             <td>{{ $item->contact }}</td>
                             <td>{{ $item->registration_fee }}</td>
                             <td>
@@ -99,7 +100,7 @@
                             <td><img src="{{ asset('storage/' . $item->image) }}" alt="" style="width: 50px;">
                             </td>
                             <td>
-                                <div class="d-flex gap-2 p-3 w-100 justify-content-center">
+                                <div class="d-flex gap-2 p-2 mt-3 w-100 justify-content-center">
                                     <div class="update" id="show-update">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="{{ route('tournament.edit', $item->id) }}">
@@ -114,8 +115,8 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    <ul class="team">
+                                <div class="d-flex ms-2 w-100 justify-content-center">
+                                    <ul class="team w-100">
                                         <li class="nav-item dropdown p-1 list-unstyled rounded border border-secondary">
                                             <a class="nav-link dropdown-toggle text-dark" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -139,16 +140,6 @@
 
 
         <script>
-            const longText = document.getElementById("long-text");
-
-            const text = longText.textContent;
-
-            const kalimatArray = text.split(".");
-
-            if (kalimatArray.length > 1) {
-                const kalimatTerkondensasi = kalimatArray.slice(0, 1).join(".") + "...";
-                longText.textContent = kalimatTerkondensasi;
-            }
 
             /* FORM ADD */
             function previewImage(event) {

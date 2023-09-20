@@ -50,24 +50,43 @@
                             <a href="{{ route('competition.index') }}"><img src="{{ 'assets/image/category-comp.png' }}"
                                     alt=""></a>
                         </div>
-                    @else
-                    @endif
-                    <div class="box">
-                        <center><a href="{{ route('tournament.index') }}" class="link">TOURNAMENT</a></center>
-                        <a href="{{ route('tournament.index') }}"><img src="{{ 'assets/image/code.png' }}"
-                                alt=""></a>
-                    </div>
-                    <div class="box">
-                        <center><a href="{{ route('news.index') }}" class="link">NEWS</a></center>
-                        <a href="{{ route('news.index') }}"><img src="{{ 'assets/image/news.png' }}"
-                                alt=""></a>
-                    </div>
-                    @if (Auth::user()->role == 'admin')
+                        <div class="box">
+                            <center><a href="{{ route('tournament.index') }}" class="link">TOURNAMENT</a></center>
+                            <a href="{{ route('tournament.index') }}"><img src="{{ 'assets/image/code.png' }}"
+                                    alt=""></a>
+                        </div>
+                        <div class="box">
+                            <center><a href="{{ route('news.index') }}" class="link">NEWS</a></center>
+                            <a href="{{ route('news.index') }}"><img src="{{ 'assets/image/news.png' }}"
+                                    alt=""></a>
+                        </div>
                         <div class="box">
                             <center><a href="{{ route('users.index') }}" class="link">User Control</a></center>
                             <a href="{{ route('users.index') }}"><img src="{{ 'assets/image/team.png' }}"
                                     alt=""></a>
                         </div>
+                    @elseif(Auth::user()->role == 'sub admin')
+                        <div class="box">
+                            <center><a href="{{ route('tournament.index') }}" class="link">TOURNAMENT</a></center>
+                            <a href="{{ route('tournament.index') }}"><img src="{{ 'assets/image/code.png' }}"
+                                    alt=""></a>
+                        </div>
+                        <div class="box">
+                            <center><a href="{{ route('news.index') }}" class="link">NEWS</a></center>
+                            <a href="{{ route('news.index') }}"><img src="{{ 'assets/image/news.png' }}"
+                                    alt=""></a>
+                        </div>
+                        @elseif(Auth::user() == null)
+                        <script>
+                            var info = 'Session telah habis, kembali login'
+                            alert(info)
+                            document.location.href="{{ route('login') }}"
+                        </script>
+                        
+
+                    @endif
+
+                    @if (Auth::user()->role == 'admin')
                     @else
                     @endif
                 </div>

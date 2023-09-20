@@ -20,6 +20,10 @@
             width: 75%;
         }
 
+        .caption {
+            margin-left: 10rem;
+        }
+
         .btn {
             width: 50%;
         }
@@ -32,6 +36,10 @@
                 margin-top: -15px;
             }
 
+            .caption {
+                margin-left: 0;
+            }
+
             .content .table {
                 width: 50rem;
             }
@@ -39,19 +47,18 @@
     </style>
 
     <body>
-        <div class="sesion d-flex justify-content-center mt-5">
+        <div class="sesion d-flex justify-content-center mt-4">
             @if (session('success'))
                 <div class="alert alert-success w-75">
                     {{ session('success') }}
                 </div>
             @endif
         </div>
-        <div class="d-flex justify-content-center content">
-            <table class="table caption-top text-center">
-                <caption><a href="{{ route('users.create') }}" class="fw-bold text-decoration-none text-success fs-4">+Add
-                        User</a>
-                </caption>
-
+        <a href="{{ route('users.create') }}"
+            class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3">+Add
+            User</a>
+        <div class="d-flex justify-content-center content mb-3">
+            <table class="table text-center">
                 <thead class="table-light">
                     <tr>
                         <th>Name</th>

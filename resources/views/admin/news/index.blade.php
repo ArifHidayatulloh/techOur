@@ -17,10 +17,14 @@
         }
 
         @media screen and (max-width: 796px) {
+            .caption{
+                margin-bottom: 5rem;
+            }
+
             .content {
                 flex-direction: column;
                 overflow: auto;
-                margin: 10px;
+                margin: 7px;
                 margin-top: -15px;
             }
 
@@ -31,18 +35,17 @@
     </style>
 
     <body>
-        <div class="sesion d-flex justify-content-center mt-5">
+        <div class="sesion d-flex justify-content-center mt-4">
             @if (session('success'))
                 <div class="alert alert-success w-75">
                     {{ session('success') }}
                 </div>
             @endif
         </div>
+        <a href="{{ route('news.create') }}" class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Add
+            News</a>
         <div class="d-flex justify-content-center content mb-5">
-            <table class="table caption-top text-center ms-5 me-5">
-                <caption><a href="{{ route('news.create') }}" class="fw-bold text-decoration-none text-success fs-4">+ Add
-                        News</a>
-                </caption>
+            <table class="table text-center ms-5 me-5">
                 <thead class="table-light">
                     <tr>
                         <th>Pembuat</th>

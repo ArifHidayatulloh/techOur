@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/',[LoginController::class,'login'])->name('login');
 Route::post('/login',[LoginController::class,'actionlogin'])->name('actionlogin');
 
@@ -60,3 +59,15 @@ Route::post('/news/update/{news}',[NewsController::class,'update']);
 Route::delete('/news/{news}',[NewsController::class,'destroy'])->name('news.destroy');
 
 Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');
+
+Route::get('/password', function () {
+    return view('password');
+});
+
+Route::get('/list-paket', function () {
+    return view('admin/list-paket/index');
+});
+
+Route::get('/view', function () {
+    return view('admin/user/view');
+});

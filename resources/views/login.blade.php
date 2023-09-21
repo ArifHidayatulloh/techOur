@@ -9,20 +9,21 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <style>
-    @media screen and (max-width: 796px){
-        .row{
-            height: 100%;
-            flex-direction: column;
-        }
+    .body{
+        background-color: #303234;
+        height: 100vh;
+    }
 
-        .row-form{
-            margin-top: 2rem;
+    @media screen and (max-width: 796px){
+        .body{
+            background-color: #F6F6F6;
+            flex-direction: column;
         }
     }
 </style>
 
 <body>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh; background-color: #303234">
+    <div class="body d-flex justify-content-center align-items-center">
         <div class="row d-flex justify-content-center align-items-center p-5 rounded" style="background-color: #f6f6f6">
             @if (session()->has('error'))
                 <div class="alert alert-danger">

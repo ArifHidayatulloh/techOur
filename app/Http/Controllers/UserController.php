@@ -43,8 +43,10 @@ class UserController extends Controller
             'hp' => 'required',
             'password' => 'required',
             'role' => 'required',
-            'limit' => 'required'
+            // 'limit' => 'required'
+            // 'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
+        
 
         $existingUser = User::where('email', $request->email)->first();
 
@@ -52,13 +54,16 @@ class UserController extends Controller
             return back()->with('errors', 'Email sudah terdaftar');
         }
 
+        // $imagePath = $request->file('image')->store('user_images','public');
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'hp' => $request->hp,
             'password' => bcrypt($request->password),
             'role' => $request->role,
-            'limit' => $request->limit
+            // 'limit' => $request->limit,
+            // 'image' => $imagePath
         ]);
 
         return redirect()->route('users.index')->with('success','Added Account Successfully');
@@ -103,7 +108,6 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'hp' => 'required',
-            // 'password' => 'required',
             'role' => 'required',
             'limit' => 'required'
         ]);
@@ -111,7 +115,6 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->hp = $request->hp;
-        // $user->password = bcrypt($request->password);
         $user->role = $request->role;
         $user->limit = $request->limit;
 

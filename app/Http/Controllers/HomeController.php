@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -22,12 +23,27 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg',
         ]);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
+        if ($user->image == null) {
+            $imagePath = $request->file('image')->store('user_images','public');
+            $user->name = $request->name;
+            $user->email = $request->email; 
+            $user->image = $imagePath;
+            $user->save();
+            
+        }
+        elseif($request->hasFile('image')){
+            Storage::disk('public')->delete($user->image);
+            $imagePath = $request->file('image')->store('user_images','public');
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->image = $imagePath;
+            $user->save();
+        }
 
+       
         return redirect()->back()->with('successProfile','Berhasil mengubah profile');
     }
 

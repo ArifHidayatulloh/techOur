@@ -25,7 +25,7 @@
                         <div class="d-flex flex-row align-items-center justify-content-center">
                             <p class="lead fw-bold mb-3">Update</p>
                         </div>
-
+                        
                         <!-- Email name -->
                         <div class="form-floating mb-4">
                             <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name"

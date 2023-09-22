@@ -63,12 +63,6 @@
                             <input type="checkbox" onclick="myFunction()" class="ms-1"> show password
                         </div>
 
-                        {{-- Limit --}}
-                        <div class="form-floating mb-4">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="limit">
-                            <label for="floatingInput">Limit</label>
-                        </div>
-
                         <select class="form-select form-select-lg" style="font-size: 17px" aria-label="Large select example"
                             name="role">
                             <option selected>Choose Role</option>

@@ -41,7 +41,7 @@
 
 .listmenu ul {
     display: flex;
-    margin-left: 550px;
+    margin-left: 450px;
     font-size: 13px;
 }
 
@@ -90,10 +90,10 @@
     text-align: center;
     color: black;
 }
-
+/* 
 .dropdown-menu li:hover {
     background-color: rgb(241, 241, 241);
-}
+} */
 
 .nav-item:hover .dropdown-menu {
     display: block;
@@ -129,7 +129,12 @@
     #check:checked ~ .listmenu ul {
         display: flex;
         font-size: 12px;
-        margin-left: 0;
+        margin-left: -20px;
+    }
+
+    .listmenu li a:before, .listmenu ul li a:hover::before{
+        background-color: transparent;
+        transition: none;
     }
 
     #check:checked ~ .listmenu ul li {

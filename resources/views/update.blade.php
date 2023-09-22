@@ -10,6 +10,7 @@
         <title>update page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     </head>
 
     <body>
@@ -48,19 +49,20 @@
 
                         {{-- Limit --}}
                         <div class="form-floating mb-4">
-                            <input type="number" class="form-control" id="floatingInput" placeholder="Limit" name="limit" value="{{ $user->limit }}">
+                            <input type="number" class="form-control" id="floatingInput" placeholder="Limit" name="limit"
+                                value="{{ $user->limit }}">
                             <label for="floatingInput">Limit</label>
                         </div>
 
                         <select class="form-select form-select-lg" style="font-size: 17px" aria-label="Large select example"
                             name="role" value="{{ $user->role }}">
                             @if ($user->role != null)
-                            <option selected value="{{ $user->role }}">{{ $user->role }}</option>
-                            <option value="admin">admin</option>
-                            <option value="sub admin">sub admin</option>
+                                <option selected value="{{ $user->role }}">{{ $user->role }}</option>
+                                <option value="admin">admin</option>
+                                <option value="sub admin">sub admin</option>
                             @else
-                            <option value="admin">admin</option>
-                            <option value="sub admin">sub admin</option>
+                                <option value="admin">admin</option>
+                                <option value="sub admin">sub admin</option>
                             @endif
                         </select>
 

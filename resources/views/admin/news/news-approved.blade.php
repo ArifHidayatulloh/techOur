@@ -10,7 +10,7 @@
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>index</title>
+        <title>News Approve</title>
     </head>
     <style>
         .title {
@@ -45,12 +45,6 @@
         </div>
         <a href="{{ route('news.create') }}" class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Add
             News</a>
-        @if (Auth::user()->role == 'admin')
-        <a href="{{ route('news.pending') }}" class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Approve
-            News</a>
-        @else
-            
-        @endif
         <div class="d-flex justify-content-center content mb-5">
             <table class="table text-center ms-5 me-5">
                 <thead class="table-light">
@@ -78,9 +72,13 @@
                             <td>
                                 <div class="d-grid gap-2 p-3 text-center">
                                     <div class="update">
-                                        <a class="btn btn-outline-warning" type="button"
-                                            href="{{ route('news.edit', $item->id) }}"><i class='bx bxs-edit-alt bx-sm'
-                                                style="color: black"></i></a>
+                                        <form action="{{ route('news.approve', ['id' => $item->id]) }}" method="post"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button class="btn btn-outline-primary" role="button" type="submit"><i
+                                                    class='bx bx-check bx-sm'></i></button>
+                                        </form>
                                     </div>
                                     <div class="delete">
                                         <form action="{{ route('news.destroy', $item->id) }}" method="post">

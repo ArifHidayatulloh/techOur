@@ -57,6 +57,8 @@ Route::post('/news',[NewsController::class,'store'])->name('news.store')->middle
 Route::get('/news/{news}/edit',[NewsController::class,'edit'])->name('news.edit');
 Route::post('/news/update/{news}',[NewsController::class,'update']);
 Route::delete('/news/{news}',[NewsController::class,'destroy'])->name('news.destroy');
+Route::get('/news/pending',[NewsController::class,'pending'])->name('news.pending');
+Route::patch('/news/approved/{id}',[NewsController::class,'approved'])->name('news.approve');
 
 Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');
 

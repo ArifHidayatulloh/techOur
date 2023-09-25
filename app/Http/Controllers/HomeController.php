@@ -23,23 +23,29 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg',
+            // 'image' => 'required|image|mimes:jpg,png,jpeg',
         ]);
 
         if ($user->image == null) {
-            $imagePath = $request->file('image')->store('user_images','public');
             $user->name = $request->name;
             $user->email = $request->email; 
-            $user->image = $imagePath;
+            if($request->hasFile('image') != null){
+                $imagePath = $request->file('image')->store('user_images','public');
+                $user->image = $imagePath;
+            }
             $user->save();
             
         }
-        elseif($request->hasFile('image')){
+        elseif($request->hasFile('image') != null){
             Storage::disk('public')->delete($user->image);
             $imagePath = $request->file('image')->store('user_images','public');
             $user->name = $request->name;
             $user->email = $request->email;
             $user->image = $imagePath;
+            $user->save();
+        }else{
+            $user->name = $request->name;
+            $user->email = $request->email;
             $user->save();
         }
 

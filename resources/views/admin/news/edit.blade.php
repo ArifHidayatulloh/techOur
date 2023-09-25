@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="input-news">
                                     <span class="details">Poster</span>
-                                    <input type="file" style="box-shadow:none; border:none;" required name="image"
+                                    <input type="file" style="box-shadow:none; border:none;" name="image"
                                         id="inputFile">
                                 </div>
                                 <div class="output">

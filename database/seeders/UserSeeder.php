@@ -22,7 +22,6 @@ class UserSeeder extends Seeder
             'hp' => '089684914092',
             'password' => Hash::make('techour'),
             'role' => 'admin',
-            'limit' => 0
         ]);
     }
 }

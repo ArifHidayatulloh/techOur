@@ -49,10 +49,6 @@ body{
   color: black;
 }
 
-.dropdown-menu li:hover {
-  background-color: rgb(241, 241, 241);
-} 
-
 .nav-item:hover .dropdown-menu {
   display: block;
   cursor: pointer;

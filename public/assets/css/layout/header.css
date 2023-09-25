@@ -132,9 +132,15 @@
         margin-left: -20px;
     }
 
-    .listmenu li a:before, .listmenu ul li a:hover::before{
+    .listmenu li a:before,
+    .listmenu ul li a:hover::before {
         background-color: transparent;
         transition: none;
+    }
+
+    .listmenu ul li a:hover {
+       color: white;
+       text-shadow: 3px 5px 8px black;
     }
 
     #check:checked ~ .listmenu ul li {

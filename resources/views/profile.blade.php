@@ -17,6 +17,7 @@
     <style>
         .card {
             width: 20rem;
+            height: 25rem;
         }
 
         @media screen and (max-width: 796px) {
@@ -38,11 +39,11 @@
                 <div class="card-img text-center">
                     <img src="{{ asset('assets/image/team.jpg') }}" class="mt-5 mb-3 rounded-circle w-75" alt="...">
                 </div>
-                <div class="card-body text-center">
+                <div class="text-center">
                     <h5 class="card-title fs-4">{{ Auth::user()->name }}</h5>
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
                 </div>
-                <div class="card-btn bg-body-tertiary mb-3 p-1 text-center">
+                <div class="card-btn bg-body-tertiary mb-3 mt-3 p-1 text-center">
                     <a href="/password" class="text-decoration-none text-dark">ubah sandi</i></a>
                 </div>
             </div>

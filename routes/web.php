@@ -70,6 +70,10 @@ Route::get('/list-paket', function () {
     return view('admin/list-paket/index');
 });
 
+Route::get('/create', function () {
+    return view('admin/list-paket/create');
+});
+
 Route::get('/view', function () {
     return view('admin/user/view');
 });

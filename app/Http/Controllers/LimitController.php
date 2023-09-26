@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LimitController extends Controller
 {
@@ -18,6 +20,27 @@ class LimitController extends Controller
         return view('admin.list-paket.index',compact('limit'));
     }
 
+    public function buyLimit(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'limit' => 'required',
+            'prize' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg'
+        ]);
+
+        $imagePath = $request->file('image')->store('payment_images', 'public');
+
+        History::create([
+            'user_id' => Auth::user()->id,
+            'name' => $request->name,
+            'limit' => $request->limit,
+            'prize' => $request->prize,
+            'image' => $imagePath,
+            'status' => 'pending'
+        ]);
+
+        return redirect()->back()->with('success', 'Buying limit success. Wait approve from admin');
+    }
     /**
      * Show the form for creating a new resource.
      *

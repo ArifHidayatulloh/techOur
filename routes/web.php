@@ -3,12 +3,14 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AntrianTeamController;
 use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LimitController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
+use App\Models\History;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,6 +65,10 @@ Route::patch('/news/approved/{id}',[NewsController::class,'approved'])->name('ne
 
 Route::get('/limit',[LimitController::class,'index'])->name('limit.index');
 Route::post('/limit/store',[LimitController::class,'store'])->name('limit.store');
+Route::post('/limit/buy',[LimitController::class,'buyLimit'])->name('buyLimit');
+Route::get('/limit/pending',[HistoryController::class,'index'])->name('limit.pending');
+Route::patch('/limit/approved/{id}', [HistoryController::class, 'approve'])->name('limit.approve');
+Route::patch('/limit/fail/{id}', [HistoryController::class, 'fail'])->name('limit.fail');
 
 Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');
 
@@ -80,4 +86,8 @@ Route::get('/create', function () {
 
 Route::get('/view', function () {
     return view('admin/user/view');
+});
+
+Route::get('/approve-limit', function () {
+    return view('admin/list-paket/approve');
 });

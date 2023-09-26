@@ -88,11 +88,14 @@
     </style>
 
     <body>
-        @if (Auth::user()->role == 'admin')
-            <a href="#" class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3 mt-4"
-                onclick="button()">+Add Limit</a>
-        @endif
+        <div class="d-flex">
+            @if (Auth::user()->role == 'admin')
+                <a href="#" class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3 mt-4"
+                    onclick="button()">+Add Limit</a>
 
+                <a style="margin-left: 65rem;" href="{{route('limit.pending')}}" class="btn btn-outline-success mt-4 mb-3 ">Approve</a>
+            @endif
+        </div>
         <div class="body d-flex">
             @if (Auth::user()->role == 'admin')
                 <div class="d-flex justify-content-left content">
@@ -149,12 +152,12 @@
                                     </div>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-success badge rounded-pill d-inline"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal{{ $item->id }}">
                                         Rp. {{ $item->prize }}
                                     </button>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -163,31 +166,34 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <form action="">
+                                                <form action="{{ route('buyLimit') }}" method="post"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
                                                     <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
                                                         style="height: 5rem">
-                                                        <div class="d-flex flex-column">
-                                                            <label for="exampleInputEmail1"
-                                                                class="form-label fw-bold">{{ $item->name }}</label>
-                                                            <label for="exampleInputPassword1" class="form-label">Limit
-                                                                {{ $item->limit }}</label>
+                                                        <div class="d-flex flex-column border-none">
+                                                            <input type="text" class="form-label fw-bold border-0"
+                                                                name="name" value="{{ $item->name }}">
+                                                            <input type="text" class="form-label border-0" name="limit"
+                                                                value="{{ $item->limit }}">
                                                         </div>
                                                         <div>
-                                                            <label for="exampleInputPassword1"
-                                                                class="form-label text-success fw-bold align-middle">Rp.
-                                                                {{ $item->prize }}</label>
+                                                            <input type="text"
+                                                                class="form-label text-success fw-bold border-0 w-50"
+                                                                name="prize" value="{{ $item->prize }}">
                                                         </div>
                                                     </div>
                                                     <div class="mb-3 form-check me-3">
                                                         <label for="formFile" class="form-label">Bukti Tf</label>
-                                                        <input class="form-control" type="file" id="inputFile">
-                                                        <img src="" class="w-25 mt-3" alt="" id="review">
+                                                        <input class="form-control" type="file" id="inputFile"
+                                                            name="image">
+                                                        <img src="" class="w-25 mt-3" alt=""
+                                                            id="review">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save
-                                                            changes</button>
+                                                        <button type="submit" class="btn btn-primary">Buy</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -202,6 +208,13 @@
             @if (session('successAdd'))
                 <script>
                     var info = "{{ session('successAdd') }}"
+                    alert(info)
+                </script>
+            @endif
+
+            @if (session('success'))
+                <script>
+                    var info = "{{ session('success') }}"
                     alert(info)
                 </script>
             @endif

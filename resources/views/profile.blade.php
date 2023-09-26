@@ -37,7 +37,12 @@
         <div class="body d-flex">
             <div class="card m-5 p-3">
                 <div class="card-img text-center">
-                    <img src="{{ asset('assets/image/team.jpg') }}" class="mt-5 mb-3 rounded-circle w-75" alt="...">
+                    @if (Auth::user()->image == null)
+                        <img src="{{ url('assets/image/it/user.png') }}" alt="" style="width: 250px;height:250px">
+                    @else
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
+                            style="width: 250px; border-radius:50%; height:250px;">
+                    @endif
                 </div>
                 <div class="text-center">
                     <h5 class="card-title fs-4">{{ Auth::user()->name }}</h5>
@@ -62,11 +67,11 @@
 
                     <div class="d-flex justify-content-center mb-4">
                         @if (Auth::user()->image == null)
-                        <img src="{{ url('assets/image/it/user.png') }}"
-                            alt="" style="width: 250px;height:250px">
+                            <img src="{{ url('assets/image/it/user.png') }}" alt=""
+                                style="width: 250px;height:250px">
                         @else
-                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                            style="width: 250px; border-radius:50%; height:250px;">
+                            <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
+                                style="width: 250px; border-radius:50%; height:250px;">
                         @endif
                     </div>
                     <div class="input-group mb-4">

@@ -92,6 +92,11 @@
                             <a href="{{ route('news.index') }}"><img src="{{ 'assets/image/news.png' }}"
                                     alt=""></a>
                         </div>
+                        <div class="box">
+                            <center><a href="{{ route('limit.index') }}" class="link">LIMIT PACKAGE</a></center>
+                            <a href="{{ route('limit.index') }}"><img src="{{ 'assets/image/news.png' }}"
+                                    alt=""></a>
+                        </div>
                     @elseif(Auth::user() == null)
                         <script>
                             var info = 'Session telah habis, kembali login'

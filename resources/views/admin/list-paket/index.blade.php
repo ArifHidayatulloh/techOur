@@ -18,7 +18,7 @@
             display: none;
             border: 1px solid black;
             border-radius: 10px;
-            height: 80%;
+            height: 100%;
             margin-left: 5rem;
             margin-right: 3rem;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -104,24 +104,25 @@
 
                         <!-- FORM -->
                         <div class="form">
-                            <form action="#" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('limit.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="tmbh-limit">
                                     <div class="input-limit">
                                         <span class="details fw-bold">Name</span>
-                                        <input type="text" size="22" required name="limit" autocomplete="off">
+                                        <input type="text" size="22" required name="name" autocomplete="off">
                                     </div>
                                     <div class="input-limit">
                                         <span class="details fw-bold">Limit</span>
-                                        <input type="text" size="22" required name="limit" autocomplete="off">
+                                        <input type="number" size="22" required name="limit" autocomplete="off">
                                     </div>
                                     <div class="input-limit">
                                         <span class="details fw-bold">Harga</span>
-                                        <input type="text" size="22" required name="limit" autocomplete="off">
+                                        <input type="text" size="22" required name="prize" autocomplete="off">
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-center gap-2 mt-4 mb-4">
-                                    <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
-                                    <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
+                                    <div class="d-flex justify-content-center gap-2 mt-4 mb-4">
+                                        <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
+                                        <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -130,110 +131,83 @@
             @else
             @endif
 
+
+            @php
+                $chunkedLimits = $limit->chunk(4);
+            @endphp
             <div class="card justify-content-left" id="kotak">
-                <div class="card-body">
-                    <ul class="list-group list-group-light">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-light">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-light">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <div class="ms-3">
-                                    <p class="fw-bold mb-1">Paket 1</p>
-                                    <p class="text-muted mb-0">Limit 10</p>
-                                </div>
-                            </div>
-                            <span class="badge rounded-pill bg-success ms-5">Rp. 2.000</span>
-                        </li>
-                    </ul>
-                </div>
+                @foreach ($chunkedLimits as $chunk)
+                    <div class="card-body">
+                        @foreach ($chunk as $item)
+                            <ul class="list-group list-group-light">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <div class="ms-3">
+                                            <p class="fw-bold mb-1">{{ $item->name }}</p>
+                                            <p class="text-muted mb-0">Limit {{ $item->limit }}</p>
+                                        </div>
+                                    </div>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Rp. {{ $item->prize }}
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Buy Limit</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <form action="">
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputEmail1" class="form-label">Email
+                                                                address</label>
+                                                            <input type="email" class="form-control"
+                                                                id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                            <div id="emailHelp" class="form-text">We'll never share your
+                                                                email with anyone else.</div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputPassword1"
+                                                                class="form-label">Password</label>
+                                                            <input type="password" class="form-control"
+                                                                id="exampleInputPassword1">
+                                                        </div>
+                                                        <div class="mb-3 form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="exampleCheck1">
+                                                            <label class="form-check-label" for="exampleCheck1">Check me
+                                                                out</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save
+                                                            changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        @endforeach
+                    </div>
+                @endforeach
             </div>
+            @if (session('successAdd'))
+                <script>
+                    var info = "{{ session('successAdd') }}"
+                    alert(info)
+                </script>
+            @endif
 
             <!-- FORM -->
             <div class="form d-none" id="formTf">
@@ -275,6 +249,7 @@
                 form.style.display = 'block';
             }
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 
     </html>

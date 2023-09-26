@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AntrianTeamController;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LimitController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeamController;
@@ -59,6 +60,9 @@ Route::post('/news/update/{news}',[NewsController::class,'update']);
 Route::delete('/news/{news}',[NewsController::class,'destroy'])->name('news.destroy');
 Route::get('/news/pending',[NewsController::class,'pending'])->name('news.pending');
 Route::patch('/news/approved/{id}',[NewsController::class,'approved'])->name('news.approve');
+
+Route::get('/limit',[LimitController::class,'index'])->name('limit.index');
+Route::post('/limit/store',[LimitController::class,'store'])->name('limit.store');
 
 Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');
 

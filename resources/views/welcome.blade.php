@@ -99,10 +99,6 @@
                             document.location.href = "{{ route('login') }}"
                         </script>
                     @endif
-
-                    @if (Auth::user()->role == 'admin')
-                    @else
-                    @endif
                 </div>
             </div>
         </div>

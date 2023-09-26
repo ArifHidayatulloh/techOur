@@ -18,7 +18,7 @@
         }
 
         @media screen and (max-width: 796px) {
-            .caption{
+            .caption {
                 margin-bottom: 5rem;
             }
 
@@ -29,7 +29,7 @@
                 margin-top: -15px;
             }
 
-            .content .table{
+            .content .table {
                 width: 50rem;
             }
         }
@@ -43,14 +43,16 @@
                 </div>
             @endif
         </div>
-        <a href="{{ route('news.create') }}" class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Add
-            News</a>
-        @if (Auth::user()->role == 'admin')
-        <a href="{{ route('news.pending') }}" class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Approve
-            News</a>
-        @else
-            
-        @endif
+        <div class="d-flex">
+            <a href="{{ route('news.create') }}"
+                class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Add
+                News</a>
+            @if (Auth::user()->role == 'admin')
+                <a style="margin-left: 60rem;" href="{{ route('news.pending') }}" class="btn btn-outline-primary mb-3">+ Approve
+                    News</a>
+            @else
+            @endif
+        </div>
         <div class="d-flex justify-content-center content mb-5">
             <table class="table text-center ms-5 me-5">
                 <thead class="table-light">
@@ -70,7 +72,7 @@
                             <td>{{ $item->user->name }}</td>
                             <td class="title">{{ $item->title }}</td>
                             <td>
-                                {{ Str::limit($item->content, '150', '...')}}
+                                {{ Str::limit($item->content, '150', '...') }}
                             </td>
                             <td>{{ $item->date }}</td>
                             <td>{{ $item->status }}</td>

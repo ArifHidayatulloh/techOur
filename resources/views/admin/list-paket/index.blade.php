@@ -46,15 +46,15 @@
             width: 75%;
         }
 
-        .card{
+        .card {
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: auto auto auto;
             border: 0;
         }
 
         .card,
         .caption {
-            margin-left: 5rem;
+            margin-left: 3rem;
         }
 
         .list-group {
@@ -62,19 +62,19 @@
         }
 
         @media screen and (max-width: 796px) {
-            .body{
+            .body {
                 flex-direction: column;
             }
 
-            .caption{
+            .caption {
                 margin-left: 3rem;
             }
 
-            .bagan{
+            .bagan {
                 margin-left: 2rem;
             }
 
-            .card{
+            .card {
                 display: flex;
                 flex-direction: column;
                 margin-left: 2rem;
@@ -88,41 +88,47 @@
     </style>
 
     <body>
-        <a href="#" class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3 mt-4"
-            onclick="gerakkanKotak()">+Add Limit</a>
-        <div class="body d-flex">
-            <div class="d-flex justify-content-left content">
-                <div class="bagan" id="form">
-                    <div class="card-header text-center fs-3 p-2 rounded-top text-white border-bottom border-dark"
-                        style="background-color:#576b7d;">
-                        <h2>Limit</h2>
-                    </div>
+        @if (Auth::user()->role == 'admin')
+            <a href="#" class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3 mt-4"
+                onclick="button()">+Add Limit</a>
+        @endif
 
-                    <!-- FORM -->
-                    <div class="form">
-                        <form action="#" method="post" enctype="multipart/form-data">
-                            <div class="tmbh-limit">
-                                <div class="input-limit">
-                                    <span class="details fw-bold">Name</span>
-                                    <input type="text" size="22" required name="limit" autocomplete="off">
+        <div class="body d-flex">
+            @if (Auth::user()->role == 'admin')
+                <div class="d-flex justify-content-left content">
+                    <div class="bagan" id="form">
+                        <div class="card-header text-center fs-3 p-2 rounded-top text-white border-bottom border-dark"
+                            style="background-color:#576b7d;">
+                            <h2>Limit</h2>
+                        </div>
+
+                        <!-- FORM -->
+                        <div class="form">
+                            <form action="#" method="post" enctype="multipart/form-data">
+                                <div class="tmbh-limit">
+                                    <div class="input-limit">
+                                        <span class="details fw-bold">Name</span>
+                                        <input type="text" size="22" required name="limit" autocomplete="off">
+                                    </div>
+                                    <div class="input-limit">
+                                        <span class="details fw-bold">Limit</span>
+                                        <input type="text" size="22" required name="limit" autocomplete="off">
+                                    </div>
+                                    <div class="input-limit">
+                                        <span class="details fw-bold">Harga</span>
+                                        <input type="text" size="22" required name="limit" autocomplete="off">
+                                    </div>
                                 </div>
-                                <div class="input-limit">
-                                    <span class="details fw-bold">Limit</span>
-                                    <input type="text" size="22" required name="limit" autocomplete="off">
+                                <div class="d-flex justify-content-center gap-2 mt-4 mb-4">
+                                    <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
+                                    <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
                                 </div>
-                                <div class="input-limit">
-                                    <span class="details fw-bold">Harga</span>
-                                    <input type="text" size="22" required name="limit" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center gap-2 mt-4 mb-4">
-                                <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
-                                <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @else
+            @endif
 
             <div class="card justify-content-left" id="kotak">
                 <div class="card-body">
@@ -228,12 +234,44 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- FORM -->
+            <div class="form d-none" id="formTf">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="tmbh-limit">
+                        <div class="input-limit">
+                            <span class="details fw-bold">Paket</span>
+                            <input type="text" size="22" required name="limit" autocomplete="off">
+                        </div>
+                        <div class="input-limit">
+                            <span class="details fw-bold">Limit</span>
+                            <input type="text" size="22" required name="limit" autocomplete="off">
+                        </div>
+                        <div class="input-limit">
+                            <span class="details fw-bold">Harga</span>
+                            <input type="text" size="22" required name="limit" autocomplete="off">
+                        </div>
+                        <div class="input-tur">
+                            <span class="details">Bukti Tf</span>
+                            <input type="file" style="box-shadow:none; border: none" required name="image"
+                                id="inputFile">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-2 mt-4 mb-4">
+                        <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
+                        <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
+                    </div>
+                </form>
+            </div>
+
         </div>
 
         <script>
-            function gerakkanKotak() {
+            function button() {
                 const kotak = document.getElementById('kotak');
-                kotak.style.marginLeft = '20px'; // Menggerakkan kotak ke samping
+                kotak.style.marginLeft = '10px'; // Menggerakkan kotak ke samping
+                kotak.style.marginTop = '-1rem';
+                kotak.style.gridTemplateColumns = 'repeat(2,1fr)';
                 form.style.display = 'block';
             }
         </script>

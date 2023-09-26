@@ -148,8 +148,8 @@
                                         </div>
                                     </div>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
+                                    <button type="button" class="btn btn-success badge rounded-pill d-inline"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Rp. {{ $item->prize }}
                                     </button>
 
@@ -164,27 +164,24 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <form action="">
-                                                    <div class="modal-body">
-                                                        <div class="mb-3">
-                                                            <label for="exampleInputEmail1" class="form-label">Email
-                                                                address</label>
-                                                            <input type="email" class="form-control"
-                                                                id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                            <div id="emailHelp" class="form-text">We'll never share your
-                                                                email with anyone else.</div>
+                                                    <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
+                                                        style="height: 5rem">
+                                                        <div class="d-flex flex-column">
+                                                            <label for="exampleInputEmail1"
+                                                                class="form-label fw-bold">{{ $item->name }}</label>
+                                                            <label for="exampleInputPassword1" class="form-label">Limit
+                                                                {{ $item->limit }}</label>
                                                         </div>
-                                                        <div class="mb-3">
+                                                        <div>
                                                             <label for="exampleInputPassword1"
-                                                                class="form-label">Password</label>
-                                                            <input type="password" class="form-control"
-                                                                id="exampleInputPassword1">
+                                                                class="form-label text-success fw-bold align-middle">Rp.
+                                                                {{ $item->prize }}</label>
                                                         </div>
-                                                        <div class="mb-3 form-check">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                id="exampleCheck1">
-                                                            <label class="form-check-label" for="exampleCheck1">Check me
-                                                                out</label>
-                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 form-check me-3">
+                                                        <label for="formFile" class="form-label">Bukti Tf</label>
+                                                        <input class="form-control" type="file" id="inputFile">
+                                                        <img src="" class="w-25 mt-3" alt="" id="review">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
@@ -248,6 +245,23 @@
                 kotak.style.gridTemplateColumns = 'repeat(2,1fr)';
                 form.style.display = 'block';
             }
+
+            function previewImage(event) {
+                let fileInput = event.target;
+                let reviewImage = document.getElementById('review')
+
+                if (fileInput.files && fileInput.files[0]) {
+                    let reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        reviewImage.src = e.target.result;
+                    }
+
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+
+            document.getElementById('inputFile').addEventListener('change', previewImage);
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>

@@ -59,6 +59,14 @@
                                 @endif
                             </li>
                             <li class="ms-3 me-3">{{ Auth::user()->email }}</li>
+                            <li class="ms-3 me-3">limit 
+                                @php
+                                    $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
+                                    $totalDataCount = \App\Models\Tournament::all()->where('user_id', Auth::user()->id)->count();
+
+                                    echo "$totalDataCount/$limit";
+                                @endphp
+                            </li>
                             <li class="bg-body-tertiary mb-3 mt-3 p-1">
                                 <a href="/password"><i class='bx bx-key bx-sm' ></i></a>
                                 <a href="/profile"><i class='bx bxs-edit-alt bx-sm'></i></a>

@@ -49,7 +49,9 @@
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="text-center">
-                    <a href="" class="text-decoration-none text-dark mt-1">Limit : 10</a>
+                    <a href="" class="text-decoration-none text-dark mt-1">limit :
+                        {{ $data }}/{{ $limit }}
+                    </a>
                 </div>
                 <div class="card-btn bg-body-tertiary mb-3 mt-3 p-1 text-center">
                     <a href="/password" class="text-decoration-none text-dark">ubah sandi</i></a>
@@ -109,11 +111,28 @@
                     <button type="button" class="btn-close" aria-label="Close" id="close" style="display: none"></button>
                 </div>
                 <div class="card" style="width: 18rem; display: none;" id="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Limit</th>
+                                <th>Prize</th>
+                                <th>Status</th>
+                                <th>Created at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($history as $item)
+                                <tr>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->limit }}</td>
+                                    <td>{{ $item->prize }}</td>
+                                    <td>{{ $item->status }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -56,7 +56,7 @@ Route::delete('/tournament/{tournament}',[TournamentController::class,'destroy']
 
 Route::get('/news',[NewsController::class,'index'])->name('news.index');
 Route::get('/news/create',[NewsController::class,'create'])->name('news.create');
-Route::post('/news',[NewsController::class,'store'])->name('news.store')->middleware(['auth', 'check_data_limit:news']);
+Route::post('/news',[NewsController::class,'store'])->name('news.store');
 Route::get('/news/{news}/edit',[NewsController::class,'edit'])->name('news.edit');
 Route::post('/news/update/{news}',[NewsController::class,'update']);
 Route::delete('/news/{news}',[NewsController::class,'destroy'])->name('news.destroy');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\History;
 use App\Models\News;
 use App\Models\Tournament;
 use Closure;
@@ -28,14 +29,12 @@ class CheckDataLimit
             if ($user->role === 'admin') {
                 return $next($request);
             }
+            
+            $totalLimit = History::where(['user_id' => $user->id, 'status' => 'success'])->sum('limit');
     
-            $limit = $user->limit;
+            $totalDataCount = Tournament::all()->where('user_id', $user->id)->count();
     
-            $tournamentCount = Tournament::all()->where('user_id', $user->id)->count();
-            $newsCount = News::all()->where('user_id', $user->id)->count();
-            $totalDataCount = $tournamentCount + $newsCount;
-    
-            if($totalDataCount >= $limit){
+            if($totalDataCount >= $totalLimit){
                 return redirect()->back()->with('message', 'Anda telah mencapai batas jumlah data yang dapat dibuat');
             }
     

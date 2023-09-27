@@ -93,7 +93,8 @@
                 <a href="#" class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3 mt-4"
                     onclick="button()">+Add Limit</a>
 
-                <a style="margin-left: 65rem;" href="{{route('limit.pending')}}" class="btn btn-outline-success mt-4 mb-3 ">Approve</a>
+                <a style="margin-left: 65rem;" href="{{ route('limit.pending') }}"
+                    class="btn btn-outline-success mt-4 mb-3 ">Approve</a>
             @endif
         </div>
         <div class="body d-flex">
@@ -171,20 +172,29 @@
                                                     @csrf
                                                     <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
                                                         style="height: 5rem">
-                                                        <div class="d-flex flex-column border-none">
+                                                        <div>
                                                             <input type="text" class="form-label fw-bold border-0"
                                                                 name="name" value="{{ $item->name }}">
-                                                            <input type="text" class="form-label border-0" name="limit"
-                                                                value="{{ $item->limit }}">
+                                                            <p class="d-flex">Limit <input type="text" class="form-label border-0" name="limit"
+                                                                value="{{ $item->limit }}"></p>
                                                         </div>
                                                         <div>
-                                                            <input type="text"
+                                                            <p class="d-flex text-success fw-bold">Rp. <input type="text"
                                                                 class="form-label text-success fw-bold border-0 w-50"
-                                                                name="prize" value="{{ $item->prize }}">
+                                                                name="prize" value="{{ $item->prize }}"></p>
                                                         </div>
                                                     </div>
                                                     <div class="mb-3 form-check me-3">
-                                                        <label for="formFile" class="form-label">Bukti Tf</label>
+                                                        <label for="">
+                                                            PAYMENT: <br>
+                                                            💸 Pembayaran dilakukan melalui: <br>
+                                                            > ShopeePay 081211903974 / username noisestudio <br>
+                                                            > Dana 081211903974 a.n. FNP <br>
+                                                            > BCA 0710125872 a.n. FNP
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-3 form-check me-3">
+                                                        <label for="formFile" class="form-label">Bukti Transfer</label>
                                                         <input class="form-control" type="file" id="inputFile"
                                                             name="image">
                                                         <img src="" class="w-25 mt-3" alt=""

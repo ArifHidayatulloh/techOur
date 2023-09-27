@@ -17,7 +17,7 @@
     <style>
         .card {
             width: 20rem;
-            height: 25rem;
+            height: 100%;
         }
 
         @media screen and (max-width: 796px) {
@@ -47,6 +47,9 @@
                 <div class="text-center">
                     <h5 class="card-title fs-4">{{ Auth::user()->name }}</h5>
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
+                </div>
+                <div class="text-center">
+                    <a href="" class="text-decoration-none text-dark mt-1">Limit : 10</a>
                 </div>
                 <div class="card-btn bg-body-tertiary mb-3 mt-3 p-1 text-center">
                     <a href="/password" class="text-decoration-none text-dark">ubah sandi</i></a>
@@ -100,6 +103,19 @@
                     <button type="submit" class="btn btn-primary btn-block">save</button>
                 </form>
             </div>
+            <div>
+                <div class="d-flex">
+                    <button class="border-0 bg-transparent fw-bold" onclick="history()">History</button>
+                    <button type="button" class="btn-close" aria-label="Close" id="close" style="display: none"></button>
+                </div>
+                <div class="card" style="width: 18rem; display: none;" id="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         {{-- <div class="d-flex justify-content-center">
@@ -146,6 +162,13 @@
                 </form>
             </div>
         </div> --}}
+
+        <script>
+            function history() {
+                const card = document.getElementById('card');
+                card.style.display = 'block';
+            }
+        </script>
     </body>
 
     </html>

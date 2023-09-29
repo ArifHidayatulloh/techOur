@@ -185,8 +185,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="mb-3 form-check me-3">
-                                                        <label for="">
-                                                            PAYMENT: <br>
+                                                        <label>
+                                                            <b>PAYMENT :</b><br>
                                                             💸 Pembayaran dilakukan melalui: <br>
                                                             > ShopeePay 081211903974 / username noisestudio <br>
                                                             > Dana 081211903974 a.n. FNP <br>

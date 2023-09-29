@@ -38,10 +38,9 @@
             <div class="card m-5 p-3">
                 <div class="card-img text-center">
                     @if (Auth::user()->image == null)
-                        <img src="{{ url('assets/image/it/user.png') }}" alt="" style="width: 250px;height:250px">
+                        <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-50 mb-2">
                     @else
-                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                            style="width: 250px; border-radius:50%; height:250px;">
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" class="w-50 mb-2">
                     @endif
                 </div>
                 <div class="text-center">
@@ -72,11 +71,9 @@
 
                     <div class="d-flex justify-content-center mb-4">
                         @if (Auth::user()->image == null)
-                            <img src="{{ url('assets/image/it/user.png') }}" alt=""
-                                style="width: 250px;height:250px">
+                            <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-25">
                         @else
-                            <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                                style="width: 250px; border-radius:50%; height:250px;">
+                            <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" class="w-25">
                         @endif
                     </div>
                     <div class="input-group mb-4">
@@ -88,8 +85,6 @@
                         <div class="input-group-text"><i class='bx bxs-user'></i></div>
                         <input type="text" class="form-control" placeholder="Username" name="name"
                             value="{{ Auth::user()->name }}" />
-                        {{-- <input type="text" id="form7Example1" class="form-control" name="name"
-                            value="{{ Auth::user()->name }}" /> --}}
                     </div>
 
                     <!-- Email input -->
@@ -97,8 +92,6 @@
                         <div class="input-group-text">@</div>
                         <input type="text" class="form-control" placeholder="Email" name="email"
                             value="{{ Auth::user()->email }}" />
-                        {{-- <input type="email" id="form7Example2" class="form-control" name="email"
-                            value="{{ Auth::user()->email }}" /> --}}
                     </div>
 
                     <!-- Submit button -->
@@ -110,8 +103,8 @@
                     <button class="border-0 bg-transparent fw-bold" onclick="history()">History</button>
                     <button type="button" class="btn-close" aria-label="Close" id="close" style="display: none"></button>
                 </div>
-                <div class="card" style="width: 18rem; display: none;" id="card">
-                    <table class="table">
+                <div class="card" style="width: 23rem; display: none;" id="card">
+                    <table class="table align-middle bg-white text-center">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -183,10 +176,19 @@
         </div> --}}
 
         <script>
+            const card = document.getElementById('card');
+            const close = document.getElementById("close");
+
             function history() {
-                const card = document.getElementById('card');
                 card.style.display = 'block';
+                close.style.display = 'block';
+                close.style.marginLeft = '17rem';
             }
+
+            close.addEventListener("click", function() {
+                card.style.display = 'none';
+                close.style.display = 'none';
+            });
         </script>
     </body>
 

@@ -67,6 +67,7 @@ body{
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 50px;
+  margin-bottom: 10px;
 }
 
 img{

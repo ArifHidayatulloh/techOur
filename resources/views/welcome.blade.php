@@ -8,9 +8,6 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>INDEX</title>
@@ -31,22 +28,22 @@
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->email }}
                             </a>
-                            <i class="fa-solid fa-circle-user fa-xl mt-2" style="color: #ffffff;"></i>
+                            <i class='bx bxs-user-circle'></i>
                             <ul class="dropdown-menu text-center" id="dropdown-menu">
                                 <li>{{ Auth::user()->name }}</li>
                                 <li>
                                     @if (Auth::user()->image == null)
                                         <img src="{{ asset('assets/image/team.jpg') }}" alt=""
-                                            class="rounded-circle w-75 mt-2 mb-2">
+                                            class="rounded-circle" style="width: 110px; height: 100px;">
                                     @else
                                         <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                                            class="rounded-circle w-75 mt-2 mb-2">
+                                            class="rounded-circle" style="width: 110px; height: 100px;">
                                     @endif
                                 </li>
                                 <li>{{ Auth::user()->email }}</li>
-                                <li class="bg-body-tertiary mb-3 mt-3 p-1">
-                                    <a href="/password"><i class='bx bx-key bx-sm'></i></a>
-                                    <a href="/profile"><i class='bx bxs-edit-alt bx-sm'></i></a>
+                                <li class="mb-3 mt-3 p-1">
+                                    <a href="/password"><box-icon name='key'></box-icon></a>
+                                    <a href="/profile"><box-icon type='solid' name='edit-alt'></box-icon></a>
                                 </li>
                                 <li><a href="{{ route('actionlogout') }}">Log Out</a>
                                 </li>
@@ -108,6 +105,8 @@
             </div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 
 </html>

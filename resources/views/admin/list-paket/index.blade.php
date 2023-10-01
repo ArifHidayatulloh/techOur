@@ -24,6 +24,10 @@
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
+        .approve{
+            margin-left: 65rem;
+        }
+
         .bagan .form {
             margin: 20px;
         }
@@ -66,12 +70,13 @@
                 flex-direction: column;
             }
 
-            .caption {
-                margin-left: 3rem;
+            .approve {
+                margin-left: 7rem;
             }
 
             .bagan {
-                margin-left: 2rem;
+                margin-left: 3rem;
+                margin-bottom: 2rem;
             }
 
             .card {
@@ -84,17 +89,21 @@
             .list-group {
                 width: 300px;
             }
+
+            .modal-body .form-label{
+                width: 8rem;
+            }
         }
     </style>
 
     <body>
-        <div class="d-flex">
+        <div class="button d-flex">
             @if (Auth::user()->role == 'admin')
                 <a href="#" class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3 mt-4"
                     onclick="button()">+Add Limit</a>
 
-                <a style="margin-left: 65rem;" href="{{ route('limit.pending') }}"
-                    class="btn btn-outline-success mt-4 mb-3 ">Approve</a>
+                <a href="{{ route('limit.pending') }}"
+                    class="btn approve btn-outline-success mt-4 mb-3">Approve</a>
             @endif
         </div>
         <div class="body d-flex">
@@ -112,7 +121,7 @@
                                 @csrf
                                 <div class="tmbh-limit">
                                     <div class="input-limit">
-                                        <span class="details fw-bold">Name</span>
+                                        <span class="details fw-bold">Paket</span>
                                         <input type="text" size="22" required name="name" autocomplete="off">
                                     </div>
                                     <div class="input-limit">
@@ -246,7 +255,7 @@
                             <input type="text" size="22" required name="limit" autocomplete="off">
                         </div>
                         <div class="input-tur">
-                            <span class="details">Bukti Tf</span>
+                            <span class="details">Bukti Transfer</span>
                             <input type="file" style="box-shadow:none; border: none" required name="image"
                                 id="inputFile">
                         </div>
@@ -263,7 +272,6 @@
         <script>
             function button() {
                 const kotak = document.getElementById('kotak');
-                kotak.style.marginLeft = '10px'; // Menggerakkan kotak ke samping
                 kotak.style.marginTop = '-1rem';
                 kotak.style.gridTemplateColumns = 'repeat(2,1fr)';
                 form.style.display = 'block';

@@ -25,10 +25,9 @@
                 flex-direction: column;
             }
 
-            .card {
-                display: flex;
-                width: 18rem;
-                margin: 0;
+            .history {
+                position: absolute;
+                margin-left: 0;
             }
         }
     </style>
@@ -57,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="content rounded-3 border border-dark-subtle w-75 m-5 ms-0 p-5 shadow-sm">
+            <div class="content profile rounded-3 border border-dark-subtle w-75 m-5 p-5 shadow-sm">
                 <h4>Profile information</h4>
                 <p>Update your account's profile information and email address</p>
                 @if (session('successProfile'))
@@ -98,10 +97,12 @@
                     <button type="submit" class="btn btn-primary btn-block">save</button>
                 </form>
             </div>
-            <div>
+            
+            <div class="history">
                 <div class="d-flex">
                     <button class="border-0 bg-transparent fw-bold" onclick="history()">History</button>
-                    <button type="button" class="btn-close" aria-label="Close" id="close" style="display: none"></button>
+                    <button type="button" class="btn-close" aria-label="Close" id="close"
+                        style="display: none"></button>
                 </div>
                 <div class="card" style="width: 23rem; display: none;" id="card">
                     <table class="table align-middle bg-white text-center">
@@ -129,51 +130,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="d-flex justify-content-center">
-            <div class="content rounded-3 border border-dark-subtle w-100 m-5 mt-0 p-5 shadow-sm">
-                <h4>Update Password</h4>
-                <p>Ensure your account is using a long, random password to stay secure.</p>
-
-
-                <form action="{{ route('password.update', ['id' => Auth::user()->id]) }}" method="post"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <!-- Password -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="current_password" />
-                    </div>
-
-                    <div class="form-outline mb-4">
-                        <label class="form-label">New Password</label>
-                        <input type="password" class="form-control" name="new_password" />
-                    </div>
-
-                    <div class="form-outline mb-4">
-                        <label class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" name="new_password_confirm" />
-                    </div>
-                    @if (session('success'))
-                        <div class="alert alert-success w-75">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if (session('error'))
-                        <div class="alert alert-danger w-75">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                    @if (session('notMatch'))
-                        <div class="alert alert-danger w-75">
-                            {{ session('notMatch') }}
-                        </div>
-                    @endif
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-4">save</button>
-                </form>
-            </div>
-        </div> --}}
 
         <script>
             const card = document.getElementById('card');

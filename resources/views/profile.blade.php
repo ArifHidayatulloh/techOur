@@ -35,7 +35,7 @@
     <body>
         <div class="body d-flex">
             <div class="card m-5 p-3">
-                <div class="card-img text-center">
+                <div class="card-img text-center rounded-circle">
                     @if (Auth::user()->image == null)
                         <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-50 mb-2">
                     @else
@@ -46,13 +46,13 @@
                     <h5 class="card-title fs-4">{{ Auth::user()->name }}</h5>
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
                 </div>
-                <div class="text-center">
-                    <a href="" class="text-decoration-none text-dark mt-1">limit :
+                <div class="text-center opacity-50 rounded-2 mt-1 w-50" style="margin-left: 60px;">
+                    <a href="" class="text-decoration-none text-success fw-bold mt-1" style="letter-spacing: 1px;">limit :
                         {{ $data }}/{{ $limit }}
                     </a>
                 </div>
                 <div class="card-btn bg-body-tertiary mb-3 mt-3 p-1 text-center">
-                    <a href="/password" class="text-decoration-none text-dark">ubah sandi</i></a>
+                    <a href="/password" class="text-decoration-none text-dark">change password</i></a>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                     enctype="multipart/form-data">
                     @csrf
 
-                    <div class="d-flex justify-content-center mb-4">
+                    <div class="d-flex justify-content-center mb-4 rounded-circle">
                         @if (Auth::user()->image == null)
                             <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-25">
                         @else

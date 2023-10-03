@@ -53,13 +53,13 @@
                             <li>{{ Auth::user()->name }}</li>
                             <li>
                                 @if (Auth::user()->image == null)
-                                <img src="{{ asset('assets/image/team.jpg') }}" alt="" class="rounded-circle w-75 mt-2 mb-2">
+                                <img src="{{ asset('assets/image/team.jpg') }}" alt="" class="rounded-circle w-50 mt-2 mb-2">
                                 @else
-                                <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" class="rounded-circle w-75 mt-2 mb-2">                                    
+                                <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" class="rounded-circle w-50 mt-2 mb-2">                                    
                                 @endif
                             </li>
                             <li class="ms-3 me-3">{{ Auth::user()->email }}</li>
-                            <li class="ms-3 me-3">limit 
+                            <li class="ms-3 me-3 mt-2 text-white opacity-75 rounded-2" style="background-color:#576b7d;">limit 
                                 @php
                                     $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
                                     $totalDataCount = \App\Models\Tournament::all()->where('user_id', Auth::user()->id)->count();

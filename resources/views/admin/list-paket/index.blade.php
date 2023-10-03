@@ -24,7 +24,7 @@
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
-        .approve{
+        .approve {
             margin-left: 65rem;
         }
 
@@ -90,7 +90,7 @@
                 width: 300px;
             }
 
-            .modal-body .form-label{
+            .modal-body .form-label {
                 width: 8rem;
             }
         }
@@ -99,11 +99,12 @@
     <body>
         <div class="button d-flex">
             @if (Auth::user()->role == 'admin')
-                <a href="#" class="caption d-flex fw-bold text-decoration-none text-success fs-4 mb-3 mt-4"
-                    onclick="button()">+Add Limit</a>
+                <a class="caption fw-bold text-success fs-4 mb-3 mt-4 text-decoration-none"
+                    style="cursor: pointer; display: block;" onclick="button()" id="limit">+Add
+                    Limit</a>
 
-                <a href="{{ route('limit.pending') }}"
-                    class="btn approve btn-outline-success mt-4 mb-3">Approve</a>
+                <a href="{{ route('limit.pending') }}" class="btn approve btn-outline-success mt-4 mb-3"
+                    id="approve">Approve</a>
             @endif
         </div>
         <div class="body d-flex">
@@ -144,6 +145,41 @@
             @else
             @endif
 
+            <div class="d-flex justify-content-left content">
+                <div class="bagan" id="form-update">
+                    <div class="card-header text-center fs-3 p-2 rounded-top text-white border-bottom border-dark"
+                        style="background-color:#576b7d;">
+                        <h2>Update Limit</h2>
+                    </div>
+
+                    <!-- FORM -->
+                    <div class="form">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="tmbh-limit">
+                                <div class="input-limit">
+                                    <span class="details fw-bold">Paket</span>
+                                    <input type="text" size="22" required name="name" autocomplete="off">
+                                </div>
+                                <div class="input-limit">
+                                    <span class="details fw-bold">Limit</span>
+                                    <input type="number" size="22" required name="limit" autocomplete="off">
+                                </div>
+                                <div class="input-limit">
+                                    <span class="details fw-bold">Harga</span>
+                                    <input type="text" size="22" required name="prize" autocomplete="off">
+                                </div>
+                                <div class="d-flex justify-content-center gap-2 mt-4 mb-4">
+                                    <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
+                                    <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn-close" aria-label="Close" id="close" style="display: none"></button>
 
             @php
                 $chunkedLimits = $limit->chunk(4);
@@ -166,60 +202,86 @@
                                         Rp. {{ $item->prize }}
                                     </button>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Buy Limit</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <form action="{{ route('buyLimit') }}" method="post"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
-                                                        style="height: 5rem">
-                                                        <div>
-                                                            <input type="text" class="form-label fw-bold border-0"
-                                                                name="name" value="{{ $item->name }}">
-                                                            <p class="d-flex">Limit <input type="text" class="form-label border-0" name="limit"
-                                                                value="{{ $item->limit }}"></p>
-                                                        </div>
-                                                        <div>
-                                                            <p class="d-flex text-success fw-bold">Rp. <input type="text"
-                                                                class="form-label text-success fw-bold border-0 w-50"
-                                                                name="prize" value="{{ $item->prize }}"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3 form-check me-3">
-                                                        <label>
-                                                            <b>PAYMENT :</b><br>
-                                                            💸 Pembayaran dilakukan melalui: <br>
-                                                            > ShopeePay 081211903974 / username noisestudio <br>
-                                                            > Dana 081211903974 a.n. FNP <br>
-                                                            > BCA 0710125872 a.n. FNP
-                                                        </label>
-                                                    </div>
-                                                    <div class="mb-3 form-check me-3">
-                                                        <label for="formFile" class="form-label">Bukti Transfer</label>
-                                                        <input class="form-control" type="file" id="inputFile"
-                                                            name="image">
-                                                        <img src="" class="w-25 mt-3" alt=""
-                                                            id="review">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Buy</button>
-                                                    </div>
-                                                </form>
+                                    @if (Auth::user()->role == 'admin')
+                                        <div class="d-flex justify-content-around border-0">
+                                            <div class="update">
+                                                <a class="btn" type="button" onclick="update()"><i
+                                                        class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
+                                            </div>
+                                            <div class="delete">
+                                                <a class="btn" type="button"><i class="bx bxs-trash-alt bx-sm"
+                                                        style="color: black"></i></a>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </li>
                             </ul>
+
+                            {{-- @if (Auth::user()->role == 'admin')
+                                <div class="card-footer mb-3 d-flex justify-content-around border-0">
+                                    <div class="update">
+                                        <a class="btn" type="button" onclick="update()"><i class='bx bxs-edit-alt bx-sm'
+                                                style="color: black"></i></a>
+                                    </div>
+                                    <div class="delete">
+                                        <a class="btn" type="button"><i class="bx bxs-trash-alt bx-sm"
+                                                style="color: black"></i></a>
+                                    </div>
+                                </div>
+                            @endif --}}
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Buy Limit</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form action="{{ route('buyLimit') }}" method="post"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
+                                                style="height: 5rem">
+                                                <div>
+                                                    <input type="text" class="form-label fw-bold border-0"
+                                                        name="name" value="{{ $item->name }}">
+                                                    <p class="d-flex">Limit <input type="text"
+                                                            class="form-label border-0" name="limit"
+                                                            value="{{ $item->limit }}"></p>
+                                                </div>
+                                                <div>
+                                                    <p class="d-flex text-success fw-bold">Rp. <input type="text"
+                                                            class="form-label text-success fw-bold border-0 w-50"
+                                                            name="prize" value="{{ $item->prize }}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 form-check me-3">
+                                                <label>
+                                                    <b>PAYMENT :</b><br>
+                                                    💸 Pembayaran dilakukan melalui: <br>
+                                                    > ShopeePay 081211903974 / username noisestudio <br>
+                                                    > Dana 081211903974 a.n. FNP <br>
+                                                    > BCA 0710125872 a.n. FNP
+                                                </label>
+                                            </div>
+                                            <div class="mb-3 form-check me-3">
+                                                <label for="formFile" class="form-label">Bukti Transfer</label>
+                                                <input class="form-control" type="file" id="inputFile"
+                                                    name="image">
+                                                <img src="" class="w-25 mt-3" alt="" id="review">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Buy</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </div>
                 @endforeach
@@ -237,45 +299,36 @@
                     alert(info)
                 </script>
             @endif
-
-            <!-- FORM -->
-            <div class="form d-none" id="formTf">
-                <form action="#" method="post" enctype="multipart/form-data">
-                    <div class="tmbh-limit">
-                        <div class="input-limit">
-                            <span class="details fw-bold">Paket</span>
-                            <input type="text" size="22" required name="limit" autocomplete="off">
-                        </div>
-                        <div class="input-limit">
-                            <span class="details fw-bold">Limit</span>
-                            <input type="text" size="22" required name="limit" autocomplete="off">
-                        </div>
-                        <div class="input-limit">
-                            <span class="details fw-bold">Harga</span>
-                            <input type="text" size="22" required name="limit" autocomplete="off">
-                        </div>
-                        <div class="input-tur">
-                            <span class="details">Bukti Transfer</span>
-                            <input type="file" style="box-shadow:none; border: none" required name="image"
-                                id="inputFile">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center gap-2 mt-4 mb-4">
-                        <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
-                        <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
-                    </div>
-                </form>
-            </div>
-
         </div>
 
         <script>
+            const close = document.getElementById("close");
+            const formUpdate = document.getElementById('form-update');
+
             function button() {
                 const kotak = document.getElementById('kotak');
+
                 kotak.style.marginTop = '-1rem';
                 kotak.style.gridTemplateColumns = 'repeat(2,1fr)';
                 form.style.display = 'block';
+                close.style.display = 'block';
             }
+
+            function update() {
+                const update = document.getElementById('form-update');
+
+                update.style.display = 'block';
+                limit.style.display = 'none';
+                form.style.display = 'none';
+                close.style.display = 'block';
+            }
+
+            close.addEventListener("click", function() {
+                formUpdate.style.display = 'none';
+                form.style.display = 'none';
+                close.style.display = 'none';
+                limit.style.display = 'block';
+            });
 
             function previewImage(event) {
                 let fileInput = event.target;

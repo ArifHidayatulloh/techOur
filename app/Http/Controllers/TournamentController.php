@@ -84,7 +84,7 @@ class TournamentController extends Controller
     public function show($competitionId)
     {
         if(Auth::user()->role == 'admin'){
-            $tournament = Tournament::where(['competition_id' => $competitionId])->get();
+            $tournament = Tournament::all()->where(['competition_id' => $competitionId]);
         }else{
             $tournament = Tournament::where(['competition_id' => $competitionId, 'user_id' => Auth::user()->id])->get();
         }

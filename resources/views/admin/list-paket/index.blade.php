@@ -183,14 +183,14 @@
                                                         style="height: 5rem">
                                                         <div>
                                                             <input type="text" class="form-label fw-bold border-0"
-                                                                name="name" value="{{ $item->name }}">
+                                                                name="name" value="{{ $item->name }}" disabled>
                                                             <p class="d-flex">Limit <input type="text" class="form-label border-0" name="limit"
-                                                                value="{{ $item->limit }}"></p>
+                                                                value="{{ $item->limit }}" disabled></p>
                                                         </div>
                                                         <div>
                                                             <p class="d-flex text-success fw-bold">Rp. <input type="text"
                                                                 class="form-label text-success fw-bold border-0 w-50"
-                                                                name="prize" value="{{ $item->prize }}"></p>
+                                                                name="prize" value="{{ $item->prize }}" disabled></p>
                                                         </div>
                                                     </div>
                                                     <div class="mb-3 form-check me-3">

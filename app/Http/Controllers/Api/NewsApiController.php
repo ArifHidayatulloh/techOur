@@ -17,7 +17,7 @@ class NewsApiController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::all()->where('status', 'sukses');
         return NewsResource::collection($news);
     }
 

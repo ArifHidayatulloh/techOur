@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function profile()
     {
-        $history = History::all();
+        $history = History::where('user_id', Auth::user());
         $totalLimit = History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
 
         $totalDataCount = Tournament::all()->where('user_id', Auth::user()->id)->count();

@@ -230,58 +230,60 @@
                                 </div>
                             @endif --}}
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Buy Limit</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Buy Limit</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('buyLimit') }}" method="post"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
+                                                        style="height: 5rem">
+                                                        <div>
+                                                            <input type="text" class="form-label fw-bold border-0"
+                                                                name="name" value="{{ $item->name }}">
+                                                            <p class="d-flex">Limit <input type="text" class="form-label border-0" name="limit"
+                                                                value="{{ $item->limit }}"></p>
+                                                        </div>
+                                                        <div>
+                                                            <p class="d-flex text-success fw-bold">Rp. <input type="text"
+                                                                class="form-label text-success fw-bold border-0 w-50"
+                                                                name="prize" value="{{ $item->prize }}"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 form-check me-3">
+                                                        <label>
+                                                            <b>PAYMENT :</b><br>
+                                                            💸 Pembayaran dilakukan melalui: <br>
+                                                            > ShopeePay 081211903974 / username noisestudio <br>
+                                                            > Dana 081211903974 a.n. FNP <br>
+                                                            > BCA 0710125872 a.n. FNP
+                                                        </label>
+                                                    </div>
+                                                    <div class="mb-3 form-check me-3">
+                                                        <label for="formFile" class="form-label">Bukti Transfer</label>
+                                                        <input class="form-control" type="file" id="inputFile"
+                                                            name="image">
+                                                        <img src="" class="w-25 mt-3" alt=""
+                                                            id="review">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Buy</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <form action="{{ route('buyLimit') }}" method="post"
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
-                                                style="height: 5rem">
-                                                <div>
-                                                    <input type="text" class="form-label fw-bold border-0"
-                                                        name="name" value="{{ $item->name }}">
-                                                    <p class="d-flex">Limit <input type="text"
-                                                            class="form-label border-0" name="limit"
-                                                            value="{{ $item->limit }}"></p>
-                                                </div>
-                                                <div>
-                                                    <p class="d-flex text-success fw-bold">Rp. <input type="text"
-                                                            class="form-label text-success fw-bold border-0 w-50"
-                                                            name="prize" value="{{ $item->prize }}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 form-check me-3">
-                                                <label>
-                                                    <b>PAYMENT :</b><br>
-                                                    💸 Pembayaran dilakukan melalui: <br>
-                                                    > ShopeePay 081211903974 / username noisestudio <br>
-                                                    > Dana 081211903974 a.n. FNP <br>
-                                                    > BCA 0710125872 a.n. FNP
-                                                </label>
-                                            </div>
-                                            <div class="mb-3 form-check me-3">
-                                                <label for="formFile" class="form-label">Bukti Transfer</label>
-                                                <input class="form-control" type="file" id="inputFile"
-                                                    name="image">
-                                                <img src="" class="w-25 mt-3" alt="" id="review">
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Buy</button>
-                                            </div>
-                                        </form>
                                     </div>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         @endforeach
                     </div>
                 @endforeach

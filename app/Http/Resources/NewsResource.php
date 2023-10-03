@@ -18,6 +18,7 @@ class NewsResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'date' => date('d F Y', strtotime($this->date)),
+            'status' => $this->status,
             'image' => $this->image
         ];
     }

@@ -20,6 +20,20 @@
             height: 100%;
         }
 
+        .image .trash {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .image:hover {
+            opacity: 50%;
+        }
+
+        .image:hover .trash {
+            opacity: 1;
+        }
+
+
         @media screen and (max-width: 796px) {
             .body {
                 flex-direction: column;
@@ -35,11 +49,12 @@
     <body>
         <div class="body d-flex">
             <div class="card m-5 p-3">
-                <div class="card-img text-center rounded-circle">
+                <div class="card-img text-center">
                     @if (Auth::user()->image == null)
-                        <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-50 mb-2">
+                        <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-50 mb-2 rounded-circle">
                     @else
-                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" class="w-50 mb-2">
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto; width: 100px"
+                            alt="" class="w-50 mb-2 rounded-circle">
                     @endif
                 </div>
                 <div class="text-center">
@@ -47,7 +62,8 @@
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="text-center rounded-2 mt-1 w-50" style="margin-left: 60px;">
-                    <a href="" class="text-decoration-none fw-bold mt-1" style="color:#6a7f92; letter-spacing: 1px;">limit :
+                    <a href="" class="text-decoration-none fw-bold mt-1"
+                        style="color:#6a7f92; letter-spacing: 1px;">limit :
                         {{ $data }}/{{ $limit }}
                     </a>
                 </div>
@@ -68,15 +84,20 @@
                     enctype="multipart/form-data">
                     @csrf
 
-                    <div class="d-flex justify-content-center mb-4 rounded-circle">
+                    <div class="image d-flex justify-content-center mb-4 edit">
                         @if (Auth::user()->image == null)
-                            <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-25">
+                            <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
+                                class="w-25 rounded-circle">
                         @else
-                            <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" class="w-25">
+                            <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto" alt=""
+                                class="w-25 rounded-circle" id="review">
                         @endif
+                        <a href="" class="trash align-self-center"><i class='bx bxs-trash-alt bx-sm'
+                                style="color: white"></i></a>
                     </div>
+
                     <div class="input-group mb-4">
-                        <input class="form-control" type="file" name="image">
+                        <input class="form-control" type="file" name="image" id="inputFile">
                     </div>
 
                     <!-- Name input -->
@@ -97,7 +118,7 @@
                     <button type="submit" class="btn btn-primary btn-block">save</button>
                 </form>
             </div>
-            
+
             <div class="history">
                 <div class="d-flex">
                     <button class="border-0 bg-transparent fw-bold" onclick="history()">History</button>
@@ -145,6 +166,23 @@
                 card.style.display = 'none';
                 close.style.display = 'none';
             });
+
+            function previewImage(event) {
+                let fileInput = event.target;
+                let reviewImage = document.getElementById('review')
+
+                if (fileInput.files && fileInput.files[0]) {
+                    let reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        reviewImage.src = e.target.result;
+                    }
+
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+
+            document.getElementById('inputFile').addEventListener('change', previewImage);
         </script>
     </body>
 

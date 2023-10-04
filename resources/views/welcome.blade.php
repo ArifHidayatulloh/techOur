@@ -34,10 +34,10 @@
                                 <li>
                                     @if (Auth::user()->image == null)
                                         <img src="{{ asset('assets/image/team.jpg') }}" alt=""
-                                            class="rounded-circle" style="width: 110px; height: 100px;">
+                                            class="rounded-circle" style="width: 110px; height: auto;">
                                     @else
                                         <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                                            class="rounded-circle" style="width: 110px; height: 100px;">
+                                            class="rounded-circle" style="width: 110px; height: auto;">
                                     @endif
                                 </li>
                                 @if (Auth::user()->role != 'admin')

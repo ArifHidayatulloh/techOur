@@ -17,6 +17,7 @@ class LimitController extends Controller
     public function index()
     {
         $limit = Limit::all();
+        $editLimit = Limit::all();
         return view('admin.list-paket.index',compact('limit'));
     }
 
@@ -116,6 +117,9 @@ class LimitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $limit = Limit::find($id);
+        $limit->delete();
+
+        return redirect()->back()->with('success','Deleted Limit Successfully');
     }
 }

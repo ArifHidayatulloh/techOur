@@ -208,26 +208,21 @@
                                                         class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
                                             </div>
                                             <div class="delete">
-                                                <a class="btn" type="button"><i class="bx bxs-trash-alt bx-sm"
-                                                        style="color: black"></i></a>
+                                                <form action="{{ route('limit.delete', ['id' => $item->id]) }}"
+                                                    method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn">
+
+                                                        <i class="bx bxs-trash-alt bx-sm" style="color: black"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     @endif
                                 </li>
                             </ul>
 
-                            {{-- @if (Auth::user()->role == 'admin')
-                                <div class="card-footer mb-3 d-flex justify-content-around border-0">
-                                    <div class="update">
-                                        <a class="btn" type="button" onclick="update()"><i class='bx bxs-edit-alt bx-sm'
-                                                style="color: black"></i></a>
-                                    </div>
-                                    <div class="delete">
-                                        <a class="btn" type="button"><i class="bx bxs-trash-alt bx-sm"
-                                                style="color: black"></i></a>
-                                    </div>
-                                </div>
-                            @endif --}}
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
@@ -245,16 +240,17 @@
                                             <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
                                                 style="height: 5rem">
                                                 <div>
-                                                    <input type="text" class="form-label fw-bold border-0"
-                                                        name="name" value="{{ $item->name }}">
+                                                    <input type="text"
+                                                        class="form-label fw-bold border-0 bg-transparent" name="name"
+                                                        value="{{ $item->name }}" disabled>
                                                     <p class="d-flex">Limit <input type="text"
-                                                            class="form-label border-0" name="limit"
-                                                            value="{{ $item->limit }}"></p>
+                                                            class="form-label border-0 bg-transparent" name="limit"
+                                                            value="{{ $item->limit }}" disabled></p>
                                                 </div>
                                                 <div>
                                                     <p class="d-flex text-success fw-bold">Rp. <input type="text"
-                                                            class="form-label text-success fw-bold border-0 w-50"
-                                                            name="prize" value="{{ $item->prize }}"></p>
+                                                            class="form-label text-success fw-bold border-0 w-50 bg-transparent"
+                                                            name="prize" value="{{ $item->prize }}" disabled></p>
                                                 </div>
                                             </div>
                                             <div class="mb-3 form-check me-3">
@@ -281,8 +277,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </li>
-                            </ul>
+                            
                         @endforeach
                     </div>
                 @endforeach

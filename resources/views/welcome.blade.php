@@ -53,6 +53,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="btn-list d-flex justify-content-end">
+            <a href="{{ route('limit.index') }}" class="caption text-center me-5 p-2 mt-4 text-decoration-none" style="cursor: pointer;"
+                id="create">list paket</a>
+        </div>
+
         <div class="container">
             <div class="pilih">
                 <div class="pilihan">

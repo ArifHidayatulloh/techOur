@@ -59,7 +59,7 @@
                                 @endif
                             </li>
                             <li class="ms-3 me-3">{{ Auth::user()->email }}</li>
-                            <li class="ms-3 me-3 mt-2 text-white opacity-75 rounded-2" style="background-color:#576b7d;">limit 
+                            <li class="ms-3 me-3 mt-2 fw-bold rounded-2" style="color:#6a7f92;">limit 
                                 @php
                                     $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
                                     $totalDataCount = \App\Models\Tournament::all()->where('user_id', Auth::user()->id)->count();

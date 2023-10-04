@@ -55,10 +55,22 @@ body{
 }
 
 /* CONTAINER */
+.caption{
+  border: 1px solid #3E4C59;
+  color: #3E4C59;
+  width: 7rem;
+  border-radius: 10px;
+}
+
+.caption:hover{
+  background-color: #3E4C59;
+  color: white;
+}
+
 .pilih{
   display: flex;
   justify-content: center;
-  margin-top: 10%;
+  margin-top: 5%;
   align-items: center;
   flex-direction: column;
 }

@@ -46,8 +46,8 @@
                     <h5 class="card-title fs-4">{{ Auth::user()->name }}</h5>
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
                 </div>
-                <div class="text-center opacity-50 rounded-2 mt-1 w-50" style="margin-left: 60px;">
-                    <a href="" class="text-decoration-none text-success fw-bold mt-1" style="letter-spacing: 1px;">limit :
+                <div class="text-center rounded-2 mt-1 w-50" style="margin-left: 60px;">
+                    <a href="" class="text-decoration-none fw-bold mt-1" style="color:#6a7f92; letter-spacing: 1px;">limit :
                         {{ $data }}/{{ $limit }}
                     </a>
                 </div>

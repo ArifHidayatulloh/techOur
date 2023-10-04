@@ -40,6 +40,18 @@
                                             class="rounded-circle" style="width: 110px; height: 100px;">
                                     @endif
                                 </li>
+                                @if (Auth::user()->role != 'admin')
+                                    <li class="ms-3 me-3 mt-2 fw-bold rounded-2" style="color:#6a7f92;">limit
+                                        @php
+                                            $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
+                                            $totalDataCount = \App\Models\Tournament::all()
+                                                ->where('user_id', Auth::user()->id)
+                                                ->count();
+                                            
+                                            echo "$totalDataCount/$limit";
+                                        @endphp
+                                    </li>
+                                @endif
                                 <li>{{ Auth::user()->email }}</li>
                                 <li class="mb-3 mt-3 p-1">
                                     <a href="/password"><box-icon name='key'></box-icon></a>
@@ -55,8 +67,8 @@
         </div>
 
         <div class="btn-list d-flex justify-content-end">
-            <a href="{{ route('limit.index') }}" class="caption text-center me-5 p-2 mt-4 text-decoration-none" style="cursor: pointer;"
-                id="create">list paket</a>
+            <a href="{{ route('limit.index') }}" class="caption text-center me-5 p-2 mt-4 text-decoration-none"
+                style="cursor: pointer;" id="create">list paket</a>
         </div>
 
         <div class="container">

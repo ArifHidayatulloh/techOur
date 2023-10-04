@@ -106,7 +106,16 @@ class LimitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $limit = Limit::find($id);
+
+        $request->validate([
+            'name' => 'required',
+            'limit' => 'required',
+            'prize' => 'required',
+        ]);
+
+        $limit->update($request->all());
+        return redirect()->back()->with('updated','Limit Edited Successfully');
     }
 
     /**

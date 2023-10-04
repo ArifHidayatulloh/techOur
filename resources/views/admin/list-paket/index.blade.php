@@ -116,10 +116,10 @@
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <div class="form">
-                                <form action="" method="post" enctype="multipart/form-data">
-                                    @csrf
+                        <form action="{{ route('limit.store') }}" method="post" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                @csrf
+                                <div class="form">
                                     <div class="tmbh-limit">
                                         <div class="input-limit">
                                             <span class="details fw-bold">Paket</span>
@@ -134,21 +134,26 @@
                                             <input type="text" size="22" required name="prize" autocomplete="off">
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="d-flex justify-content-center gap-2">
-                                <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
-                                <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
+                            <div class="modal-footer">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
+                                    <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         @else
         @endif
-
+        
+        @if (session('updated'))
+        <div class="alert alert-success w-75">
+            {{ session('updated') }}
+        </div>
+        @endif
         @php
             $chunkedLimits = $limit->chunk(4);
         @endphp
@@ -174,8 +179,8 @@
                                     <div class="d-flex justify-content-around border-0">
                                         <div class="update">
                                             <a class="btn" type="button" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal2"><i class='bx bxs-edit-alt bx-sm'
-                                                    style="color: black"></i></a>
+                                                data-bs-target="#editModal{{ $item->id }}"><i
+                                                    class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
                                         </div>
                                         <div class="delete">
                                             <form action="{{ route('limit.delete', ['id' => $item->id]) }}" method="POST"
@@ -183,57 +188,59 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn">
-
                                                     <i class="bx bxs-trash-alt bx-sm" style="color: black"></i>
                                                 </button>
                                             </form>
                                         </div>
 
                                         <!-- Update Limit -->
-                                        <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                        <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header" style="background-color:#576b7d;">
                                                         <div class="text-center fs-3 p-2 text-white">
-                                                            <h2>Update Limit</h2>
+                                                            <h2>Edit Limit</h2>
                                                         </div>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <div class="form">
-                                                            <form action="" method="post"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
+                                                    <form action="{{ route('limit.update', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-body">
+                                                            <div class="form">
                                                                 <div class="tmbh-limit">
                                                                     <div class="input-limit">
                                                                         <span class="details fw-bold">Paket</span>
                                                                         <input type="text" size="22" required
-                                                                            name="name" autocomplete="off">
+                                                                            name="name" autocomplete="off"
+                                                                            value="{{ $item->name }}">
                                                                     </div>
                                                                     <div class="input-limit">
                                                                         <span class="details fw-bold">Limit</span>
                                                                         <input type="number" size="22" required
-                                                                            name="limit" autocomplete="off">
+                                                                            name="limit" autocomplete="off"
+                                                                            value="{{ $item->limit }}">
                                                                     </div>
                                                                     <div class="input-limit">
                                                                         <span class="details fw-bold">Harga</span>
                                                                         <input type="text" size="22" required
-                                                                            name="prize" autocomplete="off">
+                                                                            name="prize" autocomplete="off"
+                                                                            value="{{ $item->prize }}">
                                                                     </div>
                                                                 </div>
-                                                            </form>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="d-flex justify-content-center gap-2">
-                                                            <input type="submit" value="SIMPAN"
-                                                                class="btn btn-outline-success w-auto">
-                                                            <input type="reset" value="BATAL"
-                                                                class="btn btn-outline-danger w-auto">
+                                                        <div class="modal-footer">
+                                                            <div class="d-flex justify-content-center gap-2">
+                                                                <input type="submit" value="SIMPAN"
+                                                                    class="btn btn-outline-success w-auto">
+                                                                <input type="reset" value="BATAL"
+                                                                    class="btn btn-outline-danger w-auto">
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

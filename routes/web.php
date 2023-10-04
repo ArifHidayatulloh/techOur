@@ -65,6 +65,7 @@ Route::patch('/news/approved/{id}',[NewsController::class,'approved'])->name('ne
 
 Route::get('/limit',[LimitController::class,'index'])->name('limit.index');
 Route::post('/limit/store',[LimitController::class,'store'])->name('limit.store');
+Route::put('/limit/update/{id}',[LimitController::class,'update'])->name('limit.update');
 Route::post('/limit/buy',[LimitController::class,'buyLimit'])->name('buyLimit');
 Route::delete('/limit/delete/{id}',[LimitController::class,'destroy'])->name('limit.delete');
 Route::get('/limit/pending',[HistoryController::class,'index'])->name('limit.pending');

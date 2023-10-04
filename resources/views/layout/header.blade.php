@@ -53,22 +53,28 @@
                             <li>{{ Auth::user()->name }}</li>
                             <li>
                                 @if (Auth::user()->image == null)
-                                <img src="{{ asset('assets/image/team.jpg') }}" alt="" class="rounded-circle w-50 mt-2 mb-2">
+                                    <img src="{{ asset('assets/image/team.jpg') }}" alt=""
+                                        class="rounded-circle w-50 mt-2 mb-2">
                                 @else
-                                <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" class="rounded-circle w-50 mt-2 mb-2">                                    
+                                    <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
+                                        class="rounded-circle w-50 mt-2 mb-2">
                                 @endif
                             </li>
                             <li class="ms-3 me-3">{{ Auth::user()->email }}</li>
-                            <li class="ms-3 me-3 mt-2 fw-bold rounded-2" style="color:#6a7f92;">limit 
-                                @php
-                                    $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
-                                    $totalDataCount = \App\Models\Tournament::all()->where('user_id', Auth::user()->id)->count();
-
-                                    echo "$totalDataCount/$limit";
-                                @endphp
-                            </li>
+                            @if (Auth::user()->role != 'admin')
+                                <li class="ms-3 me-3 mt-2 fw-bold rounded-2" style="color:#6a7f92;">limit
+                                    @php
+                                        $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
+                                        $totalDataCount = \App\Models\Tournament::all()
+                                            ->where('user_id', Auth::user()->id)
+                                            ->count();
+                                        
+                                        echo "$totalDataCount/$limit";
+                                    @endphp
+                                </li>
+                            @endif
                             <li class="bg-body-tertiary mb-3 mt-3 p-1">
-                                <a href="/password"><i class='bx bx-key bx-sm' ></i></a>
+                                <a href="/password"><i class='bx bx-key bx-sm'></i></a>
                                 <a href="/profile"><i class='bx bxs-edit-alt bx-sm'></i></a>
                             </li>
                             <li><a href="{{ route('actionlogout') }}">Log Out</a>

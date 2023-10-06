@@ -62,9 +62,12 @@
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="text-center rounded-2 mt-1 w-50" style="margin-left: 60px;">
+                    @if (Auth::user()->role != 'admin')
                     <a href="" class="text-decoration-none fw-bold mt-1"
                         style="color:#6a7f92; letter-spacing: 1px;">limit :
                         {{ $data }}/{{ $limit }}
+                        
+                    @endif
                     </a>
                 </div>
                 <div class="card-btn bg-body-tertiary mb-3 mt-3 p-1 text-center">
@@ -91,9 +94,11 @@
                         @else
                             <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto" alt=""
                                 class="w-25 rounded-circle" id="review">
+                                <button role="button" type="submit" class="trash align-self-center bg-transparent"><i class='bx bxs-trash-alt bx-sm'
+                                        style="color: white" name="delete-image"></i></button>
                         @endif
-                        <a href="" class="trash align-self-center"><i class='bx bxs-trash-alt bx-sm'
-                                style="color: white"></i></a>
+                        
+                            
                     </div>
 
                     <div class="input-group mb-4">

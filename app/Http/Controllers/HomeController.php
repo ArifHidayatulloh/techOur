@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function profile()
     {
-        $history = History::where('user_id', Auth::user());
+        $history = History::all()->where('user_id',Auth::user()->id);
         $totalLimit = History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
 
         $totalDataCount = Tournament::all()->where('user_id', Auth::user()->id)->count();
@@ -36,29 +36,27 @@ class HomeController extends Controller
             // 'image' => 'required|image|mimes:jpg,png,jpeg',
         ]);
 
-        if ($user->image == null) {
-            $user->name = $request->name;
-            $user->email = $request->email;
-            if ($request->hasFile('image') != null) {
-                $imagePath = $request->file('image')->store('user_images', 'public');
-                $user->image = $imagePath;
+        // Setelah itu, periksa apakah ada file gambar yang diunggah
+        if ($request->hasFile('image')) {
+            // Hapus gambar yang lama jika ada
+            if ($user->image) {
+                Storage::disk('public')->delete($user->image);
             }
-            $user->save();
-        } elseif ($request->hasFile('image') != null) {
-            Storage::disk('public')->delete($user->image);
+        
+            // Unggah gambar yang baru
             $imagePath = $request->file('image')->store('user_images', 'public');
-            $user->name = $request->name;
-            $user->email = $request->email;
             $user->image = $imagePath;
-            $user->save();
-        } else {
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->save();
         }
-
-
-        return redirect()->back()->with('successProfile', 'Berhasil mengubah profile');
+        
+        // Set atribut lainnya
+        $user->name = $request->name;
+        $user->email = $request->email;
+        
+        // Simpan perubahan
+        $user->save();
+        
+        return redirect()->back()->with('successProfile', 'Berhasil mengubah profil');
+        
     }
 
     public function updatePassword(Request $request, $id)
@@ -81,4 +79,6 @@ class HomeController extends Controller
             return redirect()->back()->with('success', 'Password updated successfully');
         }
     }
+
+    
 }

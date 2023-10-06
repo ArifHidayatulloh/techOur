@@ -32,13 +32,7 @@ Route::get('actionlogout',[LoginController::class,'actionlogout'])->name('action
 
 Route::get('profile',[HomeController::class,'profile'])->name('profile')->middleware('auth');
 Route::post('/profile/{id}',[HomeController::class,'editProfile'])->name('profile.edit')->middleware('auth');
-Route::post('/password/{id}',[HomeController::class, 'updatePassword'])->name('password.update')->middleware('auth');
-
-
-// Route::get('/user',[LoginController::class,'userData'])->name('userIndex');
-// Route::delete('deleteUser/{id}',[LoginController::class,'deleteUser'])->name('deleteUser');
-
-// Route::post('/news', [NewsController::class,'store'])->name('news.store')->middleware('check_create_limit:news');
+Route::post('/password/{id}',[HomeController::class, 'updatePassword'])->name('password.update')->middleware('auth');    
 
 Route::resource('/users', UserController::class);
 Route::resource('/competition', CompetitionController::class);

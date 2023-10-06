@@ -41,13 +41,10 @@
                                     @endif
                                 </li>
                                 @if (Auth::user()->role != 'admin')
-                                    <li class="ms-3 me-3 mt-2 fw-bold rounded-2" style="color:#6a7f92;">limit
+                                    <li class="me-3 mt-2 fw-bold rounded-2" style="color:#6a7f92;">limit
                                         @php
                                             $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
-                                            $totalDataCount = \App\Models\Tournament::all()
-                                                ->where('user_id', Auth::user()->id)
-                                                ->count();
-                                            
+                                            $totalDataCount = \App\Models\Tournament::all()->where('user_id', Auth::user()->id)->count();
                                             echo "$totalDataCount/$limit";
                                         @endphp
                                     </li>

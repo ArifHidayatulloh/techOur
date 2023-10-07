@@ -27,7 +27,7 @@
             top: 45%;
         }
 
-        .trash i{
+        .trash i {
             color: black;
         }
 
@@ -36,7 +36,7 @@
             background-color: white;
         }
 
-        .img{
+        .img {
             width: 12rem;
         }
 
@@ -45,20 +45,20 @@
                 flex-direction: column;
             }
 
-            .img{
+            .img {
                 width: 8rem;
             }
 
-            .trash{
+            .trash {
                 top: 100%;
                 margin-left: 13%;
             }
 
-            .trash:hover{
+            .trash:hover {
                 background-color: black;
             }
 
-            .trash i{
+            .trash i {
                 color: white;
             }
 
@@ -76,8 +76,8 @@
                     @if (Auth::user()->image == null)
                         <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-50 mb-2 rounded-circle">
                     @else
-                        <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto;"
-                            alt="" class="w-50 mb-2 rounded-circle">
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto;" alt=""
+                            class="w-50 mb-2 rounded-circle">
                     @endif
                 </div>
                 <div class="text-center">
@@ -100,15 +100,9 @@
             <div class="content profile rounded-3 border border-dark-subtle w-75 m-5 p-5 shadow-sm">
                 <h4>Profile information</h4>
                 <p>Update your account's profile information and email address</p>
-                @if (session('successProfile'))
-                    <div class="alert alert-success mt-2 me-5 ms-5 justify-content-center">
-                        {{ session('successProfile') }}
-                    </div>
-                @endif
                 <form action="{{ route('profile.edit', ['id' => Auth::user()->id]) }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
-
                     <div class="image d-flex justify-content-center mb-4 edit">
                         @if (Auth::user()->image == null)
                             <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
@@ -118,6 +112,12 @@
                                 class="img rounded-circle" id="review">
                         @endif
                     </div>
+
+                    @if (session('successProfile'))
+                        <div class="alert alert-success me-5 ms-5 justify-content-center">
+                            {{ session('successProfile') }}
+                        </div>
+                    @endif
 
                     <div class="input-group mb-4">
                         <input class="form-control" type="file" name="image" id="inputFile">
@@ -136,14 +136,18 @@
                         <input type="text" class="form-control" placeholder="Email" name="email"
                             value="{{ Auth::user()->email }}" />
                     </div>
-
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary btn-block">save</button>
                 </form>
-                <button role="button" type="submit"
-                    class="trash rounded-circle p-2 d-flex position-absolute start-50 translate-middle"
-                    id="trash"><i class='bx bxs-trash-alt bx-sm'
-                        name="delete-image"></i></button>
+                @if (Auth::user()->image != null)
+                    <form action="{{ route('photo.edit', ['id' => Auth::user()->id]) }}" method="post">
+                        @csrf
+                        @method('PATCH')
+                        <button role="button" type="submit"
+                            class="trash rounded-circle p-2 d-flex position-absolute start-50 translate-middle"
+                            id="trash"><i class='bx bxs-trash-alt bx-sm' name="delete-image"></i></button>
+                    </form>
+                @endif
             </div>
 
             <div class="history">

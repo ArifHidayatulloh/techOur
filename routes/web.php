@@ -32,7 +32,8 @@ Route::get('actionlogout',[LoginController::class,'actionlogout'])->name('action
 
 Route::get('profile',[HomeController::class,'profile'])->name('profile')->middleware('auth');
 Route::post('/profile/{id}',[HomeController::class,'editProfile'])->name('profile.edit')->middleware('auth');
-Route::post('/password/{id}',[HomeController::class, 'updatePassword'])->name('password.update')->middleware('auth');    
+Route::post('/password/{id}',[HomeController::class, 'updatePassword'])->name('password.update')->middleware('auth');
+Route::patch('/profile/editImage/{id}',[HomeController::class,'editImage'])->name('photo.edit')->middleware('auth');
 
 Route::resource('/users', UserController::class);
 Route::resource('/competition', CompetitionController::class);

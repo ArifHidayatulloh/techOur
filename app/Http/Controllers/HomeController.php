@@ -59,6 +59,14 @@ class HomeController extends Controller
         
     }
 
+    public function editImage($id){
+        $user = User::find($id);
+
+        $user->where('id',$id)->update(array('image' => null));
+        
+        return redirect()->back();
+    }
+
     public function updatePassword(Request $request, $id)
     {
         $request->validate([

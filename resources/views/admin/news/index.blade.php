@@ -17,9 +17,25 @@
             font-size: 15px;
         }
 
+        .caption {
+            margin-left: 5rem;
+        }
+
+        .btn {
+            margin-right: 5rem;
+        }
+
         @media screen and (max-width: 796px) {
+            .button{
+                margin-bottom: 1rem;    
+            }
+
             .caption {
-                margin-bottom: 5rem;
+                margin-left: 1rem;
+            }
+
+            .btn {
+                margin-right: 1rem;
             }
 
             .content {
@@ -43,14 +59,14 @@
                 </div>
             @endif
         </div>
-        <div class="d-flex">
+        <div class="button d-flex justify-content-between">
             <a href="{{ route('news.create') }}"
-                class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Add
+                class="caption fw-bold text-success fs-4 mb-3 mt-4 text-decoration-none">+Add
                 News</a>
+
             @if (Auth::user()->role == 'admin')
-                <a style="margin-left: 60rem;" href="{{ route('news.pending') }}" class="btn btn-outline-primary mb-3">+ Approve
-                    News</a>
-            @else
+                <a href="{{ route('news.pending') }}"
+                    class="btn approve btn-outline-primary justify-content-end mt-4 mb-3">+ Approve News</a>
             @endif
         </div>
         <div class="d-flex justify-content-center content mb-5">

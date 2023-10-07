@@ -33,24 +33,26 @@
                                 <li>{{ Auth::user()->name }}</li>
                                 <li>
                                     @if (Auth::user()->image == null)
-                                        <img src="{{ asset('assets/image/team.jpg') }}" alt=""
-                                            class="rounded-circle" style="width: 110px; height: auto;">
+                                        <img src="{{ url('assets/image/it/user.png') }}" alt=""
+                                            class="w-50 mb-2 rounded-circle" style="height: auto">
                                     @else
                                         <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                                            class="rounded-circle" style="width: 110px; height: auto;">
+                                            class="rounded-circle w-50 mt-2 mb-2 rounded-circle" style="height: auto">
                                     @endif
                                 </li>
                                 @if (Auth::user()->role != 'admin')
                                     <li class="me-3 mt-2 fw-bold rounded-2" style="color:#6a7f92;">limit
                                         @php
                                             $limit = \App\Models\History::where(['user_id' => Auth::user()->id, 'status' => 'success'])->sum('limit');
-                                            $totalDataCount = \App\Models\Tournament::all()->where('user_id', Auth::user()->id)->count();
+                                            $totalDataCount = \App\Models\Tournament::all()
+                                                ->where('user_id', Auth::user()->id)
+                                                ->count();
                                             echo "$totalDataCount/$limit";
                                         @endphp
                                     </li>
                                 @endif
                                 <li>{{ Auth::user()->email }}</li>
-                                <li class="mb-3 mt-3 p-1">
+                                <li class="d-flex justify-content-center bg-body-tertiary p-1">
                                     <a href="/password"><box-icon name='key'></box-icon></a>
                                     <a href="/profile"><box-icon type='solid' name='edit-alt'></box-icon></a>
                                 </li>

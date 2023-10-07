@@ -40,6 +40,7 @@ body{
 }
 
 .dropdown-menu li{
+  background-color: transparent;
   width: 100%;
 }
 
@@ -51,6 +52,10 @@ body{
 
 .nav-item:hover .dropdown-menu {
   display: block;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover{
   cursor: pointer;
 }
 
@@ -137,8 +142,8 @@ img{
   }
 
   .dropdown .dropdown-menu{
-    margin-left: -120px;
-    margin-top: 15px;
+    margin-left: -150px;
+    margin-top: 5px;
   }
 
   .dropdown-menu li a{

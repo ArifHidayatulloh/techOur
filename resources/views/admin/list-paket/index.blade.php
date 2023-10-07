@@ -67,10 +67,6 @@
                 flex-direction: column;
             }
 
-            .approve {
-                margin-left: 7rem;
-            }
-
             .bagan {
                 margin-left: 3rem;
                 margin-bottom: 2rem;
@@ -273,7 +269,7 @@
                                             </div>
                                             <div>
                                                 <p class="d-flex text-success fw-bold">Rp. <input type="text"
-                                                        class="form-label text-success fw-bold border-0 w-50 bg-transparent"
+                                                        class="form-label text-success fw-bold border-0 bg-transparent"
                                                         name="prize" value="{{ $item->prize }}" readonly></p>
                                             </div>
                                         </div>

@@ -38,7 +38,7 @@
                 <form action="{{ route('actionlogin') }}" method="post">
                     @csrf
                     <div class="d-flex flex-row align-items-center justify-content-center">
-                        <p class="lead fw-bold mb-3" style="font-family: Georgia; letter-spacing: 1px;">Log in</p>
+                        <p class="lead fw-bold fs-4 mb-3" style="letter-spacing: 1px;">Log in</p>
                     </div>
 
                     <!-- Email input -->

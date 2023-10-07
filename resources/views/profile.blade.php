@@ -20,23 +20,46 @@
             height: 100%;
         }
 
-        .image .trash {
-            opacity: 0;
-            position: absolute;
+        .trash {
+            background-color: transparent;
+            height: auto;
+            margin-left: 16%;
+            top: 45%;
         }
 
-        .image:hover {
-            opacity: 50%;
+        .trash i{
+            color: black;
         }
 
-        .image:hover .trash {
-            opacity: 1;
+        .trash:hover {
+            opacity: 75%;
+            background-color: white;
         }
 
+        .img{
+            width: 12rem;
+        }
 
         @media screen and (max-width: 796px) {
             .body {
                 flex-direction: column;
+            }
+
+            .img{
+                width: 8rem;
+            }
+
+            .trash{
+                top: 100%;
+                margin-left: 13%;
+            }
+
+            .trash:hover{
+                background-color: black;
+            }
+
+            .trash i{
+                color: white;
             }
 
             .history {
@@ -53,7 +76,7 @@
                     @if (Auth::user()->image == null)
                         <img src="{{ url('assets/image/it/user.png') }}" alt="" class="w-50 mb-2 rounded-circle">
                     @else
-                        <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto; width: 100px"
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto;"
                             alt="" class="w-50 mb-2 rounded-circle">
                     @endif
                 </div>
@@ -61,12 +84,11 @@
                     <h5 class="card-title fs-4">{{ Auth::user()->name }}</h5>
                     <p class="card-text fs-6">{{ Auth::user()->email }}</p>
                 </div>
-                <div class="text-center rounded-2 mt-1 w-50" style="margin-left: 60px;">
+                <div class="text-center rounded-2 mt-1">
                     @if (Auth::user()->role != 'admin')
-                    <a href="" class="text-decoration-none fw-bold mt-1"
-                        style="color:#6a7f92; letter-spacing: 1px;">limit :
-                        {{ $data }}/{{ $limit }}
-                        
+                        <a href="" class="text-decoration-none fw-bold mt-1"
+                            style="color:#6a7f92; letter-spacing: 1px;">limit :
+                            {{ $data }}/{{ $limit }}
                     @endif
                     </a>
                 </div>
@@ -90,15 +112,11 @@
                     <div class="image d-flex justify-content-center mb-4 edit">
                         @if (Auth::user()->image == null)
                             <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
-                                class="w-25 rounded-circle">
+                                class="img rounded-circle">
                         @else
-                            <img src="{{ asset('storage/' . Auth::user()->image) }}" style="height: auto" alt=""
-                                class="w-25 rounded-circle" id="review">
-                                <button role="button" type="submit" class="trash align-self-center bg-transparent"><i class='bx bxs-trash-alt bx-sm'
-                                        style="color: white" name="delete-image"></i></button>
+                            <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" style="height: auto"
+                                class="img rounded-circle" id="review">
                         @endif
-                        
-                            
                     </div>
 
                     <div class="input-group mb-4">
@@ -122,6 +140,10 @@
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary btn-block">save</button>
                 </form>
+                <button role="button" type="submit"
+                    class="trash rounded-circle p-2 d-flex position-absolute start-50 translate-middle"
+                    id="trash"><i class='bx bxs-trash-alt bx-sm'
+                        name="delete-image"></i></button>
             </div>
 
             <div class="history">
@@ -159,17 +181,20 @@
 
         <script>
             const card = document.getElementById('card');
-            const close = document.getElementById("close");
+            const close = document.getElementById('close');
+            const trash = document.querySelector(".trash");
 
             function history() {
                 card.style.display = 'block';
                 close.style.display = 'block';
                 close.style.marginLeft = '17rem';
+                trash.style.marginLeft = '1%';
             }
 
             close.addEventListener("click", function() {
                 card.style.display = 'none';
                 close.style.display = 'none';
+                trash.style.marginLeft = '16%';
             });
 
             function previewImage(event) {

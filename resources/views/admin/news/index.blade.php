@@ -21,13 +21,9 @@
             margin-left: 5rem;
         }
 
-        .btn {
-            margin-right: 5rem;
-        }
-
         @media screen and (max-width: 796px) {
-            .button{
-                margin-bottom: 1rem;    
+            .button {
+                margin-bottom: 1rem;
             }
 
             .caption {
@@ -66,7 +62,7 @@
 
             @if (Auth::user()->role == 'admin')
                 <a href="{{ route('news.pending') }}"
-                    class="btn approve btn-outline-primary justify-content-end mt-4 mb-3">+ Approve News</a>
+                    class="btn approve btn-outline-primary justify-content-end mt-4 mb-3 me-5">+ Approve News</a>
             @endif
         </div>
         <div class="d-flex justify-content-center content mb-5">
@@ -94,7 +90,7 @@
                             <td>{{ $item->status }}</td>
                             <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 80px"></td>
                             <td>
-                                <div class="d-grid gap-2 p-3 text-center">
+                                <div class="d-flex gap-2 p-3 justify-content-center">
                                     <div class="update">
                                         <a class="btn btn-outline-warning" type="button"
                                             href="{{ route('news.edit', $item->id) }}"><i class='bx bxs-edit-alt bx-sm'
@@ -116,7 +112,7 @@
             </table>
         </div>
 
-        <script>
+        {{-- <script>
             document.getElementById('show-popup').addEventListener('click', function() {
                 document.getElementById('popup').style.display = 'block';
             });
@@ -133,7 +129,7 @@
             document.getElementById('close-popup-update').addEventListener('click', function() {
                 document.getElementById('popup-update').style.display = 'none';
             });
-        </script>
+        </script> --}}
     </body>
 
     </html>

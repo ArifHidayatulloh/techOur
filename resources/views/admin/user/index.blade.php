@@ -94,7 +94,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <a class="btn btn-outline-success" type="button" href="/view">view</a>
+                                {{-- <a class="btn btn-outline-success" type="button" href="/view">view</a> --}}
                             </td>
                         </tr>
                     @endforeach

@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="output">
                                     <span class="details">OUTPUT GAMBAR</span>
-                                    <img src="" alt="" id="review">
+                                    <img src="" alt="" id="review" style="height: auto" class="w-25">
                                 </div>
                             </div>
                         </div>

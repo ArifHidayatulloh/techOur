@@ -64,7 +64,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>No Telpon</th>
+                        <th>Phone number</th>
                         <th>Role</th>
                         <th>Limit</th>
                         <th>Action</th>

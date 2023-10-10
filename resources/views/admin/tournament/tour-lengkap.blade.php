@@ -68,13 +68,13 @@
                 <thead class="table-light">
                     <tr>
                         {{-- <th>Pembuat</th> --}}
-                        <th>Nama</th>
-                        <th>Lokasi</th>
-                        <th>Tanggal</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Date</th>
                         <th>Regulasi</th>
-                        <th>Hadiah</th>
+                        <th>Prize</th>
                         <th>Contact</th>
-                        <th>Regis</th>
+                        <th>Fee</th>
                         <th>Team</th>
                         <th>Poster</th>
                         <th>Action</th>

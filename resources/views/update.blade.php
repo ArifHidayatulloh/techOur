@@ -44,7 +44,7 @@
                         <div class="form-floating mb-4">
                             <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="hp"
                                 value="{{ $user->hp }}">
-                            <label for="floatingInput">No Telpon</label>
+                            <label for="floatingInput">Phone Number</label>
                         </div>
 
                         {{-- Limit --}}
@@ -68,9 +68,9 @@
 
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="submit" class="btn text-white w-auto ps-5 pe-5"
-                                style="background-color: #3E4C59;">Simpan</button>
+                                style="background-color: #3E4C59;">Save</button>
                             <button type="reset" class="btn text-white w-auto ps-5 pe-5"
-                                style="background-color: #3E4C59;">Batal</button>
+                                style="background-color: #3E4C59;">Cancel</button>
                         </div>
 
                     </form>

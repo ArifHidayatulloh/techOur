@@ -26,23 +26,23 @@
                     <div class="tmbh-competition">
                         <div class="form-left">
                             <div class="input-competition">
-                                <span class="details">Nama</span>
+                                <span class="details">Name</span>
                                 <input type="text" size="22" required name="competition" autocomplete="off"
                                     value="{{ $competition->competition }}">
                             </div>
                             <div class="input-competition">
-                                <span class="details">Gambar</span>
+                                <span class="details">Image</span>
                                 <input type="file" style="box-shadow:none;  border:none;" required name="image" id="inputFile">
                             </div>
                             <div class="output">
-                                <span class="details">OUTPUT GAMBAR</span>
+                                <span class="details">OUTPUT IMAGE</span>
                                 <img src="{{ asset('storage/' .$competition->image) }}" alt="" id="review">
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center gap-2">
-                        <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
-                        <input type="submit" value="SIMPAN" class="btn btn-outline-success w-auto">
+                        <input type="reset" value="CANCEL" class="btn btn-outline-danger w-auto">
+                        <input type="submit" value="SAVE CHANGE" class="btn btn-outline-success w-auto">
                     </div>
                 </form>
             </div>

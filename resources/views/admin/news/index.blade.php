@@ -57,24 +57,24 @@
         </div>
         <div class="button d-flex justify-content-between">
             <a href="{{ route('news.create') }}"
-                class="caption fw-bold text-success fs-4 mb-3 mt-4 text-decoration-none">+Add
+                class="caption fw-bold text-success fs-4 mb-3 mt-2 text-decoration-none">+Add
                 News</a>
 
             @if (Auth::user()->role == 'admin')
                 <a href="{{ route('news.pending') }}"
-                    class="btn approve btn-outline-primary justify-content-end mt-4 mb-3 me-5">+ Approve News</a>
+                    class="btn approve btn-outline-primary justify-content-end mt-2 mb-3 me-5">+ Approve News</a>
             @endif
         </div>
         <div class="d-flex justify-content-center content mb-5">
             <table class="table text-center ms-5 me-5">
                 <thead class="table-light">
                     <tr>
-                        <th>Pembuat</th>
-                        <th>Judul</th>
+                        <th>Maker</th>
+                        <th>Title</th>
                         <th>Detail</th>
-                        <th>Tanggal</th>
+                        <th>Date</th>
                         <th>Status</th>
-                        <th>Poster</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>

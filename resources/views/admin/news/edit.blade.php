@@ -27,7 +27,7 @@
                         <div class="tmbh-news">
                             <div class="form-left">
                                 <div class="input-news">
-                                    <span class="details">Judul</span>
+                                    <span class="details">Title</span>
                                     <textarea cols="50" rows="3" required name="title">{{ $news->title }}</textarea>
                                 </div>
                                 <div class="input-tur d-none">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-right">
                                 <div class="input-news">
-                                    <span class="details">Tanggal</span>
+                                    <span class="details">Date</span>
                                     <input type="date" name="date" value="{{ $news->date }}">
                                 </div>
                                 <div class="input-news">
@@ -50,15 +50,15 @@
                                         id="inputFile">
                                 </div>
                                 <div class="output">
-                                    <span class="details">OUTPUT GAMBAR</span>
+                                    <span class="details">OUTPUT IMAGE</span>
                                     <img src="{{ asset('storage/' . $news->image) }}" alt="" id="review">
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center gap-2">
-                            <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
-                            <button type="submit" value="SIMPAN"
-                                class="btn btn-outline-success text-center w-auto">Simpan</button>
+                            <input type="reset" value="CANCEL" class="btn btn-outline-danger w-auto">
+                            <button type="submit" value="SAVE CHANGE"
+                                class="btn btn-outline-success text-center w-auto">SAVE CHANGE</button>
                         </div>
                     </form>
                 </div>

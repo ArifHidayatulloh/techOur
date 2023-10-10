@@ -35,7 +35,7 @@
 
                             <div class="form-left">
                                 <div class="input-news">
-                                    <span class="details">Judul</span>
+                                    <span class="details">Title</span>
                                     <textarea cols="50" required name="title"></textarea>
                                 </div>
                                 <div class="input-news">
@@ -49,7 +49,7 @@
                                     <input type="text" name="user_id" value="{{ Auth::user()->id }}">
                                 </div>
                                 <div class="input-news">
-                                    <span class="details">Tanggal</span>
+                                    <span class="details">Date</span>
                                     <input type="date" name="date">
                                 </div>
                                 <div class="input-news">
@@ -58,14 +58,14 @@
                                         id="inputFile">
                                 </div>
                                 <div class="output">
-                                    <span class="details">OUTPUT GAMBAR</span>
+                                    <span class="details">OUTPUT IMAGE</span>
                                     <img src="" alt="" id="review" style="height: auto" class="w-25">
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center gap-2">
-                            <input type="reset" value="BATAL" class="btn btn-outline-danger w-auto">
-                            <input type="submit" value="SIMPAN" class="btn btn-outline-success text-center w-auto">
+                            <input type="reset" value="CANCEL" class="btn btn-outline-danger w-auto">
+                            <input type="submit" value="SAVE" class="btn btn-outline-success text-center w-auto">
                         </div>
                     </form>
                 </div>

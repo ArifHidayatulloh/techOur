@@ -71,13 +71,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($user as $item)
+                    @foreach ($users as $item)
                         <tr class="align-middle">
                             <td class="title">{{ $item->name }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->hp }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
-                            <td class="text-break p-3" id="text-news">{{ $item->limit }}</td>
+                            <td class="text-break p-3" id="text-news">{{ $userLimit[$item->id] }}</td>
                             <td>
                                 <div class="d-flex gap-2 p-3 w-100 justify-content-center">
                                     <div class="update">

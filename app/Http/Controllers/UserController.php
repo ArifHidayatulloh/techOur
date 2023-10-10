@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\User;
 // use Illuminate\Support\Facedes\Hash;
 use Illuminate\Http\Request;
@@ -15,8 +16,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('admin.user.index',compact('user'));
+        $users = User::all();
+
+        $userLimit = [];
+
+        foreach ($users as $user) {
+            $userId = $user->id;
+            $sumLimit = History::where(['user_id' => $userId, 'status' => 'success'])->sum('limit');
+            $userLimit[$userId] = $sumLimit;
+        }
+        return view('admin.user.index',compact('users','userLimit'));
     }
 
     /**

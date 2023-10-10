@@ -61,14 +61,27 @@ class NewsController extends Controller
 
         $imagePath = $request->file('image')->store('news_images', 'public');
 
-        News::create([
-            'user_id' => $request->user_id,
-            'title' => $request->title,
-            'date' => $request->date,
-            'content' => $request->content,
-            'status' => 'pending',
-            'image' => $imagePath
-        ]);
+        if (Auth::user()->role == 'admin') {
+            News::create([
+                'user_id' => $request->user_id,
+                'title' => $request->title,
+                'date' => $request->date,
+                'content' => $request->content,
+                'status' => 'success',
+                'image' => $imagePath
+            ]);
+        } else {
+            News::create([
+                'user_id' => $request->user_id,
+                'title' => $request->title,
+                'date' => $request->date,
+                'content' => $request->content,
+                'status' => 'pending',
+                'image' => $imagePath
+            ]);
+        }
+
+
 
         return redirect()->route('news.index')->with('success', 'News added successfully');
     }

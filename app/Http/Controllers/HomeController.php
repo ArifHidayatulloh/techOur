@@ -34,7 +34,6 @@ class HomeController extends Controller
             'name' => 'required',
             'email' => 'required',
             'hp' => 'required',
-            // 'image' => 'required|image|mimes:jpg,png,jpeg',
         ]);
 
         // Setelah itu, periksa apakah ada file gambar yang diunggah

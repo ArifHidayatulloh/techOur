@@ -49,7 +49,7 @@ class CompetitionController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('competition.index')->with('success','Added Competition Successfully');
+        return redirect()->route('competition.index')->with('success','Competition added Successfully');
     }
 
     /**
@@ -97,7 +97,7 @@ class CompetitionController extends Controller
         $competition->competition = $request->competition;
         $competition->save();
 
-        return redirect()->route('competition.index')->with('success','Updated Competition Successfully');
+        return redirect()->route('competition.index')->with('success','Competition updated successfully');
     }
 
     /**
@@ -110,6 +110,6 @@ class CompetitionController extends Controller
     {
         Storage::disk('public')->delete($competition->image);
         $competition->delete();
-        return redirect()->route('competition.index')->with('success','Deleted Competition Successfully');
+        return redirect()->route('competition.index')->with('success','Competition deleted successfully');
     }
 }

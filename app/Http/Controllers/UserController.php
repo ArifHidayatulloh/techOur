@@ -66,7 +66,7 @@ class UserController extends Controller
             // 'image' => $imagePath
         ]);
 
-        return redirect()->route('users.index')->with('success','Added Account Successfully');
+        return redirect()->route('users.index')->with('success','Account added successfully');
 
     }
 
@@ -120,7 +120,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index')->with('success','Updated Account Successfully');
+        return redirect()->route('users.index')->with('success','Account updated successfully');
     }
 
     /**
@@ -132,6 +132,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success','Deleted user success');
+        return redirect()->route('users.index')->with('success','Account deleted successfully');
     }
 }

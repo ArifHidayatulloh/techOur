@@ -69,7 +69,7 @@ class NewsController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('news.index')->with('success', 'Added News Successfully');
+        return redirect()->route('news.index')->with('success', 'News added successfully');
     }
 
     public function approved($id){
@@ -77,7 +77,7 @@ class NewsController extends Controller
 
         $news->where('id',$id)->update(array('status' => 'sukses'));
         
-        return redirect()->back()->with('success','News Approved Success');
+        return redirect()->back()->with('success','News approved successfully');
     }
     /**
      * Display the specified resource.
@@ -135,7 +135,7 @@ class NewsController extends Controller
         }
 
 
-        return redirect()->route('news.index')->with('success', 'Updated News Successfully');
+        return redirect()->route('news.index')->with('success', 'News updated successfully');
     }
 
     /**
@@ -148,6 +148,6 @@ class NewsController extends Controller
     {
         Storage::disk('public')->delete($news->image);
         $news->delete();
-        return redirect()->route('news.index')->with('success', 'Deleted News Successfully');
+        return redirect()->route('news.index')->with('success', 'News deleted successfully');
     }
 }

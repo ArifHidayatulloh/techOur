@@ -33,6 +33,7 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'hp' => 'required',
             // 'image' => 'required|image|mimes:jpg,png,jpeg',
         ]);
 
@@ -51,11 +52,12 @@ class HomeController extends Controller
         // Set atribut lainnya
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->hp = $request->hp;
         
         // Simpan perubahan
         $user->save();
         
-        return redirect()->back()->with('successProfile', 'Berhasil mengubah profil');
+        return redirect()->back()->with('successProfile', 'Profile updated successfully');
         
     }
 

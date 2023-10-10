@@ -18,7 +18,7 @@ class TournamentController extends Controller
     public function index()
     {
         $competition = Competition::all();
-        return view('admin.tournament.index',compact('competition'));
+        return view('admin.tournament.index', compact('competition'));
     }
 
     /**
@@ -55,7 +55,7 @@ class TournamentController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
-        $imagePath = $request->file('image')->store('tournament_images','public');
+        $imagePath = $request->file('image')->store('tournament_images', 'public');
 
         Tournament::create([
             'user_id' => $request->user_id,
@@ -72,7 +72,7 @@ class TournamentController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('tournament.index')->with('success','Added Tournament Successfully');
+        return redirect()->route('tournament.index')->with('success', 'Tournament added successfully');
     }
 
     /**
@@ -83,9 +83,9 @@ class TournamentController extends Controller
      */
     public function show($competitionId)
     {
-        if(Auth::user()->role == 'admin'){
-            $tournament = Tournament::all()->where(['competition_id' => $competitionId]);
-        }else{
+        if (Auth::user()->role == 'admin') {
+            $tournament = Tournament::where(['competition_id' => $competitionId])->get();
+        } else {
             $tournament = Tournament::where(['competition_id' => $competitionId, 'user_id' => Auth::user()->id])->get();
         }
         return view('admin.tournament.tour-lengkap', compact('tournament'));
@@ -99,7 +99,7 @@ class TournamentController extends Controller
      */
     public function edit(Tournament $tournament)
     {
-        return view('admin.tournament.edit',[
+        return view('admin.tournament.edit', [
             'tournament' => $tournament,
             'competition' => Competition::all()
         ]);
@@ -124,30 +124,41 @@ class TournamentController extends Controller
             'prizes' => 'required',
             'contact' => 'required',
             'registration_fee' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image') != null) {
             Storage::disk('public')->delete($tournament->image);
-            $imagePath = $request->file('image')->store('tournament_images','public');
+            $imagePath = $request->file('image')->store('tournament_images', 'public');
             $tournament->image = $imagePath;
+            $tournament->competition_id = $request->competition_id;
+            $tournament->tournament = $request->tournament;
+            $tournament->date = $request->date;
+            $tournament->location = $request->location;
+            $tournament->participants = $request->participants;
+            $tournament->challenges = $request->challenges;
+            $tournament->prizes = $request->prizes;
+            $tournament->contact = $request->contact;
+            $tournament->info_team = $request->has('info_team');
+            $tournament->registration_fee = $request->registration_fee;
+            $tournament->save();
+        }else{
+            $tournament->competition_id = $request->competition_id;
+            $tournament->tournament = $request->tournament;
+            $tournament->date = $request->date;
+            $tournament->location = $request->location;
+            $tournament->participants = $request->participants;
+            $tournament->challenges = $request->challenges;
+            $tournament->prizes = $request->prizes;
+            $tournament->contact = $request->contact;
+            $tournament->info_team = $request->has('info_team');
+            $tournament->registration_fee = $request->registration_fee;
+    
+            $tournament->save();
         }
 
-        
-        $tournament->competition_id = $request->competition_id;
-        $tournament->tournament = $request->tournament;
-        $tournament->date = $request->date;
-        $tournament->location = $request->location;
-        $tournament->participants = $request->participants;
-        $tournament->challenges = $request->challenges;
-        $tournament->prizes = $request->prizes;
-        $tournament->contact = $request->contact;
-        $tournament->info_team = $request->has('info_team');
-        $tournament->registration_fee = $request->registration_fee;
 
-        $tournament->save();
 
-        return redirect()->route('tournament.index')->with('success','Updated Tournament Successfully');
+        return redirect()->route('tournament.index')->with('success', 'Tournament updated successfully');
     }
 
     /**
@@ -160,6 +171,6 @@ class TournamentController extends Controller
     {
         Storage::disk('public')->delete($tournament->image);
         $tournament->delete();
-        return redirect()->route('tournament.index')->with('success','Deleted Tournament Successfully');
+        return redirect()->route('tournament.index')->with('success', 'Tournament deleted successfully');
     }
 }

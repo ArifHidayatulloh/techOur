@@ -22,7 +22,7 @@ class HistoryController extends Controller
     public function fail($id){
         $history = History::find($id);
 
-        $history->where('id',$id)->update(array('status' => 'fail'));
+        $history->where('id',$id)->update(array('status' => 'failed'));
         
         return redirect()->back()->with('success','Deleted successfully');
     }

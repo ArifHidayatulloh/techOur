@@ -17,15 +17,16 @@ class NewsController extends Controller
     public function index()
     {
         if (Auth::user()->role == 'admin') {
-            $news = News::all()->where('status','sukses');
+            $news = News::all()->where('status', 'success');
         } else {
             $news = News::where('user_id', Auth::user()->id)->get();
         }
         return view('admin.news.index', compact('news'));
     }
-    
-    public function pending(){
-        $news = News::all()->where('status','menunggu');
+
+    public function pending()
+    {
+        $news = News::all()->where('status', 'menunggu');
 
         return view('admin.news.news-approved', compact('news'));
     }
@@ -65,19 +66,20 @@ class NewsController extends Controller
             'title' => $request->title,
             'date' => $request->date,
             'content' => $request->content,
-            'status' => 'menunggu',
+            'status' => 'pending',
             'image' => $imagePath
         ]);
 
         return redirect()->route('news.index')->with('success', 'News added successfully');
     }
 
-    public function approved($id){
+    public function approved($id)
+    {
         $news = News::find($id);
 
-        $news->where('id',$id)->update(array('status' => 'sukses'));
-        
-        return redirect()->back()->with('success','News approved successfully');
+        $news->where('id', $id)->update(array('status' => 'success'));
+
+        return redirect()->back()->with('success', 'News approved successfully');
     }
     /**
      * Display the specified resource.
@@ -115,24 +117,20 @@ class NewsController extends Controller
             'title' => 'required',
             'date' => 'required',
             'content' => 'required',
-            // 'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
         if ($request->hasFile('image') != null) {
             Storage::disk('public')->delete($news->image);
             $imagePath = $request->file('image')->store('news_images', 'public');
-            $news->image = $imagePath;
-            $news->title = $request->title;
-            $news->date = $request->date;
-            $news->content = $request->content;
-            $news->save();
+        } else {
+            $imagePath = $news->image;
         }
-        else{
-            $news->title = $request->title;
-            $news->date = $request->date;
-            $news->content = $request->content;
-            $news->save();
-        }
+
+        $news->title = $request->title;
+        $news->date = $request->date;
+        $news->content = $request->content;
+        $news->image = $imagePath;
+        $news->save();
 
 
         return redirect()->route('news.index')->with('success', 'News updated successfully');

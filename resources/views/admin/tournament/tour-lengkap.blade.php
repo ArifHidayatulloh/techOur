@@ -67,7 +67,7 @@
             <table class="table text-center">
                 <thead class="table-light">
                     <tr>
-                        {{-- <th>Pembuat</th> --}}
+                        <th>Pembuat</th>
                         <th>Nama</th>
                         <th>Lokasi</th>
                         <th>Tanggal</th>
@@ -83,7 +83,7 @@
                 <tbody>
                     @foreach ($tournament as $item)
                         <tr class="align-middle">
-                            {{-- <td>{{ $item->user->name }}</td> --}}
+                            <td>{{ $item->maker->name }}</td>
                             <td>{{ $item->tournament }}</td>
                             <td>{{ $item->location }}</td>
                             <td>{{ $item->date }}</td>

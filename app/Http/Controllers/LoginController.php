@@ -17,7 +17,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             if (Auth::user()->role == 'user') {
                 Auth::logout();
-                return redirect('/')->with('error','email atau password salah');
+                return redirect('/')->with('error','Email or password is incorrect');
 
             }
             else{
@@ -42,11 +42,11 @@ class LoginController extends Controller
                 $user->save();
                 return redirect('home');
             } else{
-                return back()->with('error','email atau password salah');    
+                return back()->with('error','Email or password is incorrect');    
             }
         }
         else{
-            return back()->with('error','email atau password salah');
+            return back()->with('error','Email or password incorrect');
         }
 
     }

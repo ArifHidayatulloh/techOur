@@ -65,10 +65,18 @@
             </div>
         </div>
 
-        <div class="btn-list d-flex justify-content-end">
-            <a href="{{ route('limit.index') }}" class="caption text-center me-5 p-2 mt-4 text-decoration-none"
-                style="cursor: pointer;" id="create">list paket</a>
-        </div>
+        @if (Auth::user()->role == 'admin')
+            <div class="btn-list d-flex justify-content-end">
+                <a href="{{ route('limit.index') }}" class="caption text-center me-5 p-2 mt-4 text-decoration-none"
+                    style="cursor: pointer; width:auto;" id="create">Limit Package</a>
+            </div>
+        @else
+            <div class="btn-list d-flex justify-content-end">
+                <a href="{{ route('limit.index') }}" class="caption text-center me-5 p-2 mt-4 text-decoration-none"
+                    style="cursor: pointer;" id="create">Buy Limit</a>
+            </div>
+        @endif
+
 
         <div class="container">
             <div class="pilih">

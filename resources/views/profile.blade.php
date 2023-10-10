@@ -106,7 +106,7 @@
                     <div class="image d-flex justify-content-center mb-4 edit">
                         @if (Auth::user()->image == null)
                             <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
-                                class="img rounded-circle">
+                                class="img rounded-circle" id="review">
                         @else
                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" style="height: auto"
                                 class="img rounded-circle" id="review">
@@ -128,6 +128,13 @@
                         <div class="input-group-text"><i class='bx bxs-user'></i></div>
                         <input type="text" class="form-control" placeholder="Username" name="name"
                             value="{{ Auth::user()->name }}" />
+                    </div>
+
+                    {{-- No.telp --}}
+                    <div class="input-group mb-4">
+                        <div class="input-group-text"><i class='bx bxs-phone'></i></div>
+                        <input type="text" class="form-control" placeholder="Phone" name="hp"
+                            value="{{ Auth::user()->hp }}" />
                     </div>
 
                     <!-- Email input -->

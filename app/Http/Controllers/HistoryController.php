@@ -17,13 +17,13 @@ class HistoryController extends Controller
 
         $history->where('id',$id)->update(array('status' => 'success'));
         
-        return redirect()->back()->with('success','Approved Success');
+        return redirect()->back()->with('success','Approved successfully');
     }
     public function fail($id){
         $history = History::find($id);
 
         $history->where('id',$id)->update(array('status' => 'fail'));
         
-        return redirect()->back()->with('success','Deleted Success');
+        return redirect()->back()->with('success','Deleted successfully');
     }
 }

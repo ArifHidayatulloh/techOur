@@ -16,8 +16,7 @@ class LimitController extends Controller
      */
     public function index()
     {
-        $limit = Limit::all();
-        $editLimit = Limit::all();
+        $limit = Limit::orderBy('prize')->get();
         return view('admin.list-paket.index',compact('limit'));
     }
 

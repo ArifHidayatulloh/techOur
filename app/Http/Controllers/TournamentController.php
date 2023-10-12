@@ -54,7 +54,7 @@ class TournamentController extends Controller
             'registration_fee' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg'
         ]);
-
+        
         $imagePath = $request->file('image')->store('tournament_images', 'public');
 
         Tournament::create([

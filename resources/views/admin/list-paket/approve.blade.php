@@ -23,7 +23,7 @@
                         <th>Name</th>
                         <th>Paket</th>
                         <th>Limit</th>
-                        <th>Harga</th>
+                        <th>Price</th>
                         <th>Bukti</th>
                         <th>Action</th>
                     </tr>

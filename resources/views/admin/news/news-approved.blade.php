@@ -49,10 +49,10 @@
             <table class="table text-center ms-5 me-5">
                 <thead class="table-light">
                     <tr>
-                        <th>Pembuat</th>
-                        <th>Judul</th>
+                        <th>Maker</th>
+                        <th>Title</th>
                         <th>Detail</th>
-                        <th>Tanggal</th>
+                        <th>Date</th>
                         <th>Status</th>
                         <th>Poster</th>
                         <th>Action</th>

@@ -52,7 +52,7 @@
                         <!-- Hp input -->
                         <div class="form-floating mb-4">
                             <input type="number" class="form-control" id="floatingInput" placeholder="Hp" name="hp">
-                            <label for="floatingInput">No Telpon</label>
+                            <label for="floatingInput">Phone Number</label>
                         </div>
 
                         <!-- Password input -->

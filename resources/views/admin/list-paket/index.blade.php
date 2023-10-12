@@ -98,6 +98,8 @@
 
                 <a href="{{ route('limit.pending') }}"
                     class="btn approve btn-outline-success justify-content-end me-5 mt-4 mb-3" id="approve">Approve</a>
+            @elseif (Auth::user()->role == 'sub admin')
+                <p class="fw-bold text-success fs-2 mb-3 mt-4" style="margin-left: 4rem">Paket Limit</p>
             @endif
         </div>
 
@@ -126,7 +128,7 @@
                                             <input type="number" size="22" required name="limit" autocomplete="off">
                                         </div>
                                         <div class="input-limit">
-                                            <span class="details fw-bold">Harga</span>
+                                            <span class="details fw-bold">Price</span>
                                             <input type="text" size="22" required name="prize" autocomplete="off">
                                         </div>
                                     </div>
@@ -144,11 +146,11 @@
             </div>
         @else
         @endif
-        
+
         @if (session('updated'))
-        <div class="alert alert-success w-75">
-            {{ session('updated') }}
-        </div>
+            <div class="alert alert-success w-75">
+                {{ session('updated') }}
+            </div>
         @endif
         @php
             $chunkedLimits = $limit->chunk(4);
@@ -171,22 +173,66 @@
                                     Rp. {{ $item->prize }}
                                 </button>
 
+                                <!-- Buy Limit -->
+                                <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Buy Limit</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form action="{{ route('buyLimit') }}" method="post"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
+                                                    style="height: 5rem">
+                                                    <div>
+                                                        <input type="text"
+                                                            class="form-label fw-bold border-0 bg-transparent"
+                                                            name="name" value="{{ $item->name }}" readonly>
+                                                        <p class="d-flex">Limit <input type="text"
+                                                                class="form-label border-0 bg-transparent" name="limit"
+                                                                value="{{ $item->limit }}" readonly></p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="d-flex text-success fw-bold">Rp. <input type="text"
+                                                                class="form-label text-success fw-bold border-0 bg-transparent"
+                                                                name="prize" value="{{ $item->prize }}" readonly></p>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 form-check me-3">
+                                                    <label>
+                                                        <b>PAYMENT :</b><br>
+                                                        💸 Pembayaran dilakukan melalui: <br>
+                                                        @foreach ($paymentMethod as $item)
+                                                            > {{ $item->payment_method }} <br>
+                                                        @endforeach
+                                                    </label>
+                                                </div>
+                                                <div class="mb-3 form-check me-3">
+                                                    <label for="formFile" class="form-label">Bukti Transfer</label>
+                                                    <input class="form-control" type="file" id="inputFile"
+                                                        name="image">
+                                                    <img src="" class="w-25 mt-3" alt="" id="review">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Buy</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 @if (Auth::user()->role == 'admin')
                                     <div class="d-flex justify-content-around border-0">
                                         <div class="update">
                                             <a class="btn" type="button" data-bs-toggle="modal"
                                                 data-bs-target="#editModal{{ $item->id }}"><i
                                                     class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
-                                        </div>
-                                        <div class="delete">
-                                            <form action="{{ route('limit.delete', ['id' => $item->id]) }}" method="POST"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn">
-                                                    <i class="bx bxs-trash-alt bx-sm" style="color: black"></i>
-                                                </button>
-                                            </form>
                                         </div>
 
                                         <!-- Update Limit -->
@@ -201,7 +247,8 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form action="{{ route('limit.update', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
+                                                    <form action="{{ route('limit.update', ['id' => $item->id]) }}"
+                                                        method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="modal-body">
@@ -220,7 +267,7 @@
                                                                             value="{{ $item->limit }}">
                                                                     </div>
                                                                     <div class="input-limit">
-                                                                        <span class="details fw-bold">Harga</span>
+                                                                        <span class="details fw-bold">Price</span>
                                                                         <input type="text" size="22" required
                                                                             name="prize" autocomplete="off"
                                                                             value="{{ $item->prize }}">
@@ -240,99 +287,182 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="delete">
+                                            <form action="{{ route('limit.delete', ['id' => $item->id]) }}"
+                                                method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn">
+                                                    <i class="bx bxs-trash-alt bx-sm" style="color: black"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 @endif
                             </li>
                         </ul>
-
-
-                        <!-- Buy Limit -->
-                        <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Buy Limit</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <form action="{{ route('buyLimit') }}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="modal-body d-flex justify-content-between m-5 mb-4 mt-4 border"
-                                            style="height: 5rem">
-                                            <div>
-                                                <input type="text" class="form-label fw-bold border-0 bg-transparent"
-                                                    name="name" value="{{ $item->name }}" readonly>
-                                                <p class="d-flex">Limit <input type="text"
-                                                        class="form-label border-0 bg-transparent" name="limit"
-                                                        value="{{ $item->limit }}" readonly></p>
-                                            </div>
-                                            <div>
-                                                <p class="d-flex text-success fw-bold">Rp. <input type="text"
-                                                        class="form-label text-success fw-bold border-0 bg-transparent"
-                                                        name="prize" value="{{ $item->prize }}" readonly></p>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 form-check me-3">
-                                            <label>
-                                                <b>PAYMENT :</b><br>
-                                                💸 Pembayaran dilakukan melalui: <br>
-                                                > ShopeePay 081211903974 / username noisestudio <br>
-                                                > Dana 081211903974 a.n. FNP <br>
-                                                > BCA 0710125872 a.n. FNP
-                                            </label>
-                                        </div>
-                                        <div class="mb-3 form-check me-3">
-                                            <label for="formFile" class="form-label">Bukti Transfer</label>
-                                            <input class="form-control" type="file" id="inputFile" name="image">
-                                            <img src="" class="w-25 mt-3" alt="" id="review">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Buy</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     @endforeach
                 </div>
             @endforeach
-        </div>
-        @if (session('successAdd'))
+
+            @if (Auth::user()->role == 'admin')
+
+                <!-- PAYMENT -->
+                <div class="d-flex justify-content-end mt-2">
+                    <div class="card shadow p-3 bg-body-tertary">
+                        <div class="d-flex align-items-center">
+                            <div class="ms-3 fw-bold">
+                                <a href="" class="text-decoration-none text-success fs-5" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal4">+ PAYMENT</a>
+
+                                <!-- Add PAYMENT -->
+                                <div class="modal fade" id="exampleModal4" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color:#576b7d;">
+                                                <div class="text-center fs-3 p-2 text-white">
+                                                    <h2>Add Payment</h2>
+                                                </div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form action="{{ route('paymentMethod.store') }}" method="post"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form">
+                                                        <div class="tmbh-limit">
+                                                            <div class="d-grid">
+                                                                <span class="details fw-bold fs-5 mb-2">Payment</span>
+                                                                <input type="text" required name="payment_method"
+                                                                    autocomplete="off">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="d-flex justify-content-center gap-2">
+                                                        <button type="submit"
+                                                            class="btn btn-outline-success w-auto">SIMPAN</button>
+                                                        <button type="reset"
+                                                            class="btn btn-outline-danger w-auto">BATAL</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="mt-2">💸 Pembayaran dilakukan melalui: </p>
+                                @foreach ($paymentMethod as $item)
+                                    <ol class="list-group">
+                                        <li
+                                            class="list-group-item border-0 d-flex justify-content-between align-items-start">
+                                            <div class="me-auto">
+                                                <div class="fw-bold">{{ $item->payment_method }}</div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <a class="btn" type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#editModal{{ $item->id }}"><i
+                                                        class='bx bxs-edit-alt'
+                                                        style="color: black; font-size: 23px"></i></a>
+
+                                                <div class="delete">
+                                                    <form action="{{ route('paymentMethod.delete',['id'=>$item->id]) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn">
+                                                            <i class="bx bxs-trash-alt"
+                                                                style="color: black; font-size: 23px"></i>
+                                                        </button>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="background-color:#576b7d;">
+                                                        <div class="text-center fs-3 p-2 text-white">
+                                                            <h2>Edit Payment</h2>
+                                                        </div>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="{{ route('paymentMethod.update', ['id' => $item->id]) }}"
+                                                        method="post" enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-body">
+                                                            <div class="form">
+                                                                <div class="tmbh-limit">
+                                                                    <div class="d-grid">
+                                                                        <span
+                                                                            class="details fw-bold fs-5 mb-2">Payment</span>
+                                                                        <input type="text" required
+                                                                            name="payment_method" autocomplete="off"
+                                                                            value="{{ $item->payment_method }}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="d-flex justify-content-center gap-2">
+                                                                <button type="submit" value="SIMPAN"
+                                                                    class="btn btn-outline-success w-auto">SIMPAN</button>
+                                                                <input type="reset" value="BATAL"
+                                                                    class="btn btn-outline-danger w-auto">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ol>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if (session('successAdd'))
+                <script>
+                    var info = "{{ session('successAdd') }}"
+                    alert(info)
+                </script>
+            @endif
+
+            @if (session('success'))
+                <script>
+                    var info = "{{ session('success') }}"
+                    alert(info)
+                </script>
+            @endif
+
             <script>
-                var info = "{{ session('successAdd') }}"
-                alert(info)
-            </script>
-        @endif
+                function previewImage(event) {
+                    let fileInput = event.target;
+                    let reviewImage = document.getElementById('review')
 
-        @if (session('success'))
-            <script>
-                var info = "{{ session('success') }}"
-                alert(info)
-            </script>
-        @endif
+                    if (fileInput.files && fileInput.files[0]) {
+                        let reader = new FileReader();
 
-        <script>
-            function previewImage(event) {
-                let fileInput = event.target;
-                let reviewImage = document.getElementById('review')
+                        reader.onload = function(e) {
+                            reviewImage.src = e.target.result;
+                        }
 
-                if (fileInput.files && fileInput.files[0]) {
-                    let reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        reviewImage.src = e.target.result;
+                        reader.readAsDataURL(fileInput.files[0]);
                     }
-
-                    reader.readAsDataURL(fileInput.files[0]);
                 }
-            }
 
-            document.getElementById('inputFile').addEventListener('change', previewImage);
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                document.getElementById('inputFile').addEventListener('change', previewImage);
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 
     </html>

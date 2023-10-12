@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LimitController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Models\History;
@@ -67,7 +68,12 @@ Route::get('/limit/pending',[HistoryController::class,'index'])->name('limit.pen
 Route::patch('/limit/approved/{id}', [HistoryController::class, 'approve'])->name('limit.approve');
 Route::patch('/limit/fail/{id}', [HistoryController::class, 'fail'])->name('limit.fail');
 
+Route::post('/paymentMethod',[PaymentMethodController::class,'store'])->name('paymentMethod.store');
+Route::put('/paymentMethod/{id}/edit',[PaymentMethodController::class,'update'])->name('paymentMethod.update');
+Route::delete('/paymentMethod/{id}/delete',[PaymentMethodController::class,'destroy'])->name('paymentMethod.delete');
+
 Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->name('antrian.ubah');
+
 
 Route::get('/password', function () {
     return view('password');

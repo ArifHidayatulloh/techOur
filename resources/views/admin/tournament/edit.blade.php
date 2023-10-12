@@ -28,7 +28,7 @@
                         <div class="tmbh-tour">
                             <div class="form-left">
                                 <div class="input-tur">
-                                    <span class="details">Competisi</span>
+                                    <span class="details">Competition</span>
                                     <select name="competition_id" id="">
                                         @forelse ($competition as $item)
                                             @if ($tournament->competition_id == $item->id)
@@ -48,19 +48,19 @@
                                     <input type="text" size="17" required name="user_id" value="{{ Auth::user()->id }}">
                                 </div>
                                 <div class="input-tur">
-                                    <span class="details">Nama Tournament</span>
+                                    <span class="details">Name Tournament</span>
                                     <input type="text" size="17" required name="tournament" value="{{ $tournament->tournament }}">
                                 </div>
                                 <div class="input-tur">
-                                    <span class="details">Peserta</span>
+                                    <span class="details">Participant</span>
                                     <textarea name="participants" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->participants }}</textarea>
                                 </div>
                                 <div class="input-tur">
-                                    <span class="details">Regulasi</span>
+                                    <span class="details">Rules</span>
                                     <textarea name="challenges" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->challenges }}</textarea>
                                 </div>
                                 <div class="input-tur">
-                                    <span class="details">Hadiah</span>
+                                    <span class="details">Prize</span>
                                     <textarea name="prizes" cols="35" rows="5" required style="white-space: pre-wrap;">{{ $tournament->prizes }}</textarea>
                                 </div>
                                 <div class="form-check">
@@ -72,11 +72,11 @@
                             </div>
                             <div class="form-right">
                                 <div class="input-tur">
-                                    <span class="details">Lokasi</span>
+                                    <span class="details">Location</span>
                                     <input type="text" size="17" required name="location" value="{{ $tournament->location }}">
                                 </div>
                                 <div class="input-tur">
-                                    <span class="details">Tanggal</span>
+                                    <span class="details">Date</span>
                                     <input type="date" size="20" required name="date" value="{{ $tournament->date }}">
                                 </div>
                                 <div class="input-tur">
@@ -84,7 +84,7 @@
                                     <textarea name="contact" id="" cols="26" rows="3" required>{{ $tournament->contact }}</textarea>
                                 </div>
                                 <div class="input-tur">
-                                    <span class="details">Harga</span>
+                                    <span class="details">Fee</span>
                                     <input type="text" size="17" required name="registration_fee" value="{{ $tournament->registration_fee }}">
                                 </div>
                                 <div class="input-tur">
@@ -92,14 +92,14 @@
                                     <input type="file" style="box-shadow:none; border:none;" name="image" id="inputFile">
                                 </div>
                                 <div class="output">
-                                    <span class="details">OUTPUT GAMBAR</span>
-                                    <img src="{{ asset('storage/' .$tournament->image) }}" alt="" id="review">
+                                    <span class="details">OUTPUT IMAGE</span>
+                                    <img src="{{ asset('storage/' .$tournament->image) }}" alt="" id="review" class="w-25">
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center gap-2">
-                            <input type="reset" value="BATAL" class="btn btn-outline-danger w-25">
-                            <input type="submit" value="SIMPAN" class="btn btn-outline-success w-25">
+                            <input type="reset" value="CANCEL" class="btn btn-outline-danger w-25">
+                            <input type="submit" value="SAVE CHANGE" class="btn btn-outline-success w-25">
                         </div>
                     </form>
                 </div>

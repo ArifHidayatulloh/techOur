@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\History;
 use App\Models\Limit;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,8 @@ class LimitController extends Controller
     public function index()
     {
         $limit = Limit::orderBy('prize')->get();
-        return view('admin.list-paket.index',compact('limit'));
+        $paymentMethod = PaymentMethod::all();
+        return view('admin.list-paket.index',compact('limit','paymentMethod'));
     }
 
     public function buyLimit(Request $request){

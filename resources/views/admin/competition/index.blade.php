@@ -21,7 +21,7 @@
                 </div>
             @endif
         </div>
-        <div class="d-flex justify-content-center ms-5 me-5">
+        <div class="d-flex justify-content-center ms-5 me-5 mb-3">
             <table class="table caption-top text-center w-75">
                 <!-- tabel -->
                 <caption><a href="{{ route('competition.create') }}"
@@ -29,8 +29,8 @@
                         Add Competition</a></caption>
                 <thead class="table-light">
                     <tr>
-                        <th>Nama</th>
-                        <th>Output Gambar</th>
+                        <th>Name</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>

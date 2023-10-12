@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Tournament extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id','competition_id','tournament','date','location','participants','challenges','prizes','contact','registration_fee','info_team','image'];
+    
 
     public function maker(){
         return $this->belongsTo(User::class,'user_id','id');

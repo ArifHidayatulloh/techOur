@@ -26,7 +26,7 @@ class NewsController extends Controller
 
     public function pending()
     {
-        $news = News::all()->where('status', 'menunggu');
+        $news = News::all()->where('status', 'pending');
 
         return view('admin.news.news-approved', compact('news'));
     }
@@ -62,26 +62,19 @@ class NewsController extends Controller
         $imagePath = $request->file('image')->store('news_images', 'public');
 
         if (Auth::user()->role == 'admin') {
-            News::create([
-                'user_id' => $request->user_id,
-                'title' => $request->title,
-                'date' => $request->date,
-                'content' => $request->content,
-                'status' => 'success',
-                'image' => $imagePath
-            ]);
+            $status = 'success';
         } else {
-            News::create([
-                'user_id' => $request->user_id,
-                'title' => $request->title,
-                'date' => $request->date,
-                'content' => $request->content,
-                'status' => 'pending',
-                'image' => $imagePath
-            ]);
+            $status = 'pending';
         }
-
-
+        
+        News::create([
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'date' => $request->date,
+            'content' => $request->content,
+            'status' => $status,
+            'image' => $imagePath
+        ]);
 
         return redirect()->route('news.index')->with('success', 'News added successfully');
     }

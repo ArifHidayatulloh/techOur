@@ -95,17 +95,17 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                    data-bs-target="#detailModal{{ $item->id }}">
                                     See Detail
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">User Detail</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -114,21 +114,19 @@
                                                     <p>Name</p>
                                                     <p>Email</p>
                                                     <p>Phone Number</p>
-                                                    <p>Password</p>
                                                     <p>Role</p>
+                                                    <p>Created at</p>
                                                     <p>Last Login</p>
                                                     <p>Last Logout</p>
-                                                    <p>Created at</p>
                                                 </div>
                                                 <div class="modal-isi text-start ms-5">
-                                                    <p>: name</p>
-                                                    <p>: email@gmail</p>
-                                                    <p>: 294290</p>
-                                                    <p>: 123</p>
-                                                    <p>: role</p>
-                                                    <p>: last login</p>
-                                                    <p>: last logout</p>
-                                                    <p>: created at</p>
+                                                    <p>: {{ $item->name }}</p>
+                                                    <p>: {{ $item->email }}</p>
+                                                    <p>: {{ $item->hp }}</p>
+                                                    <p>: {{ $item->role }}</p>
+                                                    <p>: {{ $item->created_at }}</p>
+                                                    <p>: {{ $item->last_login }}</p>
+                                                    <p>: {{ $item->last_logout }}</p>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

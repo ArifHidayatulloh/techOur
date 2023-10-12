@@ -94,7 +94,50 @@
                                         </form>
                                     </div>
                                 </div>
-                                {{-- <a class="btn btn-outline-success" type="button" href="/view">view</a> --}}
+                                <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    See Detail
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="d-flex modal-body">
+                                                <div class="modal-text text-start fw-bold">
+                                                    <p>Name</p>
+                                                    <p>Email</p>
+                                                    <p>Phone Number</p>
+                                                    <p>Password</p>
+                                                    <p>Role</p>
+                                                    <p>Last Login</p>
+                                                    <p>Last Logout</p>
+                                                    <p>Created at</p>
+                                                </div>
+                                                <div class="modal-isi text-start ms-5">
+                                                    <p>: name</p>
+                                                    <p>: email@gmail</p>
+                                                    <p>: 294290</p>
+                                                    <p>: 123</p>
+                                                    <p>: role</p>
+                                                    <p>: last login</p>
+                                                    <p>: last logout</p>
+                                                    <p>: created at</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -102,36 +145,7 @@
             </table>
         </div>
 
-        {{-- <script>
-            const textNews = document.getElementById("text-news");
-
-            const text = textNews.textContent;
-
-            const kalimatArray = text.split(".");
-
-            if (kalimatArray.length > 1) {
-                const kalimatTerkondensasi = kalimatArray.slice(0, 1).join(".") + "...";
-                textNews.textContent = kalimatTerkondensasi;
-            }
-
-            document.getElementById('show-popup').addEventListener('click', function() {
-                document.getElementById('popup').style.display = 'block';
-            });
-
-            document.getElementById('close-popup').addEventListener('click', function() {
-                document.getElementById('popup').style.display = 'none';
-            });
-
-            /* POP UP UPDATE */
-            document.getElementById('show-popup-update').addEventListener('click', function() {
-                document.getElementById('popup-update').style.display = 'block';
-            });
-
-            document.getElementById('close-popup-update').addEventListener('click', function() {
-                document.getElementById('popup-update').style.display = 'none';
-            });
-
-        </script> --}}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 
     </html>

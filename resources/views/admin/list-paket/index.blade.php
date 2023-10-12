@@ -206,8 +206,8 @@
                                                     <label>
                                                         <b>PAYMENT :</b><br>
                                                         💸 Pembayaran dilakukan melalui: <br>
-                                                        @foreach ($paymentMethod as $item)
-                                                            > {{ $item->payment_method }} <br>
+                                                        @foreach ($paymentMethod as $pay)
+                                                            > {{ $pay->payment_method }} <br>
                                                         @endforeach
                                                     </label>
                                                 </div>
@@ -230,13 +230,11 @@
                                 @if (Auth::user()->role == 'admin')
                                     <div class="d-flex justify-content-around border-0">
                                         <div class="update">
-                                            <a class="btn" type="button" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $item->id }}"><i
-                                                    class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
+                                            <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#editLimit{{ $item->id }}"><i class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
                                         </div>
 
                                         <!-- Update Limit -->
-                                        <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
+                                        <div class="modal fade" id="editLimit{{ $item->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

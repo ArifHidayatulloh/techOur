@@ -54,10 +54,10 @@
                             <li>
                                 @if (Auth::user()->image == null)
                                     <img src="{{ url('assets/image/it/user.png') }}" alt=""
-                                        class="w-50 mb-2 rounded-circle" style="height: auto">
+                                        class="w-50 mb-2 rounded-circle border" style="height: auto">
                                 @else
                                     <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                                        class="rounded-circle w-50 mt-2 mb-2 rounded-circle" style="height: auto">
+                                        class="rounded-circle w-50 mt-2 mb-2 rounded-circle border border-dark" style="height: auto">
                                 @endif
                             </li>
                             <li class="ms-3 me-3">{{ Auth::user()->email }}</li>

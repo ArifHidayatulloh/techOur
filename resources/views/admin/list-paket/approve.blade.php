@@ -24,7 +24,7 @@
                         <th>Paket</th>
                         <th>Limit</th>
                         <th>Price</th>
-                        <th>Bukti</th>
+                        <th>Proof of Transfer</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -67,8 +67,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-check d-flex flex-column mb-3 ms-4">
-                                                    <label for="formFile" class="form-label text-start">Bukti
-                                                        Transfer</label>
+                                                    <label for="formFile" class="form-label text-start">Proof of Transfer</label>
                                                     <img src="{{ asset('storage/' . $item->image) }}" class="w-25"
                                                         alt="" id="review">
                                                 </div>

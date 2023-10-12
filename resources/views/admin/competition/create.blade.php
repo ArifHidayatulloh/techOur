@@ -33,7 +33,7 @@
                         </div>
                         <div class="output">
                             <span class="details">OUTPUT IMAGE</span>
-                            <img src="" alt="" id="review" style="height: auto">
+                            <img src="" alt="" id="review" style="height: auto" style="height: auto" class="w-25">
                         </div>
                     </div>
                 </div>

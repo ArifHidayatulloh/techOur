@@ -157,17 +157,17 @@
         @else
         @endif
 
-        @if (session('updated'))
-            <div class="alert alert-success w-75">
-                {{ session('updated') }}
-            </div>
-        @endif
         @php
             $chunkedLimits = $limit->chunk(4);
         @endphp
         <div class="card justify-content-left">
             @foreach ($chunkedLimits as $chunk)
                 <div class="card-body">
+                    @if (session('updated'))
+                        <div class="alert alert-success w-75">
+                            {{ session('updated') }}
+                        </div>
+                    @endif
                     @foreach ($chunk as $item)
                         <ul class="list-group list-group-light">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -222,7 +222,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="mb-3 form-check me-3">
-                                                    <label for="formFile" class="form-label fw-bold">Proof of Transfer</label>
+                                                    <label for="formFile" class="form-label fw-bold">Proof of
+                                                        Transfer</label>
                                                     <input class="form-control" type="file" id="inputFile"
                                                         name="image">
                                                     <img src="" class="w-25 mt-3" alt="" id="review">
@@ -240,7 +241,9 @@
                                 @if (Auth::user()->role == 'admin')
                                     <div class="d-flex justify-content-around border-0">
                                         <div class="update">
-                                            <a class="btn" type="button" data-bs-toggle="modal" data-bs-target="#editLimit{{ $item->id }}"><i class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
+                                            <a class="btn" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#editLimit{{ $item->id }}"><i
+                                                    class='bx bxs-edit-alt bx-sm' style="color: black"></i></a>
                                         </div>
 
                                         <!-- Update Limit -->
@@ -321,8 +324,8 @@
                     <div class="card payment-body shadow p-3 bg-body-tertary">
                         <div class="d-flex align-items-center">
                             <div class="ms-3 fw-bold">
-                                <a href="" class="payment-card text-decoration-none text-success fs-5" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal4">+ PAYMENT</a>
+                                <a href="" class="payment-card text-decoration-none text-success fs-5"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal4">+ PAYMENT</a>
 
                                 <!-- Add PAYMENT -->
                                 <div class="modal fade" id="exampleModal4" tabindex="-1"

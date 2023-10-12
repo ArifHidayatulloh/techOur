@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="output">
                                     <span class="details">OUTPUT IMAGE</span>
-                                    <img src="{{ asset('storage/' .$tournament->image) }}" alt="" id="review" class="w-25">
+                                    <img src="{{ asset('storage/' .$tournament->image) }}" alt="" id="review" style="height: auto" class="w-25">
                                 </div>
                             </div>
                         </div>

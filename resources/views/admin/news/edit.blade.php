@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="output">
                                     <span class="details">OUTPUT IMAGE</span>
-                                    <img src="{{ asset('storage/' . $news->image) }}" alt="" id="review">
+                                    <img src="{{ asset('storage/' . $news->image) }}" alt="" id="review" class="w-25" style="height: auto">
                                 </div>
                             </div>
                         </div>

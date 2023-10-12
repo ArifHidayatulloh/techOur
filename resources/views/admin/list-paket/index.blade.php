@@ -10,7 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <title>list paket</title>
+        <title>limit package</title>
     </head>
 
     <style>
@@ -49,7 +49,7 @@
 
         .card {
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: auto auto;
             border: 0;
         }
 
@@ -81,6 +81,16 @@
 
             .list-group {
                 width: 300px;
+            }
+
+            .payment {
+                margin-left: -1rem;
+            }
+
+            .payment-card,
+            .payment-list {
+                margin-left: -2rem;
+                padding: 3px;
             }
 
             .modal-body .form-label {
@@ -212,7 +222,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="mb-3 form-check me-3">
-                                                    <label for="formFile" class="form-label">Bukti Transfer</label>
+                                                    <label for="formFile" class="form-label fw-bold">Proof of Transfer</label>
                                                     <input class="form-control" type="file" id="inputFile"
                                                         name="image">
                                                     <img src="" class="w-25 mt-3" alt="" id="review">
@@ -309,11 +319,11 @@
             @if (Auth::user()->role == 'admin')
 
                 <!-- PAYMENT -->
-                <div class="d-flex justify-content-end mt-2">
-                    <div class="card shadow p-3 bg-body-tertary">
+                <div class="payment d-flex justify-content-end mt-2 me-5">
+                    <div class="card payment-body shadow p-3 bg-body-tertary">
                         <div class="d-flex align-items-center">
                             <div class="ms-3 fw-bold">
-                                <a href="" class="text-decoration-none text-success fs-5" data-bs-toggle="modal"
+                                <a href="" class="payment-card text-decoration-none text-success fs-5" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal4">+ PAYMENT</a>
 
                                 <!-- Add PAYMENT -->
@@ -355,9 +365,9 @@
                                     </div>
                                 </div>
 
-                                <p class="mt-2">💸 Pembayaran dilakukan melalui: </p>
+                                <p class="payment-card mt-2">💸 Pembayaran dilakukan melalui: </p>
                                 @foreach ($paymentMethod as $item)
-                                    <ol class="list-group">
+                                    <ol class="payment-list list-group">
                                         <li
                                             class="list-group-item border-0 d-flex justify-content-between align-items-start">
                                             <div class="me-auto">
@@ -365,12 +375,14 @@
                                             </div>
                                             <div class="d-flex">
                                                 <a class="btn" type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal{{ $item->id }}"><i
+                                                    data-bs-target="#editModal2{{ $item->id }}"><i
                                                         class='bx bxs-edit-alt'
                                                         style="color: black; font-size: 23px"></i></a>
 
                                                 <div class="delete">
-                                                    <form action="{{ route('paymentMethod.delete',['id'=>$item->id]) }}" method="post">
+                                                    <form
+                                                        action="{{ route('paymentMethod.delete', ['id' => $item->id]) }}"
+                                                        method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn">
@@ -382,47 +394,46 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header" style="background-color:#576b7d;">
-                                                        <div class="text-center fs-3 p-2 text-white">
-                                                            <h2>Edit Payment</h2>
-                                                        </div>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
+                                    </ol>
+                                    <div class="modal fade" id="editModal2{{ $item->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color:#576b7d;">
+                                                    <div class="text-center fs-3 p-2 text-white">
+                                                        <h2>Edit Payment</h2>
                                                     </div>
-                                                    <form action="{{ route('paymentMethod.update', ['id' => $item->id]) }}"
-                                                        method="post" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <div class="modal-body">
-                                                            <div class="form">
-                                                                <div class="tmbh-limit">
-                                                                    <div class="d-grid">
-                                                                        <span
-                                                                            class="details fw-bold fs-5 mb-2">Payment</span>
-                                                                        <input type="text" required
-                                                                            name="payment_method" autocomplete="off"
-                                                                            value="{{ $item->payment_method }}">
-                                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <form action="{{ route('paymentMethod.update', ['id' => $item->id]) }}"
+                                                    method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="modal-body">
+                                                        <div class="form">
+                                                            <div class="tmbh-limit">
+                                                                <div class="d-grid">
+                                                                    <span class="details fw-bold fs-5 mb-2">Payment</span>
+                                                                    <input type="text" required name="payment_method"
+                                                                        autocomplete="off"
+                                                                        value="{{ $item->payment_method }}">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <div class="d-flex justify-content-center gap-2">
-                                                                <button type="submit" value="SIMPAN"
-                                                                    class="btn btn-outline-success w-auto">SIMPAN</button>
-                                                                <input type="reset" value="BATAL"
-                                                                    class="btn btn-outline-danger w-auto">
-                                                            </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="d-flex justify-content-center gap-2">
+                                                            <button type="submit" value="SIMPAN"
+                                                                class="btn btn-outline-success w-auto">SIMPAN</button>
+                                                            <input type="reset" value="BATAL"
+                                                                class="btn btn-outline-danger w-auto">
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                    </ol>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>

@@ -39,7 +39,7 @@
                         <li><a href="{{ route('users.index') }}">USER</a></li>
                     @else
                     @endif
-                    <li><a href="{{ route('limit.index') }}">LIST PAKET</a></li>
+                    <li><a href="{{ route('limit.index') }}">LIMIT PACKAGE</a></li>
                 </ul>
             </center>
         </div>

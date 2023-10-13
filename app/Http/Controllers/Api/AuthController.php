@@ -81,6 +81,7 @@ class AuthController extends Controller
             'email' => 'required|email',
             'hp' => 'required'
         ]);
+        
 
         $user->update([
             'name' => $request->name,

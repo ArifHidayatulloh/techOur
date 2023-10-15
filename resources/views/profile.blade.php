@@ -54,14 +54,6 @@
                 margin-left: 13%;
             }
 
-            .trash:hover {
-                background-color: black;
-            }
-
-            .trash i {
-                color: white;
-            }
-
             .history {
                 position: absolute;
                 margin-left: 0;
@@ -199,7 +191,7 @@
                 card.style.display = 'block';
                 close.style.display = 'block';
                 close.style.marginLeft = '17rem';
-                trash.style.marginLeft = '1%';
+                trash.style.marginLeft = '2%';
             }
 
             close.addEventListener("click", function() {

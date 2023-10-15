@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,6 @@ class AuthController extends Controller
             'email' => 'required',
             'hp' => 'required',
             'password' => 'required',
-
         ]);
 
         $user = User::create([
@@ -28,7 +28,6 @@ class AuthController extends Controller
             'hp' => $request->hp,
             'password' => bcrypt($request->password),
             'role' => 'user',
-            'limit' => 1,
         ]);
 
         return response()->json(['message' => 'Pendaftaran berhasil'], 200);
@@ -54,7 +53,6 @@ class AuthController extends Controller
         $token = $user->createToken('user login')->plainTextToken;
 
         return response()->json(['token' => $token], 200);
-        
     }
 
     public function logout(Request $request)
@@ -69,30 +67,42 @@ class AuthController extends Controller
         return response()->json(['message' => 'Logout berhasil'], 200);
     }
 
-    public function me(Request $request){
-        return response()->json(['user'=> $request->user()]);
+    public function me(Request $request)
+    {
+        return response()->json(['user' => $request->user()]);
     }
 
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         $user = Auth::user();
 
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'hp' => 'required'
-        ]);
-        
-
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'hp' => $request->hp,
+            'hp' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        return response()->json(['message' =>'Profile updated successfully']);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->hp = $request->hp;
+
+        if($request->hasFile('image')){
+            if($user->image){
+                Storage::delete($user->image);
+            }
+
+            $imagePath = $request->file('image')->store('user_images','public');
+            $user->image = $imagePath;
+        }
+
+        $user->save();
+
+        return response()->json(['message' => 'Profile updated successfully']);
     }
 
-    public function updatePassword(Request $request){
+    public function updatePassword(Request $request)
+    {
         $user = Auth::user();
 
         $request->validate([
@@ -101,17 +111,15 @@ class AuthController extends Controller
             'new_password_confirm' => 'required',
         ]);
 
-        if(!Hash::check($request->current_password, $user->password)){
+        if (!Hash::check($request->current_password, $user->password)) {
             return response()->json(['message' => 'Current password is incorrect']);
-        }
-        elseif ($request->new_password_confirm != $request->new_password) {
+        } elseif ($request->new_password_confirm != $request->new_password) {
             return response()->json(['message' => 'Confirm password does not match']);
-        }
-        else{
-           $user->update([
-            'password' => bcrypt($request->new_password_confirm),
-           ]);
-           return response()->json(['message' => 'Password updated successfully']);
+        } else {
+            $user->update([
+                'password' => bcrypt($request->new_password_confirm),
+            ]);
+            return response()->json(['message' => 'Password updated successfully']);
         }
     }
 }

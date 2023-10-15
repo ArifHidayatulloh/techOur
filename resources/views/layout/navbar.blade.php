@@ -105,31 +105,6 @@
     <div class="content">
         @yield('content')
     </div>
-
-    {{-- <script>
-        fetch('http://localhost:8001/api/competition')
-            .then(response => response.json())
-            .then(apiData => {
-
-                const dataArray = apiData.data;
-                const linkElements = document.querySelectorAll('#dropdown-menu a')
-
-                dataArray.forEach(data => {
-                    const linkValue = data.id
-                    const linkUrl = data.competition
-
-                    console.log('ini id: ' + linkValue)
-                    linkElements.innerText = linkValue;
-
-                });
-
-
-
-            })
-            .catch(error => {
-                console.error('Error Fetching Data', error)
-            })
-    </script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>

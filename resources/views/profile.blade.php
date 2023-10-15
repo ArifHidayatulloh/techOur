@@ -23,12 +23,14 @@
         .trash {
             background-color: transparent;
             height: auto;
+            display: block;
             margin-left: 16%;
             top: 45%;
         }
 
         .trash i {
             color: black;
+            display: block;
         }
 
         .trash:hover {
@@ -49,9 +51,13 @@
                 width: 8rem;
             }
 
+            .alert {
+                width: 100%;
+            }
+
             .trash {
                 top: 100%;
-                margin-left: 13%;
+                margin-left: 22%;
             }
 
             .history {

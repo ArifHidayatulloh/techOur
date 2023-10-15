@@ -168,6 +168,17 @@
                             {{ session('updated') }}
                         </div>
                     @endif
+                    @if (session('successAdd'))
+                        <div class="alert alert-success w-75">
+                            {{ session('successAdd') }}
+                        </div>
+                    @endif
+
+                    @if (session('success'))
+                        <div class="alert alert-success w-75">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     @foreach ($chunk as $item)
                         <ul class="list-group list-group-light">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -442,19 +453,7 @@
                 </div>
             @endif
 
-            @if (session('successAdd'))
-                <script>
-                    var info = "{{ session('successAdd') }}"
-                    alert(info)
-                </script>
-            @endif
 
-            @if (session('success'))
-                <script>
-                    var info = "{{ session('success') }}"
-                    alert(info)
-                </script>
-            @endif
 
             <script>
                 function previewImage(event) {

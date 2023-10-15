@@ -77,7 +77,11 @@
                             <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->hp }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->role }}</td>
-                            <td class="text-break p-3" id="text-news">{{ $userLimit[$item->id] }}</td>
+                            @if ($item->role == 'admin')
+                                <td class="text-break p-3" id="text-news">no limit</td>
+                            @else
+                                <td class="text-break p-3" id="text-news">{{ $userLimit[$item->id] }}</td>
+                            @endif
                             <td>
                                 <div class="d-flex gap-2 p-3 w-100 justify-content-center">
                                     <div class="update">
@@ -95,13 +99,13 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal{{ $item->id }}">
+                                    data-bs-target="#detailModal{{ $item->id }}" style="font-size: 15px">
                                     See Detail
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
+                                <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">

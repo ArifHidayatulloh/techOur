@@ -79,7 +79,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($news as $item)
+                    @forelse ($news as $item)
                         <tr class="align-middle">
                             <td>{{ $item->user->name }}</td>
                             <td class="title">{{ $item->title }}</td>
@@ -107,7 +107,16 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+
+                    @empty
+                        <tr>
+                            <td colspan="7" align="center">
+                                <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                    Belum Ada Data
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

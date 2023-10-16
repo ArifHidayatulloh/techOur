@@ -41,9 +41,8 @@ Route::resource('/competition', CompetitionController::class);
 Route::resource('/team',TeamController::class);
 Route::resource('/antrian',AntrianTeamController::class);
 
-
 Route::get('/tournament',[TournamentController::class,'index'])->name('tournament.index');
-Route::get('/tournament/create',[TournamentController::class,'create'])->name('tournament.create');
+Route::get('/tournament/create/{id}',[TournamentController::class,'create'])->name('tournament.create');
 Route::post('/tournament',[TournamentController::class,'store'])->name('tournament.store')->middleware(['auth', 'check_data_limit:tournament']);
 Route::get('/tournament/show/{tournament}',[TournamentController::class,'show'])->name('tournament.show');
 Route::get('/tournament/{tournament}/edit',[TournamentController::class,'edit'])->name('tournament.edit');

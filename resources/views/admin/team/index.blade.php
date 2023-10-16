@@ -42,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($team as $item)
+                    @forelse ($team as $item)
                         <tr class="align-middle">
                             <td>{{ $item->tournament->tournament }}</td>
                             <td>{{ $item->team }}</td>
@@ -57,7 +57,15 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="7" align="center">
+                                <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                    Belum Ada Data
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

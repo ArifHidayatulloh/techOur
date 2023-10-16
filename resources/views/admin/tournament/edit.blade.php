@@ -28,20 +28,7 @@
                         <div class="tmbh-tour">
                             <div class="form-left">
                                 <div class="input-tur">
-                                    <span class="details">Competition</span>
-                                    <select name="competition_id" id="">
-                                        @forelse ($competition as $item)
-                                            @if ($tournament->competition_id == $item->id)
-                                            <option value="{{ $item->id }}" selected>{{ $item->competition }}</option>
-                                            
-                                            @else
-                                            <option value="{{ $item->id }}">{{ $item->competition }}</option>
-                                                
-                                            @endif
-                                        @empty
-                                            <option selected>Null</option>
-                                        @endforelse
-                                    </select>
+                                    <input type="text" name="competition_id" id="" value="{{ $tournament->competition_id }}" hidden>
                                 </div>
                                 <div class="input-tur d-none">
                                     <span class="details">user</span>

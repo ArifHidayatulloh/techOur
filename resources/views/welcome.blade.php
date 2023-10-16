@@ -55,6 +55,7 @@
                                 <li class="d-flex justify-content-center bg-body-tertiary p-1">
                                     <a href="/password"><box-icon name='key'></box-icon></a>
                                     <a href="/profile"><box-icon type='solid' name='edit-alt'></box-icon></a>
+                                    <a class="btn btn-outline-warning" href="" role="button">History</a>
                                 </li>
                                 <li><a href="{{ route('actionlogout') }}">Log Out</a>
                                 </li>

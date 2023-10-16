@@ -61,8 +61,15 @@
     </style>
 
     <body>
-        <a href="{{ route('tournament.create') }}"
+        <a href="{{ route('tournament.create', ['id' => $competition->id]) }}"
             class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-4 mt-4">+Add Tournament</a>
+        <div class="sesion  d-flex justify-content-center mt-2" style="margin-bottom: -10px">
+            @if (session('success'))
+                <div class="alert alert-success w-75">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
         <div class="d-flex justify-content-center content" id="content">
             <table class="table text-center">
                 <thead class="table-light">
@@ -81,7 +88,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tournament as $item)
+                    @forelse ($tournament as $item)
                         <tr class="align-middle">
                             <td>{{ $item->maker->name }}</td>
                             <td>{{ $item->tournament }}</td>
@@ -134,14 +141,21 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="11" align="center">
+                                <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                    Belum Ada Data
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
 
 
         <script>
-
             /* FORM ADD */
             function previewImage(event) {
                 let fileInput = event.target;

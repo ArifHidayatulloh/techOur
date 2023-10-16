@@ -35,7 +35,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($competition as $item)
+                    @forelse ($competition as $item)
                         <tr>
                             <td class="align-middle">{{ $item->competition }}</td>
                             <td class="align-middle"><img src="{{ asset('storage/' . $item->image) }}" alt=""
@@ -59,7 +59,15 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="3" align="center">
+                                <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                    Belum Ada Data
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                     {{-- <tr>
                 <td>Mobile Legend</td>
                 <td><img src="{{ ('assets/image/it/cyber-security.jpg') }}" alt="" style="width: 50px;"></td>

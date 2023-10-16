@@ -71,7 +71,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $item)
+                    @forelse ($users as $item)
                         <tr class="align-middle">
                             <td class="title">{{ $item->name }}</td>
                             <td class="text-break p-3" id="text-news">{{ $item->email }}</td>
@@ -142,7 +142,15 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="4" align="center">
+                                <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                    Belum Ada Data
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

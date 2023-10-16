@@ -18,7 +18,7 @@
         }
 
         @media screen and (max-width: 796px) {
-            .caption{
+            .caption {
                 margin-bottom: 5rem;
             }
 
@@ -29,7 +29,7 @@
                 margin-top: -15px;
             }
 
-            .content .table{
+            .content .table {
                 width: 50rem;
             }
         }
@@ -43,7 +43,8 @@
                 </div>
             @endif
         </div>
-        <a href="{{ route('news.create') }}" class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Add
+        <a href="{{ route('news.create') }}"
+            class="caption d-flex fw-bold text-decoration-none text-success fs-4 ms-5 mb-3">+ Add
             News</a>
         <div class="d-flex justify-content-center content mb-5">
             <table class="table text-center ms-5 me-5">
@@ -59,12 +60,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($news as $item)
+                    @forelse ($news as $item)
                         <tr class="align-middle">
                             <td>{{ $item->user->name }}</td>
                             <td class="title">{{ $item->title }}</td>
                             <td>
-                                {{ Str::limit($item->content, '150', '...')}}
+                                {{ Str::limit($item->content, '150', '...') }}
                             </td>
                             <td>{{ $item->date }}</td>
                             <td>{{ $item->status }}</td>
@@ -91,7 +92,15 @@
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="7" align="center">
+                                <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                    Belum Ada Data
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

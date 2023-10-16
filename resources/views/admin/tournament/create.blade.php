@@ -19,7 +19,7 @@
             <div class="bagan">
                 <div class="card-header text-center fs-3 p-2 rounded-top text-white border-bottom border-dark"
                     style="background-color:#576b7d;">
-                    <h2>Tournament</h2>
+                    <h2>Tournament {{ $competition->competition }}</h2>
                 </div>
 
                 <!-- FORM -->
@@ -34,17 +34,7 @@
                         @csrf
                         <div class="tmbh-tour">
                             <div class="form-left">
-                                <div class="input-tur">
-                                    <span class="details">Competition</span>
-                                    <select name="competition_id" id="">
-                                        <option selected>Pilih Competisi</option>
-                                        @forelse ($competition as $item)
-                                            <option value="{{ $item->id }}">{{ $item->competition }}</option>
-                                        @empty
-                                            <option selected>Null</option>
-                                        @endforelse
-                                    </select>
-                                </div>
+                                <input type="text" name="competition_id" id="" value="{{ $competition->id }}" hidden>
                                 <div class="input-tur d-none">
                                     <span class="details">user</span>
                                     <input type="text" size="17" required name="user_id"

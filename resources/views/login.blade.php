@@ -56,9 +56,11 @@
                         <input type="checkbox" onclick="myFunction()" class="ms-1"> show password
                     </div>
 
-                    <div class="text-center text-lg-start mt-4 pt-2">
-                        <button type="submit" class="btn text-white w-auto ps-5 pe-5"
-                            style="background-color: #3E4C59;">Log in</button>
+                    
+                    <div class="d-flex text-center text-lg-start mt-2 pt-2">
+                        <button type="submit" class="btn text-white w-auto ps-5 pe-5 mb-2"
+                        style="background-color: #3E4C59;">Log in</button>
+                        {{-- <p class="text-dark ms-3 mt-2">Don't have an account? <a href="/user/add" class="text-decoration-none text-primary">Register here</a></p> --}}
                     </div>
 
                 </form>

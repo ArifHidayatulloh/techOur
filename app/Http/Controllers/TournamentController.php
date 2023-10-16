@@ -26,10 +26,10 @@ class TournamentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         return view('admin.tournament.create', [
-            'competition' => Competition::all()
+            'competition' => Competition::find($id)
         ]);
     }
 
@@ -72,7 +72,7 @@ class TournamentController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('tournament.index')->with('success', 'Tournament added successfully');
+        return redirect()->route('tournament.show',$request->competition_id)->with('success', 'Tournament added successfully');
     }
 
     /**
@@ -85,10 +85,12 @@ class TournamentController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             $tournament = Tournament::all()->where('competition_id', $competitionId);
+            $competition = Competition::find($competitionId);
         } else {
+            $competition = Competition::find($competitionId);
             $tournament = Tournament::where(['competition_id' => $competitionId, 'user_id' => Auth::user()->id])->get();
         }
-        return view('admin.tournament.tour-lengkap', compact('tournament'));
+        return view('admin.tournament.tour-lengkap', ['tournament' => $tournament, 'competition' => $competition]);
     }
 
     /**
@@ -99,10 +101,7 @@ class TournamentController extends Controller
      */
     public function edit(Tournament $tournament)
     {
-        return view('admin.tournament.edit', [
-            'tournament' => $tournament,
-            'competition' => Competition::all()
-        ]);
+        return view('admin.tournament.edit', compact('tournament'));
     }
 
     /**
@@ -146,7 +145,7 @@ class TournamentController extends Controller
         $tournament->image = $imagePath;
         $tournament->save();
 
-        return redirect()->route('tournament.index')->with('success', 'Tournament updated successfully');
+        return redirect()->route('tournament.show',$request->competition_id)->with('success', 'Tournament updated successfully');
     }
 
     /**
@@ -159,6 +158,6 @@ class TournamentController extends Controller
     {
         Storage::disk('public')->delete($tournament->image);
         $tournament->delete();
-        return redirect()->route('tournament.index')->with('success', 'Tournament deleted successfully');
+        return redirect()->route('tournament.show',$tournament->competition_id)->with('success', 'Tournament deleted successfully');
     }
 }

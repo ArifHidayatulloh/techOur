@@ -21,7 +21,7 @@
         }
 
         .trash {
-            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.678);
             height: auto;
             display: block;
             margin-left: 16%;
@@ -38,6 +38,11 @@
             background-color: white;
         }
 
+        .alert{
+            margin-left: 5rem;
+            margin-right: 5rem;
+        }
+
         .img {
             width: 12rem;
         }
@@ -51,12 +56,14 @@
                 width: 8rem;
             }
 
-            .alert {
-                width: 100%;
+            .alert{
+                width: 250px;
+                margin-left: -1.5rem;
+                margin-right: 0
             }
 
             .trash {
-                top: 100%;
+                top: 120%;
                 margin-left: 22%;
             }
 
@@ -112,7 +119,7 @@
                     </div>
 
                     @if (session('successProfile'))
-                        <div class="alert alert-success me-5 ms-5 justify-content-center">
+                        <div class="alert alert-success justify-content-center">
                             {{ session('successProfile') }}
                         </div>
                     @endif

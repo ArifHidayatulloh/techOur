@@ -24,7 +24,6 @@
     <body>
         <div class="link w-200 mt-3 ms-5">
             <div class="link-content">
-                <a href="{{ route('tournament.show', ['tournament' => $tournamentid]) }}" class="btn btn-primary">Back</a>
                 <a href="{{ route('antrian.show', ['antrian' => $tournamentid]) }}" class="btn btn-success">Team Antrian</a>
             </div>
         </div>
@@ -47,7 +46,7 @@
                         <tr class="align-middle">
                             <td>{{ $item->tournament->tournament }}</td>
                             <td>{{ $item->team }}</td>
-                            <td>{{ $item->member }}</td>
+                            <td style="white-space: pre-wrap">{{ $item->member }}</td>
                             <td>{{ $item->contact }}</td>
                             <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 50px;"></td>
                             <td>

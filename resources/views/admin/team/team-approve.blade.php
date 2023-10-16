@@ -48,7 +48,7 @@
                         <tr class="align-middle">
                             <td>{{ $item->tournament->tournament }}</td>
                             <td>{{ $item->team }}</td>
-                            <td>{{ $item->member }}</td>
+                            <td style="white-space: pre-wrap">{{ $item->member }}</td>
                             <td>{{ $item->contact }}</td>
                             <td><img src="{{ asset('storage/' . $item->image) }}" style="width: 50px;"></td>
                             <td>

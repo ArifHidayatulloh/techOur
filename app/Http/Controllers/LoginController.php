@@ -60,4 +60,34 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function daftar(){
+        return view('admin.user.daftar');
+    }
+
+    public function simpan(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'hp' => 'required',
+            'password' => 'required',
+        ]);
+
+        $existingUser = User::where('email', $request->email)->first();
+
+        if ($existingUser) {
+            return back()->with('errors', 'Email sudah terdaftar');
+        }
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'hp' => $request->hp,
+            'password' => bcrypt($request->password),
+            'role' => 'sub admin',
+        ]);
+
+        return redirect()->route('login')->with('success','Registered successfully');
+
+    }
 }

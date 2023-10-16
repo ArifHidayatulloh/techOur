@@ -12,7 +12,7 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/admin/tournament/tour.css') }}">
 
-        <title>update tour</title>
+        <title>Tournament edit</title>
     </head>
     <body>
         <div class="d-flex justify-content-center m-3 content">

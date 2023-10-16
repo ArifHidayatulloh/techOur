@@ -36,6 +36,9 @@ Route::post('/profile/{id}',[HomeController::class,'editProfile'])->name('profil
 Route::post('/password/{id}',[HomeController::class, 'updatePassword'])->name('password.update')->middleware('auth');
 Route::patch('/profile/editImage/{id}',[HomeController::class,'editImage'])->name('photo.edit')->middleware('auth');
 
+Route::get('/daftar',[LoginController::class,'daftar'])->name('daftar');
+Route::post('/simpan',[LoginController::class,'simpan'])->name('simpan');
+
 Route::resource('/users', UserController::class);
 Route::resource('/competition', CompetitionController::class);
 Route::resource('/team',TeamController::class);
@@ -76,20 +79,4 @@ Route::patch('/update-status/{id}', [AntrianTeamController::class,'update'])->na
 
 Route::get('/password', function () {
     return view('password');
-});
-
-Route::get('/list-paket', function () {
-    return view('admin/list-paket/index');
-});
-
-Route::get('/create', function () {
-    return view('admin/list-paket/create');
-});
-
-Route::get('/view', function () {
-    return view('admin/user/view');
-});
-
-Route::get('/approve-limit', function () {
-    return view('admin/list-paket/approve');
 });

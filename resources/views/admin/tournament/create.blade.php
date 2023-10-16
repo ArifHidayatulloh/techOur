@@ -11,7 +11,7 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/admin/tournament/tour.css') }}">
 
-        <title>Form Tournament</title>
+        <title>Tournament create</title>
     </head>
 
     <body>

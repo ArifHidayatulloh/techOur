@@ -73,6 +73,7 @@
                                     @endphp
                                 </li>
                             @endif
+                            <li><a class="btn btn-outline-secondary w-50 " href="/profile" role="button">History</a></li>
                             <li class="bg-body-tertiary mb-3 mt-3 p-1">
                                 <a href="/password"><i class='bx bx-key bx-sm'></i></a>
                                 <a href="/profile"><i class='bx bxs-edit-alt bx-sm'></i></a>

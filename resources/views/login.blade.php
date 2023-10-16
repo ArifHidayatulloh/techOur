@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>login</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <style>
-    .body{
+    .body {
         background-color: #303234;
         height: 100vh;
     }
 
-    @media screen and (max-width: 796px){
-        .body{
+    @media screen and (max-width: 796px) {
+        .body {
             background-color: #F6F6F6;
             flex-direction: column;
         }
@@ -29,6 +29,11 @@
             @if (session()->has('error'))
                 <div class="alert alert-danger">
                     <b>Opps!</b> {{ session('error') }}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-danger">
+                    {{ session('success') }}
                 </div>
             @endif
             <div class="row-img col-lg-6">
@@ -56,11 +61,12 @@
                         <input type="checkbox" onclick="myFunction()" class="ms-1"> show password
                     </div>
 
-                    
+
                     <div class="d-flex text-center text-lg-start mt-2 pt-2">
                         <button type="submit" class="btn text-white w-auto ps-5 pe-5 mb-2"
-                        style="background-color: #3E4C59;">Log in</button>
-                        {{-- <p class="text-dark ms-3 mt-2">Don't have an account? <a href="/user/add" class="text-decoration-none text-primary">Register here</a></p> --}}
+                            style="background-color: #3E4C59;">Log in</button>
+                        <p class="text-dark ms-3 mt-2">Don't have an account? <a href="{{ route('daftar') }}"
+                                class="text-decoration-none text-primary">Register here</a></p>
                     </div>
 
                 </form>

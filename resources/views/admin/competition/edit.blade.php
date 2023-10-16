@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <link rel="stylesheet" href="{{ asset('assets/css/admin/competition/competition.css') }}">
-        <title>update competition</title>
+        <title>Competition create</title>
     </head>
     <body>
         <div class="d-flex justify-content-center content">

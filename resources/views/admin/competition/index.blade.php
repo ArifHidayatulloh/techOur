@@ -10,7 +10,7 @@
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>index</title>
+        <title>Competitions</title>
     </head>
 
     <body>
@@ -59,7 +59,7 @@
                                 </div>
                             </td>
                         </tr>
-                        @empty
+                    @empty
                         <tr>
                             <td colspan="3" align="center">
                                 <div class="alert alert-dark " role="alert" style="width:40rem;">
@@ -68,16 +68,6 @@
                             </td>
                         </tr>
                     @endforelse
-                    {{-- <tr>
-                <td>Mobile Legend</td>
-                <td><img src="{{ ('assets/image/it/cyber-security.jpg') }}" alt="" style="width: 50px;"></td>
-                <td>
-                    <div class="d-grid gap-2 d-md-flex justify-content-center">
-                        <button class="btn btn-outline-danger w-20" type="button">DELETE</button>
-                        <button class="btn btn-outline-success w-20" type="button">EDIT</button>
-                    </div>
-                </td>
-            </tr> --}}
                 </tbody>
             </table>
         </div>

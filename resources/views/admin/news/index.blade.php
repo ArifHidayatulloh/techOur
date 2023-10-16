@@ -10,7 +10,7 @@
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>index</title>
+        <title>News</title>
     </head>
     <style>
         .title {
@@ -121,24 +121,6 @@
             </table>
         </div>
 
-        {{-- <script>
-            document.getElementById('show-popup').addEventListener('click', function() {
-                document.getElementById('popup').style.display = 'block';
-            });
-
-            document.getElementById('close-popup').addEventListener('click', function() {
-                document.getElementById('popup').style.display = 'none';
-            });
-
-            /* POP UP UPDATE */
-            document.getElementById('show-popup-update').addEventListener('click', function() {
-                document.getElementById('popup-update').style.display = 'block';
-            });
-
-            document.getElementById('close-popup-update').addEventListener('click', function() {
-                document.getElementById('popup-update').style.display = 'none';
-            });
-        </script> --}}
     </body>
 
     </html>

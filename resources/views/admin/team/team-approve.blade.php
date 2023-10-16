@@ -10,7 +10,7 @@
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>INFO LENGKAP</title>
+        <title>Team Pending</title>
     </head>
     <style>
         @media screen and (max-width: 796px) {

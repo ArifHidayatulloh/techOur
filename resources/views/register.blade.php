@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>register page</title>
+        <title>User create</title>
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -94,31 +94,7 @@
                     }
                 }
             </script>
-
-            {{-- <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
-        <div class="card border-black" style="width: 30rem; background-color: #F6F6F6;">
-            <div class="card-body">
-                <form class="p-5">
-                <h1 class="text-center mb-5">Sign Up</h1>
-                <div class="mb-3">
-                    <label for="staticEmail">Email</label>
-                    <input type="email" class="form-control border-black" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="inputName">Name</label>
-                    <input type="email" class="form-control border-black" id="exampleInputName">
-                </div>
-                <div class="mb-3">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control border-black" id="exampleInputPassword1">
-                    <div id="passwordHelpBlock" class="form-text">
-                        Your password must be 8-20 characters long
-                      </div>
-                </div>
-                <button type="submit" class="btn text-white w-auto" style="background-color: #3E4C59;">Sign Up</button>
-            </form>
         </div>
-    </div> --}}
     </body>
 
     </html>

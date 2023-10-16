@@ -10,7 +10,7 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>INDEX</title>
+    <title>TechOur</title>
 </head>
 
 <body>
@@ -34,10 +34,10 @@
                                 <li>
                                     @if (Auth::user()->image == null)
                                         <img src="{{ url('assets/image/it/user.png') }}" alt=""
-                                            class="w-50 mb-2 rounded-circle border border-dark" style="height: auto">
+                                            class="w-50 mb-2 rounded-circle border border-dark me-3" style="height: auto">
                                     @else
                                         <img src="{{ asset('storage/' . Auth::user()->image) }}" alt=""
-                                            class="rounded-circle w-50 mt-2 mb-2 rounded-circle border border-dark" style="height: auto">
+                                            class="rounded-circle w-50 mt-2 mb-2 rounded-circle border border-dark me-3" style="height: auto">
                                     @endif
                                 </li>
                                 @if (Auth::user()->role != 'admin')
@@ -52,10 +52,10 @@
                                     </li>
                                 @endif
                                 <li>{{ Auth::user()->email }}</li>
-                                <li class="d-flex justify-content-center bg-body-tertiary p-1">
+                                <li><a class="btn btn-outline-secondary w-50 " href="/profile" role="button">History</a></li>
+                                <li class="d-flex justify-content-center bg-body-tertiary p-1 mt-2 mb-2">
                                     <a href="/password"><box-icon name='key'></box-icon></a>
                                     <a href="/profile"><box-icon type='solid' name='edit-alt'></box-icon></a>
-                                    <a class="btn btn-outline-warning" href="" role="button">History</a>
                                 </li>
                                 <li><a href="{{ route('actionlogout') }}">Log Out</a>
                                 </li>

@@ -112,14 +112,12 @@ class UserController extends Controller
             'email' => 'required',
             'hp' => 'required',
             'role' => 'required',
-            'limit' => 'required'
         ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->hp = $request->hp;
         $user->role = $request->role;
-        $user->limit = $request->limit;
 
         $user->save();
 

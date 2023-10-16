@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <title>profile</title>
+        <title>Profile</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -24,8 +24,9 @@
             background-color: rgba(255, 255, 255, 0.678);
             height: auto;
             display: block;
-            margin-left: 16%;
-            top: 45%;
+            margin-left: 20%;
+            margin-top: 20px;
+            margin-bottom: -10%;
         }
 
         .trash i {
@@ -61,15 +62,14 @@
                 margin-left: -1.5rem;
                 margin-right: 0
             }
-
-            .trash {
-                top: 120%;
-                margin-left: 22%;
-            }
-
+            
             .history {
                 position: absolute;
                 margin-left: 0;
+            }
+
+            .card-history{
+                display: none;
             }
         }
     </style>
@@ -101,16 +101,25 @@
                     <a href="/password" class="text-decoration-none text-dark">change password</i></a>
                 </div>
             </div>
-
+            
             <div class="content profile rounded-3 border border-dark-subtle w-75 m-5 p-5 shadow-sm">
                 <h4>Profile information</h4>
                 <p>Update your account's profile information and email address</p>
+                @if (Auth::user()->image != null)
+                    <form action="{{ route('photo.edit', ['id' => Auth::user()->id]) }}" method="post">
+                        @csrf
+                        @method('PATCH')
+                        <button role="button" type="submit"
+                            class="trash rounded-circle p-2 d-flex start-50 translate-middle"
+                            id="trash"><i class='bx bxs-trash-alt bx-sm' name="delete-image"></i></button>
+                    </form>
+                @endif
                 <form action="{{ route('profile.edit', ['id' => Auth::user()->id]) }}" method="post"
-                    enctype="multipart/form-data">
+                    enctype="multipart/form-data" class="form-profile">
                     @csrf
                     <div class="image d-flex justify-content-center mb-4 edit">
                         @if (Auth::user()->image == null)
-                            <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
+                        <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
                                 class="img rounded-circle" id="review">
                         @else
                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" style="height: auto"
@@ -151,15 +160,6 @@
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary btn-block">save</button>
                 </form>
-                @if (Auth::user()->image != null)
-                    <form action="{{ route('photo.edit', ['id' => Auth::user()->id]) }}" method="post">
-                        @csrf
-                        @method('PATCH')
-                        <button role="button" type="submit"
-                            class="trash rounded-circle p-2 d-flex position-absolute start-50 translate-middle"
-                            id="trash"><i class='bx bxs-trash-alt bx-sm' name="delete-image"></i></button>
-                    </form>
-                @endif
             </div>
 
             <div class="history">
@@ -168,7 +168,7 @@
                     <button type="button" class="btn-close" aria-label="Close" id="close"
                         style="display: none"></button>
                 </div>
-                <div class="card" style="width: 23rem; display: none;" id="card">
+                <div class="card card-history" style="width: 23rem;" id="card">
                     <table class="table align-middle bg-white text-center">
                         <thead>
                             <tr>

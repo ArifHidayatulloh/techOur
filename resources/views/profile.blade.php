@@ -180,7 +180,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($history as $item)
+                            @forelse ($history as $item)
                                 <tr>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->limit }}</td>
@@ -188,7 +188,15 @@
                                     <td>{{ $item->status }}</td>
                                     <td>{{ $item->created_at }}</td>
                                 </tr>
-                            @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="5" align="center">
+                                        <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                            Data Tidak Tersedia
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

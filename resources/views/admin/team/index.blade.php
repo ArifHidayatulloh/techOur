@@ -61,7 +61,7 @@
                         <tr>
                             <td colspan="7" align="center">
                                 <div class="alert alert-dark " role="alert" style="width:40rem;">
-                                    Belum Ada Data
+                                    Data Tidak Tersedia
                                 </div>
                             </td>
                         </tr>

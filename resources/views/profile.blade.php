@@ -39,7 +39,7 @@
             background-color: white;
         }
 
-        .alert{
+        .alert {
             margin-left: 5rem;
             margin-right: 5rem;
         }
@@ -57,18 +57,18 @@
                 width: 8rem;
             }
 
-            .alert{
+            .alert {
                 width: 250px;
                 margin-left: -1.5rem;
                 margin-right: 0
             }
-            
+
             .history {
                 position: absolute;
                 margin-left: 0;
             }
 
-            .card-history{
+            .card-history {
                 display: none;
             }
         }
@@ -101,7 +101,7 @@
                     <a href="/password" class="text-decoration-none text-dark">change password</i></a>
                 </div>
             </div>
-            
+
             <div class="content profile rounded-3 border border-dark-subtle w-75 m-5 p-5 shadow-sm">
                 <h4>Profile information</h4>
                 <p>Update your account's profile information and email address</p>
@@ -110,8 +110,8 @@
                         @csrf
                         @method('PATCH')
                         <button role="button" type="submit"
-                            class="trash rounded-circle p-2 d-flex start-50 translate-middle"
-                            id="trash"><i class='bx bxs-trash-alt bx-sm' name="delete-image"></i></button>
+                            class="trash rounded-circle p-2 d-flex start-50 translate-middle" id="trash"><i
+                                class='bx bxs-trash-alt bx-sm' name="delete-image"></i></button>
                     </form>
                 @endif
                 <form action="{{ route('profile.edit', ['id' => Auth::user()->id]) }}" method="post"
@@ -119,7 +119,7 @@
                     @csrf
                     <div class="image d-flex justify-content-center mb-4 edit">
                         @if (Auth::user()->image == null)
-                        <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
+                            <img src="{{ url('assets/image/it/user.png') }}" alt="" style="height: auto"
                                 class="img rounded-circle" id="review">
                         @else
                             <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="" style="height: auto"
@@ -188,14 +188,14 @@
                                     <td>{{ $item->status }}</td>
                                     <td>{{ $item->created_at }}</td>
                                 </tr>
-                                @empty
-                                <tr>
+                            @empty
+                                
                                     <td colspan="5" align="center">
-                                        <div class="alert alert-dark " role="alert" style="width:40rem;">
+                                        <div class="alert alert-dark " role="alert" style="width:11rem;">
                                             Data Tidak Tersedia
                                         </div>
                                     </td>
-                                </tr>
+                                
                             @endforelse
                         </tbody>
                     </table>
